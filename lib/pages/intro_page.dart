@@ -75,8 +75,7 @@ class IntroPage extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()),
-                    ),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage())),
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Center(

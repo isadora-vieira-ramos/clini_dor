@@ -29,9 +29,6 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = [
     const PatientPage(),
-    const EvaluationPage(),
-    const QuestionnairePage(),
-    const ConductsPage(),
     const AboutPage()
   ];
 
@@ -59,59 +56,45 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         backgroundColor: Colors.grey[200],
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(height: 48),
-            GestureDetector(
-              onTap: () => navigateBar(0),
-              child: const Padding(
-                padding: EdgeInsets.only(left: 25.0),
-                child: ListTile(
-                  leading: Icon(Icons.person, color: Colors.black),
-                  title: Text('Pacientes', style: TextStyle(color: Colors.black),),
+            Column(
+              children: [
+                const SizedBox(height: 48),
+                GestureDetector(
+                  onTap: () => navigateBar(0),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 25.0),
+                    child: ListTile(
+                      leading: Icon(Icons.person, color: Colors.black),
+                      title: Text('Pacientes', style: TextStyle(color: Colors.black),),
+                    ),
+                  ),
                 ),
-              ),
+                GestureDetector(
+                  onTap: () => navigateBar(1),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 25.0),
+                    child: ListTile(
+                      leading: Icon(Icons.info, color: Colors.black),
+                      title: Text('Sobre', style: TextStyle(color: Colors.black),),
+                    ),
+                  ),
+                ),
+              ],
             ),
             GestureDetector(
-              onTap: () => navigateBar(1),
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const IntroPage())),
               child: const Padding(
-                padding: EdgeInsets.only(left: 25.0),
+                padding: EdgeInsets.only(left: 25.0, bottom:25.0),
                 child: ListTile(
-                  leading: Icon(Icons.notes, color: Colors.black),
-                  title: Text('Avaliações', style: TextStyle(color: Colors.black),),
+                  leading: Icon(Icons.logout, color: Colors.black),
+                  title: Text('Sair', style: TextStyle(color: Colors.black),),
                 ),
               ),
-            ),
-            GestureDetector(
-              onTap: () => navigateBar(2),
-              child: const Padding(
-                padding: EdgeInsets.only(left: 25.0),
-                child: ListTile(
-                  leading: Icon(Icons.question_answer, color: Colors.black),
-                  title: Text('Questionário', style: TextStyle(color: Colors.black),),
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () => navigateBar(3),
-              child: const Padding(
-                padding: EdgeInsets.only(left: 25.0),
-                child: ListTile(
-                  leading: Icon(Icons.health_and_safety, color: Colors.black),
-                  title: Text('Condutas', style: TextStyle(color: Colors.black),),
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () => navigateBar(4),
-              child: const Padding(
-                padding: EdgeInsets.only(left: 25.0),
-                child: ListTile(
-                  leading: Icon(Icons.info, color: Colors.black),
-                  title: Text('Sobre', style: TextStyle(color: Colors.black),),
-                ),
-              ),
-            ),
-        ],),
+            )
+          ],
+        ),
       ),
       body: _pages[_selectedIndex],
     );

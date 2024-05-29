@@ -1,7 +1,10 @@
+import 'package:clini_dor/models/patient.dart';
 import 'package:flutter/material.dart';
 
 class ConductsPage extends StatelessWidget {
-  const ConductsPage({super.key});
+
+  Patient patient;
+  ConductsPage({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {
