@@ -1,3 +1,4 @@
+import 'package:clini_dor/components/floating_button.dart';
 import 'package:clini_dor/components/patient_tile.dart';
 import 'package:clini_dor/models/patient.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +17,7 @@ class _PatientPageState extends State<PatientPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor:  Theme.of(context).colorScheme.tertiary,
-        child: const Icon(Icons.add, color: Colors.white),
-      ),
+      floatingActionButton: FloatingButton(),
       body: Column(
         children: [
           Container(
@@ -43,10 +40,10 @@ class _PatientPageState extends State<PatientPage> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 2,
+              itemCount: 1,
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
-                Patient patient = Patient(name: 'Isadora Vieira Ramos', age: 22, sex: 'F', medicalRecord: 12345);
+                Patient patient = Patient(name: 'Paciente de Exemplo', age: 22, sex: 'F', medicalRecord: 1);
                 return PatientTile(patient: patient);
               },
             )

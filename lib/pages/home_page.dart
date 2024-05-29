@@ -1,10 +1,11 @@
+import 'package:clini_dor/models/patient.dart';
 import 'package:clini_dor/pages/about_page.dart';
 import 'package:clini_dor/pages/auth_page.dart';
 import 'package:clini_dor/pages/conducts_page.dart';
-import 'package:clini_dor/pages/evaluation_page.dart';
+import 'package:clini_dor/pages/evaluations_page.dart';
 import 'package:clini_dor/pages/intro_page.dart';
 import 'package:clini_dor/pages/patients_page.dart';
-import 'package:clini_dor/pages/questionnaire_page.dart';
+import 'package:clini_dor/pages/questionnaires_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -29,6 +30,9 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = [
     const PatientPage(),
+    EvaluationsPage(),
+    QuestionnairesPage(),
+    ConductsPage(),
     const AboutPage()
   ];
 
@@ -73,6 +77,36 @@ class _HomePageState extends State<HomePage> {
                 ),
                 GestureDetector(
                   onTap: () => navigateBar(1),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 25.0),
+                    child: ListTile(
+                      leading: Icon(Icons.checklist, color: Colors.black),
+                      title: Text('Avaliações', style: TextStyle(color: Colors.black),),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => navigateBar(2),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 25.0),
+                    child: ListTile(
+                      leading: Icon(Icons.notes, color: Colors.black),
+                      title: Text('Questionário', style: TextStyle(color: Colors.black),),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => navigateBar(3),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 25.0),
+                    child: ListTile(
+                      leading: Icon(Icons.verified, color: Colors.black),
+                      title: Text('Condutas', style: TextStyle(color: Colors.black),),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => navigateBar(4),
                   child: const Padding(
                     padding: EdgeInsets.only(left: 25.0),
                     child: ListTile(
