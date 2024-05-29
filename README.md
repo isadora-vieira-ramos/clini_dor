@@ -1,16 +1,8 @@
-# clini_dor
+# CliniDor
 
-A new Flutter project.
+Aplicativo guia para diagnóstico e tratamento da dor crônica.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p float="left">
+  <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/96c0e547-5bf4-43a8-983c-ca0fa1cc5c98" width="200" />
+  <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/4115a902-d314-41fb-92dc-eb0786615c68" width="200" />
+</p>
