@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     Navigator.pop(context);
   }
 
-  final List<Widget> _pages = [
+  final _pages = [
     const PatientsPage(),
     EvaluationsPage(),
     QuestionnairesPage(),
@@ -42,6 +42,14 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
+        title: _selectedIndex == 0?
+          Text(
+            "Pacientes",
+            style: GoogleFonts.josefinSans(
+              fontSize: 25,
+              color: Colors.white
+            )
+          ) : null,
         leading: Builder(
           builder: (context) => IconButton(
             onPressed: () {
