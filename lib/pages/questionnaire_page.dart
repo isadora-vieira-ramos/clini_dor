@@ -2,9 +2,9 @@ import 'package:clini_dor/components/floating_button.dart';
 import 'package:clini_dor/models/patient.dart';
 import 'package:flutter/material.dart';
 
-class QuestionnairesPage extends StatelessWidget {
+class QuestionnairePage extends StatelessWidget {
 
-  QuestionnairesPage({super.key});
+  QuestionnairePage({super.key});
 
   @override
   Widget build(BuildContext context) {
