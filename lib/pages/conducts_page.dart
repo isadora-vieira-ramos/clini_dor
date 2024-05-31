@@ -10,7 +10,7 @@ class ConductsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      floatingActionButton: FloatingButton(),
+      floatingActionButton: FloatingButton(onTap: (){},),
       body: Container(
         child: Center(child: Text('Condutas')),
       )

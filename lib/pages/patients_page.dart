@@ -1,23 +1,23 @@
 import 'package:clini_dor/components/floating_button.dart';
 import 'package:clini_dor/components/patient_tile.dart';
 import 'package:clini_dor/models/patient.dart';
+import 'package:clini_dor/pages/register_patient_page.dart';
 import 'package:flutter/material.dart';
 
-class PatientPage extends StatefulWidget {
+class PatientsPage extends StatefulWidget {
   
-  const PatientPage({super.key});
+  const PatientsPage({super.key});
   @override
-  State<PatientPage> createState() => _PatientPageState();
+  State<PatientsPage> createState() => _PatientsPageState();
 }
 
-class _PatientPageState extends State<PatientPage> {
-
+class _PatientsPageState extends State<PatientsPage> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      floatingActionButton: FloatingButton(),
+      floatingActionButton: FloatingButton(onTap: (){}),
       body: Column(
         children: [
           Container(
