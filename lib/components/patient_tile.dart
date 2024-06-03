@@ -1,6 +1,5 @@
 import 'package:clini_dor/models/patient.dart';
 import 'package:clini_dor/pages/patient_page.dart';
-import 'package:clini_dor/pages/patients_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
