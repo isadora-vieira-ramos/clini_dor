@@ -8,6 +8,11 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        elevation: 0,
+        foregroundColor: Colors.white,
+      ),
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: Center(
         child: Padding(
