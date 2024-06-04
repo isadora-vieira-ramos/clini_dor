@@ -13,6 +13,7 @@ class PatientPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       floatingActionButton: FloatingButton(onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const QuestionnairePage()))),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -41,13 +42,13 @@ class PatientPage extends StatelessWidget {
                     Text(
                       patient.name,
                       style: GoogleFonts.josefinSans(
-                        fontSize: 15
+                        fontSize: 20
                       ),
                     ),
                     Text(
                       'Prontuário ${patient.medicalRecord}',
                       style: GoogleFonts.josefinSans(
-                        fontSize: 15
+                        fontSize: 20
                       ),
                     ),
                   ],
@@ -55,7 +56,12 @@ class PatientPage extends StatelessWidget {
                 TextButton.icon(
                   icon: const Icon(Icons.edit),
                   onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PatientEditPage())),
-                  label: const Text("Editar"),
+                  label: Text(
+                    "Editar",
+                    style: GoogleFonts.josefinSans(
+                      fontSize: 20
+                    )
+                  ),
                 )
               ],
             ),
@@ -68,7 +74,12 @@ class PatientPage extends StatelessWidget {
               ),
               onPressed: (){}, 
               icon: const Icon(Icons.download), 
-              label: const Text("Exportar dados")
+              label: Text(
+                "Exportar dados",
+                style: GoogleFonts.josefinSans(
+                  fontSize: 18
+                ),
+              )
             ),
             const SizedBox(height: 20),
             Text(

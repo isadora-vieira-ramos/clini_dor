@@ -53,8 +53,7 @@ class IntroPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   GestureDetector(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()),
-                    ),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage())),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.primary,

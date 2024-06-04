@@ -26,12 +26,13 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
       initialDate: DateTime.now(),
     );
     if (pickedDate == null) return;
-    _controller.text = DateFormat('dd-MM-yyyy').format(pickedDate);
+    _controller.text = DateFormat('dd/MM/yyyy').format(pickedDate);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
@@ -92,7 +93,7 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
                     dropdownValueSex = newValue!;
                   });
                 },
-                items: <String>['Masculino', 'Feminino']
+                items: <String>['Masculino', 'Feminino', 'Intersex']
                     .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
