@@ -1,5 +1,6 @@
 import "package:clini_dor/models/question.dart";
 import "package:clini_dor/models/question_type.dart";
+import "package:clini_dor/pages/click_map_question.dart";
 import "package:clini_dor/pages/rating_question.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
@@ -78,8 +79,10 @@ class QuestionPage extends StatelessWidget {
         RatingQuestion(question: question)
       );
     }
-    else {
-      return Text(question.questionText);
+    else{
+      return (
+        ClickMapQuestion(question: question)
+      );
     }
   }
 }
