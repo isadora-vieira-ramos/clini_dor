@@ -118,7 +118,9 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
               heroTag: "btn2",
               backgroundColor: Theme.of(context).colorScheme.tertiary,
               onPressed: nextQuestion,
-              child: Icon(Icons.navigate_next),
+              child: _selectedIndex < _questions.length - 1 ? 
+                const Icon(Icons.navigate_next):
+                const Icon(Icons.send, color: Colors.black)
             )
           ],
         ),
