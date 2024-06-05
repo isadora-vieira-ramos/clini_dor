@@ -1,5 +1,7 @@
 import "package:clini_dor/models/question.dart";
+import "package:clini_dor/models/question_type.dart";
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
 
 class QuestionPage extends StatelessWidget {
   Question question;
@@ -18,7 +20,45 @@ class QuestionPage extends StatelessWidget {
             child: ListView.builder(
               itemCount: question.answers.length,
               itemBuilder: (context, index) {
-                return Text(question.answers[index]);
+                if(question.questionType == QuestionType.closed) {
+                  return (
+                    RadioListTile(
+                      value: false, 
+                      groupValue: question.answers[index], 
+                      onChanged: (newValue) {},
+                      title: Text(question.answers[index]),
+                    )
+                  );
+                }
+                if(question.questionType == QuestionType.multipleChoice){
+                  return (
+                    CheckboxListTile(
+                      value: false, 
+                      onChanged: (newValue) {},
+                      title: Text(question.answers[index]),
+                    )
+                  );
+                }
+                if(question.questionType == QuestionType.open){
+                  return Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: (
+                      TextField(
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          labelText: question.answers[index],
+                        ),
+                      )
+                    ),
+                  );
+                }
+                if(question.questionType == QuestionType.clickMap){
+                  return Text(question.answers[index]);
+                }
               },
             ),
           )
