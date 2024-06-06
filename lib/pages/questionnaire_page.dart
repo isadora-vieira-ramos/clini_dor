@@ -48,7 +48,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
     Question(questionText: "11. Tem câncer e está realizando tratamento para o mesmo?", answers: ["Sim", "Não"], questionType: QuestionType.closed),
     Question(questionText: "12. Sua dor teve início relacionado ao câncer?", answers: ["Sim", "Não"], questionType: QuestionType.closed),
     Question(questionText: "13. Possui dor articular?", answers: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(questionText: "14. Sua dor se parece com uma sensação estranha e desafradpavel na pele? Agulhadas, choques elétricos, queimação, ardência e formigamento são as que melhor descrevem estas sensações?", answers: ["Sim", "Não"], questionType: QuestionType.closed),
+    Question(questionText: "14. Sua dor se parece com uma sensação estranha e desagradável na pele? Agulhadas, choques elétricos, queimação, ardência e formigamento são as que melhor descrevem estas sensações?", answers: ["Sim", "Não"], questionType: QuestionType.closed),
     Question(questionText: "15. Na região que sentes dor ocorre mudança na cor da pele e/ou temperatura?", answers: ["Sim", "Não"], questionType: QuestionType.closed),
     Question(questionText: "16. A intensidade da dor piora desproporcionalmente ao toque leve?", answers: ["Sim", "Não"], questionType: QuestionType.closed),
     Question(questionText: "17. A sua dor piora ao caminhar ou ao movimentar o corpo?", answers: ["Sim", "Não"], questionType: QuestionType.closed),
@@ -107,21 +107,28 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
         padding: const EdgeInsets.all(20.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
+          children: [
             FloatingActionButton(
               heroTag: "btn1",
               backgroundColor: Theme.of(context).colorScheme.tertiary,
               onPressed: previousQuestion,
               child: Icon(Icons.navigate_before),
             ),
-            FloatingActionButton(
-              heroTag: "btn2",
-              backgroundColor: Theme.of(context).colorScheme.tertiary,
-              onPressed: nextQuestion,
-              child: _selectedIndex < _questions.length - 1 ? 
-                const Icon(Icons.navigate_next):
-                const Icon(Icons.send, color: Colors.black)
-            )
+            if(_selectedIndex < _questions.length - 1)
+              FloatingActionButton(
+                heroTag: "btn2",
+                backgroundColor: Theme.of(context).colorScheme.tertiary,
+                onPressed: nextQuestion,
+                child: const Icon(Icons.navigate_next)
+              )
+            else
+              FloatingActionButton.extended(
+                heroTag: "btn2",
+                backgroundColor: Theme.of(context).colorScheme.tertiary,
+                onPressed: nextQuestion,
+                label: const Text("Enviar"),
+                icon: const Icon(Icons.send, color: Colors.black)
+              )
           ],
         ),
       )
