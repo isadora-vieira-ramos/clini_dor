@@ -1,4 +1,4 @@
-class Evaluation{
+class Evaluation{  //mudar o nome para Questionnaire?
   final int evaluationId;
   final int patientId;
   final DateTime date;

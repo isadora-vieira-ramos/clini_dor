@@ -24,6 +24,7 @@ class _RatingQuestionState extends State<RatingQuestion> {
               padding: const EdgeInsets.all(30.0),
               child: Text(
                 widget.question.questionText,
+                textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 20
                 )

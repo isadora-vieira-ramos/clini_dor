@@ -13,6 +13,9 @@ class PatientTile extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PatientPage(patient: patient))),
       child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.transparent)
+        ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

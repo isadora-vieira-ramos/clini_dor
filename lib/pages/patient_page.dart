@@ -1,5 +1,6 @@
 import 'package:clini_dor/components/floating_button.dart';
 import 'package:clini_dor/components/questionnaire_tile.dart';
+import 'package:clini_dor/models/evaluation.dart';
 import 'package:clini_dor/models/patient.dart';
 import 'package:clini_dor/pages/patient_edit_page.dart';
 import 'package:clini_dor/pages/questionnaire_page.dart';
@@ -93,7 +94,8 @@ class PatientPage extends StatelessWidget {
                 itemCount: 10,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) {
-                  return QuestionnaireTile();
+                  Evaluation evaluation = Evaluation(evaluationId: index, patientId: patient.medicalRecord, date: DateTime.now());
+                  return QuestionnaireTile(evaluation: evaluation);
                 },
               )
             ),

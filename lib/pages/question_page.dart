@@ -24,6 +24,7 @@ class QuestionPage extends StatelessWidget {
                 padding: const EdgeInsets.all(30),
                 child: Text(
                   question.questionText,
+                  textAlign: TextAlign.justify,
                   style: const TextStyle(
                     fontSize: 20
                   )
