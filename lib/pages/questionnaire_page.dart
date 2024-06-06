@@ -41,7 +41,18 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
     Question(questionText: "4. Numero de dias que usa analgésicos por semana.", answers: [""], questionType: QuestionType.open),
     Question(questionText: "5. Número de dias que usou corticóides no último mês para tratamento da dor.", answers: [""], questionType: QuestionType.open),
     Question(questionText: "6. Na última semana, os medicamentos utilizados diminuíram quantos % o nível da dor?", answers: [""], questionType: QuestionType.open),
-    Question(questionText: "7. Utilizando os círculos na cor cinza distribuídos na figura abaixo, indique as áreas com dor de maior intensidade", answers: ["FRENTE", "COSTAS"], questionType: QuestionType.clickMap),
+    Question(
+      questionText: "7.1 Utilizando os círculos na cor cinza distribuídos na figura abaixo, indique as áreas com dor de maior intensidade", 
+      answers: ["FRENTE"], 
+      questionImage: 'lib/images/human-body-full-front.png',
+      questionType: QuestionType.clickMap
+    ),
+    Question(
+      questionText: "7.2 Utilizando os círculos na cor cinza distribuídos na figura abaixo, indique as áreas com dor de maior intensidade", 
+      answers: ["COSTAS"], 
+      questionImage: 'lib/images/human-body-full-back.png',
+      questionType: QuestionType.clickMap
+    ),
     Question(questionText: "8. Esta dor é contínua, intermitente ou contínua com crises de piora?", answers: ["Dor contínua", "Dor intermitente", "Dor contínua com crises de piora"], questionType: QuestionType.closed),
     Question(questionText: "9. A sua dor é referida? (Ocorre em um determinado local, mas reflete em outro também)", answers: ["Sim", "Não"], questionType: QuestionType.closed),
     Question(questionText: "10. Sua dor tem relação com algum envento como trauma medular, câncer, AVC, dor no membro fantasma?", answers: ["Sim", "Não"], questionType: QuestionType.closed),

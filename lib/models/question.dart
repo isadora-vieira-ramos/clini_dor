@@ -4,5 +4,6 @@ class Question {
   final String questionText;
   final List<String> answers;
   final QuestionType questionType;
-  Question({required this.questionText, required this.answers, required this.questionType});
+  final String? questionImage;
+  Question({required this.questionText, required this.answers, required this.questionType, this.questionImage});
 }
