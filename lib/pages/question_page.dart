@@ -20,53 +20,59 @@ class QuestionPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                question.questionText,
-                style: const TextStyle(
-                  fontSize: 20
-                )
+              Padding(
+                padding: const EdgeInsets.all(30),
+                child: Text(
+                  question.questionText,
+                  style: const TextStyle(
+                    fontSize: 20
+                  )
+                ),
               ),
               Expanded(
-                child: ListView.builder(
-                  itemCount: question.answers.length,
-                  itemBuilder: (context, index) {
-                    if(question.questionType == QuestionType.closed) {
-                      return (
-                        RadioListTile(
-                          value: false, 
-                          groupValue: question.answers[index], 
-                          onChanged: (newValue) {},
-                          title: Text(question.answers[index]),
-                        )
-                      );
-                    }
-                    if(question.questionType == QuestionType.multipleChoice){
-                      return (
-                        CheckboxListTile(
-                          value: false, 
-                          onChanged: (newValue) {},
-                          title: Text(question.answers[index]),
-                        )
-                      );
-                    }
-                    if(question.questionType == QuestionType.open){
-                      return Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: (
-                          TextField(
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            decoration: InputDecoration(
-                              border: const OutlineInputBorder(),
-                              labelText: question.answers[index],
-                            ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: ListView.builder(
+                    itemCount: question.answers.length,
+                    itemBuilder: (context, index) {
+                      if(question.questionType == QuestionType.closed) {
+                        return (
+                          RadioListTile(
+                            value: false, 
+                            groupValue: question.answers[index], 
+                            onChanged: (newValue) {},
+                            title: Text(question.answers[index]),
                           )
-                        ),
-                      );
-                    }
-                  },
+                        );
+                      }
+                      if(question.questionType == QuestionType.multipleChoice){
+                        return (
+                          CheckboxListTile(
+                            value: false, 
+                            onChanged: (newValue) {},
+                            title: Text(question.answers[index]),
+                          )
+                        );
+                      }
+                      if(question.questionType == QuestionType.open){
+                        return Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: (
+                            TextField(
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                labelText: question.answers[index],
+                              ),
+                            )
+                          ),
+                        );
+                      }
+                    },
+                  ),
                 ),
               )
             ],

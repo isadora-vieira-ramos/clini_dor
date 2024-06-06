@@ -13,17 +13,21 @@ class _ClickMapQuestionState extends State<ClickMapQuestion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
-              widget.question.questionText,
-              style: const TextStyle(
-                fontSize: 20
-              )
+            Padding(
+              padding: const EdgeInsets.all(30),
+              child: Text(
+                widget.question.questionText,
+                style: const TextStyle(
+                  fontSize: 20
+                )
+              ),
             ),
             Expanded(
               child: ListView(
