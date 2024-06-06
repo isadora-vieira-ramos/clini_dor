@@ -1,9 +1,20 @@
+import 'package:clini_dor/components/standard_textfield.dart';
 import 'package:clini_dor/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
+
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _userController = TextEditingController();
+  final TextEditingController _passwordRecord = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,41 +47,20 @@ class SignInPage extends StatelessWidget {
                         color: Theme.of(context).colorScheme.primary
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: TextField(
-                        style: TextStyle(
-                          height: 1.0
-                        ),
-                        decoration: InputDecoration(
-                          border:OutlineInputBorder(),
-                          labelText: 'Nome'
-                        ),
-                      ),
+                    StandardTextfield(
+                      controller: _nameController, 
+                      hintText: 'Name', 
+                      obscureText: false
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: TextField(
-                        style: TextStyle(
-                          height: 1.0
-                        ),
-                        decoration: InputDecoration(
-                          border:OutlineInputBorder(),
-                          labelText: 'Email'
-                        ),
-                      ),
+                    StandardTextfield(
+                      controller: _userController, 
+                      hintText: 'Usuário', 
+                      obscureText: false
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: TextField(
-                        style: TextStyle(
-                          height: 1.0
-                        ),
-                        decoration: InputDecoration(
-                          border:OutlineInputBorder(),
-                          labelText: 'Senha'
-                        ),
-                      ),
+                    StandardTextfield(
+                      controller: _passwordRecord, 
+                      hintText: 'Senha', 
+                      obscureText: true
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top:15, right: 20, left: 20),
