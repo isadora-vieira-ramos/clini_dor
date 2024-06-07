@@ -1,7 +1,7 @@
 import "package:clini_dor/models/question.dart";
 import "package:clini_dor/models/question_type.dart";
-import "package:clini_dor/pages/click_map_question.dart";
-import "package:clini_dor/pages/rating_question.dart";
+import "package:clini_dor/pages/question/click_map_question.dart";
+import "package:clini_dor/pages/question/rating_question.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:google_fonts/google_fonts.dart";

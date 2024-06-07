@@ -2,7 +2,7 @@ import 'package:clini_dor/components/floating_button.dart';
 import 'package:clini_dor/components/questionnaire_tile.dart';
 import 'package:clini_dor/models/evaluation.dart';
 import 'package:clini_dor/models/patient.dart';
-import 'package:clini_dor/pages/patient_edit_page.dart';
+import 'package:clini_dor/pages/patient/patient_edit_page.dart';
 import 'package:clini_dor/pages/questionnaire_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

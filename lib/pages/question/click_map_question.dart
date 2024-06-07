@@ -33,10 +33,10 @@ class _ClickMapQuestionState extends State<ClickMapQuestion> {
             Expanded(
               child: ListView(
                 children: [
-                  Image.asset(widget.question.questionImage.toString())
+                  Image.asset(widget.question.questionImage.toString(), height: MediaQuery.of(context).size.height - 100)
                 ],
               ),
-            )
+            ),
           ],
         ),
       )
