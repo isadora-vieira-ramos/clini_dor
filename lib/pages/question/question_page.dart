@@ -1,6 +1,7 @@
 import "package:clini_dor/models/question.dart";
 import "package:clini_dor/models/question_type.dart";
-import "package:clini_dor/pages/question/click_map_question.dart";
+import "package:clini_dor/pages/question/front_click_map_question%20copy.dart";
+import "package:clini_dor/pages/question/back_click_map_question.dart";
 import "package:clini_dor/pages/question/rating_question.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
@@ -87,9 +88,16 @@ class QuestionPage extends StatelessWidget {
       );
     }
     else{
-      return (
-        ClickMapQuestion(question: question)
-      );
+      if(question.answers[0] == "FRENTE"){
+        return (
+          FrontClickMapQuestion(question: question)
+        );
+      }
+      else{
+        return (
+          BackClickMapQuestion(question: question)
+        );
+      }
     }
   }
 }
