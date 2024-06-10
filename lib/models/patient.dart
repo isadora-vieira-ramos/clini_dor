@@ -5,4 +5,5 @@ class Patient{
   final int medicalRecord; 
   
   Patient({required this.name, required this.age, required this.sex, required this.medicalRecord});
+  
 }

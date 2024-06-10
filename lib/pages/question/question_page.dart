@@ -1,5 +1,6 @@
 import "package:clini_dor/models/question.dart";
 import "package:clini_dor/models/question_type.dart";
+import "package:clini_dor/pages/question/closed_question.dart";
 import "package:clini_dor/pages/question/front_click_map_question%20copy.dart";
 import "package:clini_dor/pages/question/back_click_map_question.dart";
 import "package:clini_dor/pages/question/rating_question.dart";
@@ -13,7 +14,7 @@ class QuestionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (question.questionType == QuestionType.open || question.questionType == QuestionType.closed || question.questionType == QuestionType.multipleChoice){
+    if (question.questionType == QuestionType.open || question.questionType == QuestionType.multipleChoice){
       return (
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -37,16 +38,6 @@ class QuestionPage extends StatelessWidget {
                   child: ListView.builder(
                     itemCount: question.answers.length,
                     itemBuilder: (context, index) {
-                      if(question.questionType == QuestionType.closed) {
-                        return (
-                          RadioListTile(
-                            value: false, 
-                            groupValue: question.answers[index], 
-                            onChanged: (newValue) {},
-                            title: Text(question.answers[index]),
-                          )
-                        );
-                      }
                       if(question.questionType == QuestionType.multipleChoice){
                         return (
                           CheckboxListTile(
@@ -81,6 +72,9 @@ class QuestionPage extends StatelessWidget {
           ),
         )
       );
+    }
+    if(question.questionType == QuestionType.closed){
+      return (ClosedQuestion(question: question));
     }
     if(question.questionType == QuestionType.rating){
       return (

@@ -1,6 +1,6 @@
 import 'package:clini_dor/pages/about_page.dart';
 import 'package:clini_dor/pages/intro_page.dart';
-import 'package:clini_dor/pages/patient/patients_page.dart';
+import 'package:clini_dor/pages/patient/patient_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   final _pages = [
-    const PatientsPage(),
+    const PatientListPage(),
     const AboutPage()
   ];
 
