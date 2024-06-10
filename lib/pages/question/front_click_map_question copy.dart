@@ -1,3 +1,4 @@
+import 'package:clini_dor/components/standard_icon_button.dart';
 import 'package:clini_dor/models/question.dart';
 import 'package:flutter/material.dart';
 
@@ -42,167 +43,29 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
                           child: Image.asset(widget.question.questionImage.toString(), fit: BoxFit.fill),
                         )
                       ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 80, left: 50),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 80, right: 50),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 150),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 140, left: 150),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 140, right: 150),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 220, right: 150),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 220, left: 150),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 275),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 275, left: 170),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 275, right: 170),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 320, right: 120),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 320, left: 120),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 350, left: 210),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 350, right: 210),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 425, left: 100),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 425, right: 100),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 500, right: 90),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 500, left: 90),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 575, left: 100),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 575, right: 100),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 700, right: 100),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 700, left: 100),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Icon(Icons.radio_button_checked, color: Colors.grey.shade500),
-                        ),
-                      )
+                      const StandardIconButton(top: 10),
+                      const StandardIconButton(top: 65, left: 50),
+                      const StandardIconButton(top: 65, right:50),
+                      const StandardIconButton(top: 130),
+                      const StandardIconButton(top: 130, left: 150),
+                      const StandardIconButton(top: 130, right: 150),
+                      const StandardIconButton(top: 210, right: 150),
+                      const StandardIconButton(top: 210, left: 150),
+                      const StandardIconButton(top: 265),
+                      const StandardIconButton(top: 265, left: 170),
+                      const StandardIconButton(top: 265, right: 170),
+                      const StandardIconButton(top: 310, right: 120),
+                      const StandardIconButton(top: 310, left: 120),
+                      const StandardIconButton(top: 340, left: 210),
+                      const StandardIconButton(top: 340, right: 210),
+                      const StandardIconButton(top: 415, left: 100),
+                      const StandardIconButton(top: 415, right: 100),
+                      const StandardIconButton(top: 490, right: 90),
+                      const StandardIconButton(top: 490, left: 90),
+                      const StandardIconButton(top: 565, left: 100),
+                      const StandardIconButton(top: 565, right: 100),
+                      const StandardIconButton(top: 690, right: 100),
+                      const StandardIconButton(top: 690, left: 100),
                     ],
                   )
                 ],

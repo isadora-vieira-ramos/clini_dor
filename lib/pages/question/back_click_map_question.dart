@@ -47,7 +47,7 @@ class _BackClickMapQuestionState extends State<BackClickMapQuestion> {
                       const StandardIconButton(top: 80, left: 40),
                       const StandardIconButton(top: 80, right: 40),
                       const StandardIconButton(top: 150, left: 80),
-                      const StandardIconButton(top: 150, right: 40),
+                      const StandardIconButton(top: 150, right: 80),
                       const StandardIconButton(top: 130, left: 150),
                       const StandardIconButton(top: 130, right: 150),
                       const StandardIconButton(top: 240, left: 70),
