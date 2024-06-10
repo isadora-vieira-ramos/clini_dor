@@ -49,7 +49,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     StandardTextfield(
                       controller: _nameController, 
-                      hintText: 'Name', 
+                      hintText: 'Nome', 
                       obscureText: false
                     ),
                     StandardTextfield(
@@ -74,7 +74,7 @@ class _SignInPageState extends State<SignInPage> {
                           padding: const EdgeInsets.all(15.0),
                           child: Center(
                             child: Text(
-                              'Cadastrar',
+                              'CADASTRAR',
                               style: GoogleFonts.josefinSans(
                                 color: Theme.of(context).colorScheme.onSecondary,
                                 fontWeight: FontWeight.bold,

@@ -162,6 +162,7 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
               child: const Text(
                 'Salvar',
                 style: TextStyle(
+                  fontSize: 20,
                   color: Colors.white
                 )
               )

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class RatingQuestion extends StatefulWidget {
   final Question question;
+  double _currentSliderValue = 0;
   RatingQuestion({super.key, required this.question});
 
   @override
@@ -10,7 +11,6 @@ class RatingQuestion extends StatefulWidget {
 }
 
 class _RatingQuestionState extends State<RatingQuestion> {
-  double _currentSliderValue = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +33,10 @@ class _RatingQuestionState extends State<RatingQuestion> {
             Padding(
               padding: const EdgeInsets.all(20),
               child: Slider(
-                value: _currentSliderValue,
+                value: widget._currentSliderValue,
                 onChanged: (double value) {
                   setState(() {
-                    _currentSliderValue = value;
+                    widget._currentSliderValue = value;
                   });
                 },
                 max: 10,
@@ -55,7 +55,7 @@ class _RatingQuestionState extends State<RatingQuestion> {
                     )
                   ),
                   Text(
-                    _currentSliderValue.toInt().toString(),
+                    widget._currentSliderValue.toInt().toString(),
                     style: const TextStyle(
                         fontSize: 18
                     )

@@ -1,3 +1,4 @@
+import 'package:clini_dor/pages/auth_page.dart';
 import 'package:clini_dor/pages/home_page.dart';
 import 'package:clini_dor/pages/signin_page.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,8 @@ class IntroPage extends StatelessWidget {
                     'CliniDor',
                     style: GoogleFonts.josefinSans(
                       fontSize: 40,
-                      color: Theme.of(context).colorScheme.primary
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                   Container(
@@ -53,7 +55,7 @@ class IntroPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   GestureDetector(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage())),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthPage())),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.primary,
