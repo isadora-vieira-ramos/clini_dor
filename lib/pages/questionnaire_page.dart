@@ -123,7 +123,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
               heroTag: "btn1",
               backgroundColor: Theme.of(context).colorScheme.tertiary,
               onPressed: previousQuestion,
-              child: Icon(Icons.navigate_before),
+              child: const Icon(Icons.navigate_before),
             ),
             if(_selectedIndex < _questions.length - 1)
               FloatingActionButton(
@@ -136,7 +136,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
               FloatingActionButton.extended(
                 heroTag: "btn2",
                 backgroundColor: Theme.of(context).colorScheme.tertiary,
-                onPressed: nextQuestion,
+                onPressed: (){},
                 label: const Text("Enviar"),
                 icon: const Icon(Icons.send, color: Colors.black)
               )

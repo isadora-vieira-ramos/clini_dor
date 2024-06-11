@@ -1,11 +1,11 @@
-import 'package:clini_dor/models/evaluation.dart';
+import 'package:clini_dor/models/questionnaire.dart';
 import 'package:clini_dor/pages/conducts_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class QuestionnaireTile extends StatelessWidget {
-  final Evaluation evaluation;
+  final Questionnaire evaluation;
   const QuestionnaireTile({super.key, required this.evaluation});
 
   @override
