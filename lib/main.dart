@@ -27,12 +27,12 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: theme.copyWith(
           colorScheme: theme.colorScheme.copyWith(
-            primary: Color(0xff2ec4b6),
+            primary: const Color(0xff2ec4b6),
             secondary: Colors.white,
-            tertiary: Color(0xffff9f1c)
+            tertiary: const Color(0xffff9f1c)
           ) 
         ),
-        home: IntroPage(),
+        home: const IntroPage(),
       ),
     );
   }
