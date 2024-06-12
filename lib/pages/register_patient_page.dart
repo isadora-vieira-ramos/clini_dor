@@ -36,13 +36,7 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
     _dateController.text = DateFormat('dd/MM/yyyy').format(pickedDate);
   }
 
-  void CalculateIMC(){
-    var height = int.tryParse(_heightController.text);
-    var weight = int.tryParse(_weightController.text);
-
-    if(height != null && weight != null){
-      _imcController.text = '10';
-    }
+  void calculateIMC(){
   }
 
   @override

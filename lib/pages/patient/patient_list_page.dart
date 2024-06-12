@@ -1,4 +1,6 @@
 import 'package:clini_dor/components/floating_button.dart';
+import 'package:clini_dor/components/loading_component.dart';
+import 'package:clini_dor/components/no_items.dart';
 import 'package:clini_dor/components/patient_tile.dart';
 import 'package:clini_dor/models/patient.dart';
 import 'package:clini_dor/models/patients.dart';
@@ -14,6 +16,11 @@ class PatientListPage extends StatefulWidget {
 }
 
 class _PatientListPageState extends State<PatientListPage> {
+  List<Patient> patients = [];
+
+  Future<void> getPatients() async {
+    patients = await Patients.getPatientsAsync();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +48,30 @@ class _PatientListPageState extends State<PatientListPage> {
                 ],
               ),
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: value.getPatientList().length,
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context, index) {
-                  Patient patient = value.getPatientList()[index];
-                  return PatientTile(patient: patient);
-                },
-              )
+            FutureBuilder(
+              future: getPatients(), 
+              builder: (context, snapshot) {
+                if(snapshot.connectionState != ConnectionState.done){
+                  return const LoadingComponent();
+                }
+                else{
+                  if(patients.isNotEmpty){
+                    return Expanded(
+                      child: ListView.builder(
+                        itemCount: patients.length,
+                        scrollDirection: Axis.vertical,
+                        itemBuilder: (context, index) {
+                          Patient patient = patients[index];
+                          return PatientTile(patient: patient);
+                        },
+                      )
+                    );
+                  }else{
+                    return NoItemsMessagem(message: "Nenhum paciente cadastrado.");
+                  }
+                } 
+                
+              }
             ),
           ],
         )

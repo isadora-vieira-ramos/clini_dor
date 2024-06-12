@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class QuestionnaireTile extends StatelessWidget {
-  final Questionnaire evaluation;
-  const QuestionnaireTile({super.key, required this.evaluation});
+  final Questionnaire questionnaire;
+  const QuestionnaireTile({super.key, required this.questionnaire});
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +23,13 @@ class QuestionnaireTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Questionário ${evaluation.evaluationId}',
+                'Questionário ${questionnaire.evaluationId}',
                 style: GoogleFonts.josefinSans(
                   fontSize: 15
                 ),
               ),
               Text(
-                'Data: ${DateFormat('dd/MM/yyyy').format(evaluation.date)}',
+                'Data: ${DateFormat('dd/MM/yyyy').format(questionnaire.date)}',
                 style: GoogleFonts.josefinSans(
                   fontSize: 15
                 ),

@@ -34,4 +34,8 @@ class Patients extends ChangeNotifier{
     return patients;
   }
 
+  static Future<List<Patient>> getPatientsAsync(){
+    return Patient.getPatientsAsync();
+  }
+
 }

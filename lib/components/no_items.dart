@@ -6,10 +6,13 @@ class NoItemsMessagem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      message,
-      style: const TextStyle(
-        fontSize: 18
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        message,
+        style: const TextStyle(
+          fontSize: 18
+        ),
       ),
     );
   }

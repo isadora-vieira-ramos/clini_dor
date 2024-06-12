@@ -27,7 +27,7 @@ class Patient{
     return age;
   }
 
-  static Future<List<Patient>> fetchAll() async{
+  static Future<List<Patient>> getPatientsAsync() async{
     var url = "${const String.fromEnvironment("API_URL")}?type=patients";
     final response = await http.get(Uri.parse(url));
     if(response.statusCode == 200){
