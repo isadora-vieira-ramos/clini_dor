@@ -22,10 +22,13 @@ class PatientTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                patient.name,
-                style: GoogleFonts.josefinSans(
-                  fontSize: 20
+              Padding(
+                padding: const EdgeInsets.only(left:8.0),
+                child: Text(
+                  patient.name,
+                  style: GoogleFonts.josefinSans(
+                    fontSize: 20
+                  ),
                 ),
               ),
               Row(

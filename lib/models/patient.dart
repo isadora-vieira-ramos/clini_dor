@@ -31,7 +31,6 @@ class Patient{
     var url = "${const String.fromEnvironment("API_URL")}?type=patients";
     final response = await http.get(Uri.parse(url));
     if(response.statusCode == 200){
-      print(response.body);
       List<dynamic> jsonResponse = jsonDecode(response.body);
       return jsonResponse.map((data) => Patient.fromJson(data)).toList();
     }else{

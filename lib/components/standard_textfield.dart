@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StandardTextfield extends StatelessWidget {
-  final controller;
+  final TextEditingController controller;
   final String hintText;
   final bool obscureText;
   final Function()? onTap;

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class Patients extends ChangeNotifier{
 
-  List<Patient> patients = [
+  static List<Patient> patients = [
     Patient(
       name: 'Paciente 1', 
       age:20,
@@ -30,7 +30,7 @@ class Patients extends ChangeNotifier{
     ),
   ];
 
-  List<Patient> getPatientList(){
+  static List<Patient> getPatientList(){
     return patients;
   }
 

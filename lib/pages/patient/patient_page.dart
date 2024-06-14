@@ -23,6 +23,7 @@ class _PatientPageState extends State<PatientPage> {
   Future<void> getQuestionnaires() async {
     var allQuestionnaires = await Questionnaire.getQuestionnairesAsync();
     questionnaires = allQuestionnaires.where((item) => item.patientId == widget.patient.medicalRecord).toList();
+    questionnaires.sort((a,b) => a.date.compareTo(b.date));
   }
   
   @override
@@ -123,8 +124,7 @@ class _PatientPageState extends State<PatientPage> {
                     );
                   }
                   return NoItemsMessagem(message: "Este paciente ainda não tem nenhum questionário.");
-                }
-                
+                }         
               }
             ),
           ],
