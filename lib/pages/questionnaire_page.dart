@@ -34,7 +34,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
       "Bipolaridade",
       "Uso de antidepressivos"
     ], questionType: QuestionType.multipleChoice),
-    Question(id: 3, questionText: "3. Indique o medicamento utilizado e a frequência de uso da última semana. ", options: [
+    Question(id: 3, questionText: "3. Indique a frequência de uso da última semana de cada medicamento ou tipo de medicamento.", options: [
       "Antiinflamatório", 
       "Paracetamol",
       "Dipirona",

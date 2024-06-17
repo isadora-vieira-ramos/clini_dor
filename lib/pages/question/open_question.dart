@@ -59,26 +59,18 @@ class _OpenQuestionState extends State<OpenQuestion> {
                   return Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: (
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Visibility(
-                            child: Text(widget.question.options[index].toString()),
-                            visible: widget.question.options[index].toString().isEmpty? false: true,
-                          ),
-                          TextField(
-                            onChanged: (value) {
-                              registerAnswer(widget.question.options[index], value);
-                            },
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                            ),
-                          )
+                      TextField(
+                        onChanged: (value) {
+                          registerAnswer(widget.question.options[index], value);
+                        },
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
                         ],
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          hintText: widget.question.options[index]
+                        ),
                       ) 
                     ),
                   );

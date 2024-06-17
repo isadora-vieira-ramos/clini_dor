@@ -12,7 +12,7 @@ class StandardTextfield extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20.0),
-      child: TextField(
+      child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
           border: const OutlineInputBorder(),
@@ -21,6 +21,12 @@ class StandardTextfield extends StatelessWidget {
         onTap: onTap,
         obscureText: obscureText,
         enabled: enabled,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Campo obrigatório';
+          }
+          return null;
+        },
       ),
     );
   }
