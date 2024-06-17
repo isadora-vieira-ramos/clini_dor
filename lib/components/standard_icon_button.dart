@@ -3,11 +3,12 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 
 class StandardIconButton extends StatefulWidget {
+  final Function registerAnswer;
   final double top;
   final String? position;
   final double? left;
   final double? right;
-  const StandardIconButton({super.key, required this.top, this.position, this.left, this.right});
+  const StandardIconButton({super.key, required this.top, this.position, this.left, this.right, required this.registerAnswer});
 
   @override
   State<StandardIconButton> createState() => _StandardIconButtonState();
@@ -28,8 +29,8 @@ class _StandardIconButtonState extends State<StandardIconButton> {
           onPressed: (){
             setState(()
             {
-              isPressed = true;
-              print(widget.position.toString());
+              isPressed = !isPressed;
+              widget.registerAnswer(widget.position);
             });                    
           }
         ),

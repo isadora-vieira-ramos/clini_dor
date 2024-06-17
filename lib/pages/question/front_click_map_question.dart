@@ -4,13 +4,27 @@ import 'package:flutter/material.dart';
 
 class FrontClickMapQuestion extends StatefulWidget {
   Question question;
-  FrontClickMapQuestion({super.key, required this.question});
+  final Function registerAnswer;
+  FrontClickMapQuestion({super.key, required this.question, required this.registerAnswer});
 
   @override
   State<FrontClickMapQuestion> createState() => _FrontClickMapQuestionState();
 }
 
 class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
+
+  List<String> selectedOptions = [];
+
+  void registerPosition(String answer){
+    int index = selectedOptions.indexWhere((element) => element == answer);
+    if(index == -1){
+      selectedOptions.add(answer);
+    }else{
+      selectedOptions.removeAt(index);
+    }
+    widget.registerAnswer(widget.question.id, selectedOptions);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,29 +57,29 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
                           child: Image.asset(widget.question.questionImage.toString(), fit: BoxFit.fill),
                         )
                       ),
-                      const StandardIconButton(position: "front_center_forehead", top: 10),
-                      const StandardIconButton(position: "front_left_jaw", top: 65, left: 50),
-                      const StandardIconButton(position: "front_right_jaw", top: 65, right:50),
-                      const StandardIconButton(position: "front_sternum", top: 130),
-                      const StandardIconButton(position: "front_left_shoulder", top: 130, left: 150),
-                      const StandardIconButton(position: "front_right_shoulder", top: 130, right: 150),
-                      const StandardIconButton(position: "front_right_upper_arm", top: 210, right: 150),
-                      const StandardIconButton(position: "front_left_upper_arm", top: 210, left: 150),
-                      const StandardIconButton(position: "front_center_abdomen", top: 265),
-                      const StandardIconButton(position: "front_left_forearm", top: 265, left: 170),
-                      const StandardIconButton(position: "front_right_forearm", top: 265, right: 170),
-                      const StandardIconButton(position: "front_right_hip", top: 310, right: 120),
-                      const StandardIconButton(position: "front_left_hip", top: 310, left: 120),
-                      const StandardIconButton(position: "front_left_hand", top: 340, left: 210),
-                      const StandardIconButton(position: "front_right_hand", top: 340, right: 210),
-                      const StandardIconButton(position: "front_left_thigh", top: 415, left: 100),
-                      const StandardIconButton(position: "front_right_thigh", top: 415, right: 100),
-                      const StandardIconButton(position: "front_right_knee", top: 490, right: 90),
-                      const StandardIconButton(position: "front_left_knee", top: 490, left: 90),
-                      const StandardIconButton(position: "front_left_shin", top: 565, left: 100),
-                      const StandardIconButton(position: "front_right_shin", top: 565, right: 100),
-                      const StandardIconButton(position: "front_right_foot", top: 690, right: 100),
-                      const StandardIconButton(position: "front_left_foot", top: 690, left: 100),
+                      StandardIconButton(position: "front_center_forehead", top: 10, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_left_jaw", top: 65, left: 50, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_right_jaw", top: 65, right:50, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_sternum", top: 130, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_left_shoulder", top: 130, left: 150,registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_right_shoulder", top: 130, right: 150, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_right_upper_arm", top: 210, right: 150, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_left_upper_arm", top: 210, left: 150, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_center_abdomen", top: 265, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_left_forearm", top: 265, left: 170, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_right_forearm", top: 265, right: 170, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_right_hip", top: 310, right: 120, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_left_hip", top: 310, left: 120, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_left_hand", top: 340, left: 210, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_right_hand", top: 340, right: 210, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_left_thigh", top: 415, left: 100, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_right_thigh", top: 415, right: 100, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_right_knee", top: 490, right: 90, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_left_knee", top: 490, left: 90, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_left_shin", top: 565, left: 100, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_right_shin", top: 565, right: 100, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_right_foot", top: 690, right: 100, registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_left_foot", top: 690, left: 100, registerAnswer: registerPosition),
                     ],
                   )
                 ],

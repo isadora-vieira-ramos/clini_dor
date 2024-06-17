@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class RatingQuestion extends StatefulWidget {
   final Question question;
+  final Function registerAnswer;
   double _currentSliderValue = 0;
-  RatingQuestion({super.key, required this.question});
+  RatingQuestion({super.key, required this.question, required this.registerAnswer});
 
   @override
   State<RatingQuestion> createState() => _RatingQuestionState();
@@ -38,6 +39,8 @@ class _RatingQuestionState extends State<RatingQuestion> {
                   setState(() {
                     widget._currentSliderValue = value;
                   });
+                  List<String> currentValue = [value.toString()];
+                  widget.registerAnswer(widget.question.id, currentValue);
                 },
                 max: 10,
                 divisions:10,
@@ -49,7 +52,7 @@ class _RatingQuestionState extends State<RatingQuestion> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    widget.question.answers[0],
+                    widget.question.options[0],
                     style: const TextStyle(
                         fontSize: 18
                     )
@@ -61,7 +64,7 @@ class _RatingQuestionState extends State<RatingQuestion> {
                     )
                   ),
                   Text(
-                    widget.question.answers[1],
+                    widget.question.options[1],
                     style: const TextStyle(
                         fontSize: 18
                     )

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class ClosedQuestion extends StatefulWidget {
   final Question question;
+  final Function registerAnswer;
   String _selectedAnswer = '';
-  ClosedQuestion({super.key, required this.question});
+  ClosedQuestion({super.key, required this.question, required this.registerAnswer});
 
   @override
   State<ClosedQuestion> createState() => _ClosedQuestionState();
@@ -34,13 +35,16 @@ class _ClosedQuestionState extends State<ClosedQuestion> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: widget.question.answers.length,
+                itemCount: widget.question.options.length,
                 itemBuilder: (context, index) {
                   return RadioListTile(
-                    value: widget.question.answers[index].toString(), 
+                    value: widget.question.options[index].toString(), 
                     groupValue: widget._selectedAnswer, 
-                    title: Text(widget.question.answers[index]),
+                    title: Text(widget.question.options[index]),
                     onChanged: (value){
+                      List<String> registeredAnswer = [];
+                      registeredAnswer.add(value.toString());
+                      widget.registerAnswer(widget.question.id,registeredAnswer);
                       setState(() {
                         widget._selectedAnswer = value.toString();
                       });
