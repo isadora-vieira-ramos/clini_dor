@@ -40,7 +40,7 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
     Patient patient = Patient(
       name: _nameController.text, 
       birthDate: DateTime.parse(_dateController.value.text.replaceAll("/", "")), 
-      sex: dropdownValueSex, 
+      sex: dropdownValueSex == 'Masculino'? "M": "F", 
       contactNumber: _numberController.value.text, 
       occupation: _occupationController.value.text, 
       education: dropdownValueEducation, 
@@ -48,7 +48,7 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
       height: int.parse(_heightController.value.text), 
       medicalRecord: int.parse(_medicalRecord.value.text)
     );
-    patient.savePatient();
+    Patient.savePatient(patient);
   }
 
   @override
@@ -103,7 +103,7 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
                       dropdownValueSex = newValue!;
                     });
                   },
-                  items: <String>['Masculino', 'Feminino', 'Intersex']
+                  items: <String>['Masculino', 'Feminino']
                       .map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,

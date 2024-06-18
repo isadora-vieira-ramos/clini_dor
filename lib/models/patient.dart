@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 
 class Patient{
   final String name;
@@ -43,6 +41,18 @@ class Patient{
     );
   }
 
+  Map toJson() => {
+    'nome': name,
+    'prontuario': medicalRecord,
+    'dataNascimento': DateTimeToString(birthDate),
+    'sexo': sex,
+    'numeroContato': contactNumber,
+    'profissao': occupation,
+    'escolaridade': education,
+    'peso': weight,
+    'altura': height
+  };
+
   static double StringToDouble(String weight){
     return double.parse(weight);
   }
@@ -59,6 +69,10 @@ class Patient{
     return DateTime.parse(formatedDate);
   }
 
+  String DateTimeToString(DateTime date){
+    return "${date.day}/${date.month}/${date.year}";
+  }
+
   static Future<List<Patient>> getPatientsAsync() async{
     var url = "${const String.fromEnvironment("API_URL")}?type=patients";
     final response = await http.get(Uri.parse(url));
@@ -70,9 +84,15 @@ class Patient{
     }
   }
 
-  void savePatient(){
+  static void savePatient(Patient patient) async{
     var url = "${const String.fromEnvironment("API_URL")}?type=patients";
-    print(this.name);
+    var patientBody = jsonEncode(patient.toJson());
+    final response = await http.post(Uri.parse(url), body: patientBody);
+    if(response.statusCode == 302){
+      print('Sucesso');
+    }else{
+      print('Erro');
+    }
   }
   
 }
