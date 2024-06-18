@@ -70,7 +70,7 @@ class Patient{
   }
 
   String DateTimeToString(DateTime date){
-    return "${date.day}/${date.month}/${date.year}";
+    return "${date.day}/${date.month < 10? "0${date.month}": date.month}/${date.year <10? "0${date.year}":date.year}";
   }
 
   static Future<List<Patient>> getPatientsAsync() async{
@@ -84,14 +84,14 @@ class Patient{
     }
   }
 
-  static void savePatient(Patient patient) async{
+  static Future<bool> savePatient(Patient patient) async{
     var url = "${const String.fromEnvironment("API_URL")}?type=patients";
     var patientBody = jsonEncode(patient.toJson());
     final response = await http.post(Uri.parse(url), body: patientBody);
     if(response.statusCode == 302){
-      print('Sucesso');
+      return true;
     }else{
-      print('Erro');
+      return false;
     }
   }
   

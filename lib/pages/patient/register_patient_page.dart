@@ -23,8 +23,9 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
   
   String dropdownValueSex = 'Masculino';
   String dropdownValueEducation = 'Fundamental incompleto';
+  late DateTime chosenDate;
 
-  onTapFunction({required BuildContext context}) async {
+  showDateTextField({required BuildContext context}) async {
     DateTime? pickedDate = await showDatePicker(
       context: context,
       locale: const Locale("pt", "BR"),
@@ -34,12 +35,13 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
     );
     if (pickedDate == null) return;
     _dateController.text = DateFormat('dd/MM/yyyy').format(pickedDate);
+    chosenDate = pickedDate;
   }
 
   savePatient(){
     Patient patient = Patient(
       name: _nameController.text, 
-      birthDate: DateTime.parse(_dateController.value.text.replaceAll("/", "")), 
+      birthDate: chosenDate, 
       sex: dropdownValueSex == 'Masculino'? "M": "F", 
       contactNumber: _numberController.value.text, 
       occupation: _occupationController.value.text, 
@@ -48,7 +50,18 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
       height: int.parse(_heightController.value.text), 
       medicalRecord: int.parse(_medicalRecord.value.text)
     );
-    Patient.savePatient(patient);
+
+    Patient.savePatient(patient).then((value){
+      if(value){
+        Navigator.pop(context);
+      }else{
+        print("Erro");
+      }
+    });
+  }
+
+  void GoBack(){
+    Navigator.pop(context);
   }
 
   @override
@@ -88,7 +101,7 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
                 controller: _dateController, 
                 hintText: 'Data de nascimento', 
                 obscureText: false,
-                onTap: () => onTapFunction(context: context),
+                onTap: () => showDateTextField(context: context),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20.0),
