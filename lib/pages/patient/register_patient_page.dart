@@ -1,5 +1,7 @@
 import 'package:clini_dor/components/standard_textfield.dart';
 import 'package:clini_dor/models/patient.dart';
+import 'package:clini_dor/pages/home_page.dart';
+import 'package:clini_dor/pages/patient/patient_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -52,16 +54,47 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
     );
 
     Patient.savePatient(patient).then((value){
+      String mensagem = "";
       if(value){
-        Navigator.pop(context);
+        mensagem = "Paciente salvo!";
+        AlertDialog alert = AlertDialog(
+          title: Text(mensagem),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+              },
+            )
+          ],
+        );
+        showDialog(
+          context: context, 
+          builder: (BuildContext context){
+            return alert;
+          }
+        );
       }else{
-        print("Erro");
+        mensagem = "Erro ao salvar paciente. Tente novamente ou entre em contato com o suporte.";
+        AlertDialog alert = AlertDialog(
+          title: Text(mensagem),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+        showDialog(
+          context: context, 
+          builder: (BuildContext context){
+            return alert;
+          }
+        );
       }
     });
-  }
-
-  void GoBack(){
-    Navigator.pop(context);
   }
 
   @override

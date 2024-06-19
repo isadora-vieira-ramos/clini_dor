@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:clini_dor/models/answer.dart';
 import 'package:http/http.dart' as http;
 
 class Questionnaire{  
@@ -6,7 +7,8 @@ class Questionnaire{
   final int patientId;
   final DateTime date;
   String? conduct;
-  Questionnaire({required this.evaluationId, required this.patientId, required this.date});
+  List<Answer>? answers;
+  Questionnaire({required this.evaluationId, required this.patientId, required this.date, this.answers});
 
   factory Questionnaire.fromJson(Map<String, dynamic> json){
     return Questionnaire(

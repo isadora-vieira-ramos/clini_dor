@@ -1,6 +1,7 @@
 import 'package:clini_dor/models/answer.dart';
 import 'package:clini_dor/models/question.dart';
 import 'package:clini_dor/models/question_type.dart';
+import 'package:clini_dor/models/questionnaire.dart';
 import 'package:clini_dor/pages/question/question_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
