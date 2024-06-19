@@ -53,7 +53,7 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
       medicalRecord: int.parse(_medicalRecord.value.text)
     );
 
-    Patient.savePatient(patient).then((value){
+    patient.savePatient().then((value){
       String mensagem = "";
       if(value){
         mensagem = "Paciente salvo!";
@@ -77,7 +77,7 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
       }else{
         mensagem = "Erro ao salvar paciente. Tente novamente ou entre em contato com o suporte.";
         AlertDialog alert = AlertDialog(
-          title: Text(mensagem),
+          content: Text(mensagem),
           actions: <Widget>[
             TextButton(
               child: const Text("OK"),

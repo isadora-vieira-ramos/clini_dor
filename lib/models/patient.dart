@@ -84,9 +84,9 @@ class Patient{
     }
   }
 
-  static Future<bool> savePatient(Patient patient) async{
+  Future<bool> savePatient() async{
     var url = "${const String.fromEnvironment("API_URL")}?type=patients";
-    var patientBody = jsonEncode(patient.toJson());
+    var patientBody = jsonEncode(this.toJson());
     final response = await http.post(Uri.parse(url), body: patientBody);
     if(response.statusCode == 302){
       return true;

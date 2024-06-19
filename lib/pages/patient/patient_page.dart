@@ -30,7 +30,13 @@ class _PatientPageState extends State<PatientPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      floatingActionButton: FloatingButton(onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const QuestionnairePage()))),
+      floatingActionButton: FloatingButton(
+        onTap: () => Navigator.push(context, MaterialPageRoute(
+          builder: (context) => QuestionnairePage(
+            patientId: widget.patient.medicalRecord
+          )
+        ))
+      ),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,

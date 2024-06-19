@@ -2,14 +2,15 @@ import 'package:clini_dor/models/answer.dart';
 import 'package:clini_dor/models/question.dart';
 import 'package:clini_dor/models/question_type.dart';
 import 'package:clini_dor/models/questionnaire.dart';
+import 'package:clini_dor/pages/home_page.dart';
 import 'package:clini_dor/pages/question/question_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 class QuestionnairePage extends StatefulWidget {
-
-  const QuestionnairePage({super.key});
-
+  final int patientId;
+  const QuestionnairePage({super.key, required this.patientId});
+ 
   @override
   State<QuestionnairePage> createState() => _QuestionnairePageState();
 }
@@ -112,9 +113,20 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
   }
 
   void sendAnswers(){
+    Questionnaire questionnaire =   Questionnaire(patientId: widget.patientId, date: DateTime.now(), answers: answers);
+    questionnaire.saveQuestionnaire();
+
     answers.sort((a, b) => a.id.compareTo(b.id));
-    AlertDialog alert = const AlertDialog(
-      title: Text("Enviado!"),
+    AlertDialog alert = AlertDialog(
+      title: const Text("Questionário enviado!"),
+      actions: <Widget>[
+        TextButton(
+          child: const Text("OK"),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+          },
+        )
+      ],
     );
     showDialog(
       context: context, 

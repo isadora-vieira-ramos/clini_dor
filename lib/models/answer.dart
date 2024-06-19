@@ -4,4 +4,7 @@ class Answer {
 
   Answer({required this.id, required this.pickedAnswers});
 
+  Map toJson() => {
+    id.toString(): pickedAnswers.join(','),
+  };
 }
