@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class Patient{
@@ -74,7 +75,7 @@ class Patient{
   }
 
   static Future<List<Patient>> getPatientsAsync() async{
-    var url = "${const String.fromEnvironment("API_URL")}?type=patients";
+    var url = "${dotenv.env["API_URL"]}?type=patients";
     final response = await http.get(Uri.parse(url));
     if(response.statusCode == 200){
       List<dynamic> jsonResponse = jsonDecode(response.body);
@@ -85,7 +86,7 @@ class Patient{
   }
 
   Future<bool> savePatient() async{
-    var url = "${const String.fromEnvironment("API_URL")}?type=patients";
+    var url = "${dotenv.env["API_URL"]}?type=patients";
     var patientBody = jsonEncode(this.toJson());
     final response = await http.post(Uri.parse(url), body: patientBody);
     if(response.statusCode == 302){

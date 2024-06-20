@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:clini_dor/models/answer.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class Questionnaire{  
@@ -34,7 +35,7 @@ class Questionnaire{
   }
 
   static Future<List<Questionnaire>> getQuestionnairesAsync() async{
-    var url = "${const String.fromEnvironment("API_URL")}?type=questionnaires";
+    var url = "${dotenv.env["API_URL"]}?type=questionnaires";
     final response = await http.get(Uri.parse(url));
     if(response.statusCode == 200){
       List<dynamic> jsonResponse = jsonDecode(response.body);
@@ -45,7 +46,7 @@ class Questionnaire{
   }
 
   Future<bool> saveQuestionnaire() async{
-    var url = "${const String.fromEnvironment("API_URL")}?type=questionnaires";
+    var url = "${dotenv.env["API_URL"]}?type=questionnaires";
     var patientBody = jsonEncode(toJson());
     final response = await http.post(Uri.parse(url), body: patientBody);
     if(response.statusCode == 302){
