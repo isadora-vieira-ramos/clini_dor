@@ -13,7 +13,26 @@ class StandardIconButton extends StatefulWidget {
 }
 
 class _StandardIconButtonState extends State<StandardIconButton> {
-  bool isPressed = false;
+  int value = 0;
+
+  changeValue(){
+    if(value == 2){
+      value = 0;
+    }else{
+      value++;
+    }
+  }
+
+  String getSubtitle(){
+    if(value == 0){
+      return "";
+    }
+    else if(value == 1){
+      return "moderate";
+    }else{
+      return "acute";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +42,12 @@ class _StandardIconButtonState extends State<StandardIconButton> {
         alignment: Alignment.center,
         child: IconButton(
           icon: const Icon(Icons.radio_button_checked), 
-          color: isPressed?  Colors.red: Colors.grey.shade500,
+          color: value == 0? Colors.grey.shade500: (value == 1? Colors.yellow.shade800: Colors.red),
           onPressed: (){
             setState(()
             {
-              isPressed = !isPressed;
-              widget.registerAnswer(widget.position);
+              changeValue();
+              widget.registerAnswer("${widget.position}:${getSubtitle()}");
             });                    
           }
         ),

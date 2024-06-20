@@ -16,11 +16,16 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
   List<String> selectedOptions = [];
 
   void registerPosition(String answer){
-    int index = selectedOptions.indexWhere((element) => element == answer);
+    int index = selectedOptions.indexWhere((element) => element.split(":")[0] == answer.split(":")[0]);
     if(index == -1){
       selectedOptions.add(answer);
     }else{
-      selectedOptions.removeAt(index);
+      var paintIntensity = answer.split(":")[1];
+      if(paintIntensity.isNotEmpty){
+        selectedOptions[index] = answer;
+      }else{
+        selectedOptions.removeAt(index);
+      }
     }
     widget.registerAnswer(widget.question.id, selectedOptions);
   }
@@ -56,6 +61,34 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
                           padding: const EdgeInsets.only(top: 8),
                           child: Image.asset(widget.question.questionImage.toString(), fit: BoxFit.fill),
                         )
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.radio_button_checked, color: Colors.yellow.shade800),
+                                      const Text("Menos intensidade")
+                                    ],
+                                  ),
+                                ),
+                                const Row(
+                                  children: [
+                                    Icon(Icons.radio_button_checked, color: Colors.red),
+                                    Text("Maior intensidade")
+                                  ],
+                                ),
+                              ]
+                            ),
+                          )
+                        ),
                       ),
                       StandardIconButton(position: "front_center_forehead", top: 10, registerAnswer: registerPosition),
                       StandardIconButton(position: "front_left_jaw", top: 65, left: 50, registerAnswer: registerPosition),
