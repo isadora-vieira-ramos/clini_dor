@@ -12,7 +12,8 @@ import "package:flutter/services.dart";
 class QuestionPage extends StatelessWidget {
   Question question;
   Function registerAnswer;
-  QuestionPage({super.key, required this.question, required this.registerAnswer});
+  String? currentAnswer;
+  QuestionPage({super.key, required this.question, required this.registerAnswer, this.currentAnswer});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class QuestionPage extends StatelessWidget {
       return (MultipleChoiceQuestion(question: question, registerAnswer: registerAnswer));
     }
     if(question.questionType == QuestionType.closed){
-      return (ClosedQuestion(question: question, registerAnswer: registerAnswer));
+      return (ClosedQuestion(question: question, registerAnswer: registerAnswer, selectedAnswer: currentAnswer));
     }
     if(question.questionType == QuestionType.rating){
       return (

@@ -111,6 +111,16 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
       }
     });
   }
+  
+  String getCurrentAnswer(){
+    int currentQuestionId = _questions[_selectedIndex].id;
+    var answer = answers.where((element) => element.id == currentQuestionId).toList();
+    if(answer.isNotEmpty){
+      return answer[0].pickedAnswers.join(',');
+    }else{
+      return '';
+    }
+  }
 
   void sendAnswers(){
     Questionnaire questionnaire =   Questionnaire(patientId: widget.patientId, date: DateTime.now(), answers: answers);
@@ -146,13 +156,15 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
         title: Text(
           "Novo Questionário",
           style: GoogleFonts.josefinSans(
-            fontSize: 20,
-            color: Colors.white
+            textStyle: const TextStyle(
+              fontSize: 20,
+              color: Colors.white
+            )
           ),
         ),
       ),
       backgroundColor: Colors.white,
-      body: QuestionPage(question: _questions[_selectedIndex], registerAnswer: addAnswer),
+      body: QuestionPage(question: _questions[_selectedIndex], currentAnswer: getCurrentAnswer(), registerAnswer: addAnswer),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(20.0),

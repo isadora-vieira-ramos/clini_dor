@@ -42,12 +42,37 @@ class _BackClickMapQuestionState extends State<BackClickMapQuestion> {
           children: [
             Padding(
               padding: const EdgeInsets.all(30),
-              child: Text(
-                widget.question.questionText,
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 20
-                )
+              child: Column(
+                children: [
+                  Text(
+                    widget.question.questionText,
+                    textAlign: TextAlign.justify,
+                    style: const TextStyle(
+                      fontSize: 20
+                    )
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.radio_button_checked, color: Colors.yellow.shade800),
+                            const Text("Menor intensidade")
+                          ],
+                        ),
+                        const Row(
+                          children: [
+                            Icon(Icons.radio_button_checked, color: Colors.red),
+                            Text("Maior intensidade")
+                          ],
+                        ),
+                      ]
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(
@@ -61,34 +86,6 @@ class _BackClickMapQuestionState extends State<BackClickMapQuestion> {
                           padding: const EdgeInsets.only(top: 8),
                           child: Image.asset(widget.question.questionImage.toString(), fit: BoxFit.fill),
                         )
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 20),
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.radio_button_checked, color: Colors.yellow.shade800),
-                                      const Text("Menos intensidade")
-                                    ],
-                                  ),
-                                ),
-                                const Row(
-                                  children: [
-                                    Icon(Icons.radio_button_checked, color: Colors.red),
-                                    Text("Maior intensidade")
-                                  ],
-                                ),
-                              ]
-                            ),
-                          )
-                        ),
                       ),
                       StandardIconButton(position: "back_head", top: 10, registerAnswer: registerPosition),
                       StandardIconButton(position: "back_right_nape", top: 80, left: 40, registerAnswer: registerPosition),
