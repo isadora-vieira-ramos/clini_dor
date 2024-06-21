@@ -25,13 +25,17 @@ class QuestionnaireTile extends StatelessWidget {
               Text(
                 'Questionário ${questionnaire.evaluationId}',
                 style: GoogleFonts.josefinSans(
-                  fontSize: 15
+                  textStyle: const TextStyle(
+                    fontSize: 15    
+                  )
                 ),
               ),
               Text(
                 'Data: ${DateFormat('dd/MM/yyyy').format(questionnaire.date)}',
                 style: GoogleFonts.josefinSans(
-                  fontSize: 15
+                  textStyle: const TextStyle(
+                    fontSize: 15    
+                  )
                 ),
               ),
               const Padding(

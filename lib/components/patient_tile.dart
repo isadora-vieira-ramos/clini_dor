@@ -27,8 +27,10 @@ class PatientTile extends StatelessWidget {
                 child: Text(
                   patient.name,
                   style: GoogleFonts.josefinSans(
-                    fontSize: 20
-                  ),
+                    textStyle: const TextStyle(
+                      fontSize: 20
+                    )
+                  )
                 ),
               ),
               Row(
@@ -45,13 +47,17 @@ class PatientTile extends StatelessWidget {
                       Text(
                         '${patient.age.toString()} anos',
                         style: GoogleFonts.josefinSans(
-                          fontSize: 15    
+                          textStyle: const TextStyle(
+                            fontSize: 15    
+                          )
                         )
                       ),
                       Text(
                         'Prontuário: ${patient.medicalRecord}',
                         style: GoogleFonts.josefinSans(
-                          fontSize: 15
+                          textStyle: const TextStyle(
+                            fontSize: 15    
+                          )
                         )
                       )
                     ],

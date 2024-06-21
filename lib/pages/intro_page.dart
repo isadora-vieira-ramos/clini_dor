@@ -28,10 +28,12 @@ class IntroPage extends StatelessWidget {
                   Text(
                     'CliniDor',
                     style: GoogleFonts.josefinSans(
+                      textStyle: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                       fontSize: 40,
-                      color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold
-                    ),
+                    )
                   ),
                   Container(
                     margin: const EdgeInsets.all(10),
@@ -45,10 +47,12 @@ class IntroPage extends StatelessWidget {
                         'Bem vindo(a) ao app CliniDor, que busca ajudar os pacientes no tratamento de dores crônicas',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.josefinSans(
+                          textStyle: const TextStyle(
+                            color:Colors.black
+                          ),
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
-                          color:Colors.black
-                        ),
+                        )
                       ),                     
                     ),
                   ),
@@ -65,10 +69,12 @@ class IntroPage extends StatelessWidget {
                         child: Text(
                           'LOGIN',
                           style: GoogleFonts.josefinSans(
-                            color: Theme.of(context).colorScheme.onSecondary,
+                            textStyle: TextStyle(
+                              color: Theme.of(context).colorScheme.onSecondary,
+                            ),
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
-                          ),
+                          )
                         ),
                       ),
                     ),
@@ -81,11 +87,13 @@ class IntroPage extends StatelessWidget {
                         child: Text(
                           'Primeiro acesso? Cadastre-se',
                           style: GoogleFonts.josefinSans(
-                            decoration: TextDecoration.underline,
-                            color: Colors.black,
+                            textStyle: const TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: Colors.black,
+                            ),
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
-                          ),
+                          )
                         ),
                       ),
                     ),

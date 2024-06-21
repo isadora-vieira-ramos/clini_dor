@@ -41,10 +41,12 @@ class _AuthPageState extends State<AuthPage> {
                     Text(
                       'Login',
                       style: GoogleFonts.josefinSans(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.primary
-                      ),
+                        textStyle: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary
+                        )
+                      )
                     ),
                     StandardTextfield(
                       controller: _userController, 
@@ -70,9 +72,11 @@ class _AuthPageState extends State<AuthPage> {
                             child: Text(
                               'ENTRAR',
                               style: GoogleFonts.josefinSans(
-                                color: Theme.of(context).colorScheme.onSecondary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
+                                textStyle: TextStyle(
+                                  color: Theme.of(context).colorScheme.onSecondary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                )
                               ),
                             ),
                           ),

@@ -15,8 +15,10 @@ class PatientEditPage extends StatelessWidget {
         title: Text(
           "Editar Paciente",
           style: GoogleFonts.josefinSans(
-            fontSize: 20,
-            color: Colors.white
+            textStyle: const TextStyle(
+              fontSize: 20,
+              color: Colors.white
+            )
           ),
         ),
       ),

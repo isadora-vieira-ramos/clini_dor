@@ -15,8 +15,10 @@ class ConductsPage extends StatelessWidget {
         title: Text(
           "Condutas",
           style: GoogleFonts.josefinSans(
-            fontSize: 20,
-            color: Colors.white
+            textStyle: const TextStyle(
+              fontSize: 20,
+              color: Colors.white
+            )
           ),
         ),
       ),

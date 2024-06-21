@@ -14,7 +14,9 @@ class AboutPage extends StatelessWidget {
           'Este aplicativo tem como objetivo auxiliar o diagnóstico e o direcionamento do tratamento de paciente de dores crônicas não oncológicas. Desenvolvimento do aplicativo por Isadora Ramos.',
           textAlign: TextAlign.justify,
           style: GoogleFonts.josefinSans(
-            fontSize: 20
+            textStyle: const TextStyle(
+              fontSize: 20   
+            )
           )
         )
       ),

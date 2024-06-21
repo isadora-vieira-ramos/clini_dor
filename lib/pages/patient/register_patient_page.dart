@@ -108,8 +108,10 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
         title: Text(
           "Novo Paciente",
           style: GoogleFonts.josefinSans(
-            fontSize: 20,
-            color: Colors.white
+            textStyle: const TextStyle(
+              fontSize: 20,
+              color: Colors.white
+            )
           ),
         ),
       ),

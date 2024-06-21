@@ -35,8 +35,10 @@ class _HomePageState extends State<HomePage> {
         title: Text(
           _selectedIndex == 0? "Pacientes": "Sobre",
           style: GoogleFonts.josefinSans(
-            fontSize: 25,
-            color: Colors.white
+            textStyle: const TextStyle(
+              fontSize: 25,
+              color: Colors.white
+            )
           )
         ),
         leading: Builder(

@@ -42,9 +42,11 @@ class _SignInPageState extends State<SignInPage> {
                     Text(
                       'Cadastre-se',
                       style: GoogleFonts.josefinSans(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.primary
+                        textStyle: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary
+                        )
                       ),
                     ),
                     StandardTextfield(
@@ -76,9 +78,11 @@ class _SignInPageState extends State<SignInPage> {
                             child: Text(
                               'CADASTRAR',
                               style: GoogleFonts.josefinSans(
-                                color: Theme.of(context).colorScheme.onSecondary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
+                                textStyle: TextStyle(
+                                  color: Theme.of(context).colorScheme.onSecondary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                )
                               ),
                             ),
                           ),

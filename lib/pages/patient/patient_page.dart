@@ -44,9 +44,11 @@ class _PatientPageState extends State<PatientPage> {
         title: Text(
           "Paciente",
           style: GoogleFonts.josefinSans(
-            fontSize: 20,
-            color: Colors.white
-          ),
+            textStyle: const TextStyle(
+              fontSize: 20,
+              color: Colors.white
+            )
+          )
         ),
       ),
       body: Padding(
@@ -64,13 +66,17 @@ class _PatientPageState extends State<PatientPage> {
                     Text(
                       widget.patient.name,
                       style: GoogleFonts.josefinSans(
-                        fontSize: 20
-                      ),
+                        textStyle: const TextStyle(
+                          fontSize: 20
+                        )
+                      )
                     ),
                     Text(
                       'Prontuário ${widget.patient.medicalRecord}',
                       style: GoogleFonts.josefinSans(
-                        fontSize: 20
+                        textStyle: const TextStyle(
+                          fontSize: 20
+                        )
                       ),
                     ),
                   ],
@@ -81,7 +87,9 @@ class _PatientPageState extends State<PatientPage> {
                   label: Text(
                     "Editar",
                     style: GoogleFonts.josefinSans(
-                      fontSize: 20
+                      textStyle: const TextStyle(
+                        fontSize: 20
+                      )
                     )
                   ),
                 )
@@ -99,7 +107,9 @@ class _PatientPageState extends State<PatientPage> {
               label: Text(
                 "Exportar dados",
                 style: GoogleFonts.josefinSans(
-                  fontSize: 18
+                  textStyle: const TextStyle(
+                    fontSize: 18
+                  )
                 ),
               )
             ),
@@ -107,7 +117,9 @@ class _PatientPageState extends State<PatientPage> {
             Text(
               'Questionários',
               style: GoogleFonts.josefinSans(
-                fontSize: 20
+                textStyle: const TextStyle(
+                  fontSize: 20
+                )
               )
             ),
             FutureBuilder(
