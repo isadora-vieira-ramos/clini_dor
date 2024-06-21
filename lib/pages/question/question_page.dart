@@ -29,7 +29,7 @@ class QuestionPage extends StatelessWidget {
     }
     if(question.questionType == QuestionType.rating){
       return (
-        RatingQuestion(question: question, registerAnswer: registerAnswer)
+        RatingQuestion(question: question, registerAnswer: registerAnswer, currentSliderValue: double.parse(currentAnswer.toString().isEmpty? "0" : currentAnswer.toString()))
       );
     }
     else{

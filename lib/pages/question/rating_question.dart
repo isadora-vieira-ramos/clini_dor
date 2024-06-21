@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class RatingQuestion extends StatefulWidget {
   final Question question;
   final Function registerAnswer;
-  double _currentSliderValue = 0;
-  RatingQuestion({super.key, required this.question, required this.registerAnswer});
+  double currentSliderValue = 0;
+  RatingQuestion({super.key, required this.question, required this.registerAnswer, required this.currentSliderValue});
 
   @override
   State<RatingQuestion> createState() => _RatingQuestionState();
@@ -34,10 +34,10 @@ class _RatingQuestionState extends State<RatingQuestion> {
             Padding(
               padding: const EdgeInsets.all(20),
               child: Slider(
-                value: widget._currentSliderValue,
+                value: widget.currentSliderValue,
                 onChanged: (double value) {
                   setState(() {
-                    widget._currentSliderValue = value;
+                    widget.currentSliderValue = value;
                   });
                   List<String> currentValue = [value.toString()];
                   widget.registerAnswer(widget.question.id, currentValue);
@@ -58,7 +58,7 @@ class _RatingQuestionState extends State<RatingQuestion> {
                     )
                   ),
                   Text(
-                    widget._currentSliderValue.toInt().toString(),
+                    widget.currentSliderValue.toInt().toString(),
                     style: const TextStyle(
                         fontSize: 18
                     )
