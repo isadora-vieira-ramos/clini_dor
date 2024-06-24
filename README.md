@@ -9,4 +9,5 @@ Aplicativo guia para diagnóstico e tratamento da dor crônica.
   <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/2812d9c7-74fc-488a-99c3-b15bce49c450" width="150" />
   <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/e251541f-08e0-43e5-893a-ccfad15a0cc7" width="150" />
   <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/f1dd0afe-2ff3-4212-b309-8eadd9454470" width="155" />
+  <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/29283b36-0147-41af-a183-daf8d9f172ff" width="155" />
 </p>
