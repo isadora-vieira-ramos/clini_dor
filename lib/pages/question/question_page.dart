@@ -22,7 +22,7 @@ class QuestionPage extends StatelessWidget {
       return OpenQuestion(question: question, registerAnswer: registerAnswer);
     }
     if(question.questionType == QuestionType.multipleChoice){
-      return (MultipleChoiceQuestion(question: question, registerAnswer: registerAnswer));
+      return (MultipleChoiceQuestion(question: question, registerAnswer: registerAnswer, currentAnswers: currentAnswer));
     }
     if(question.questionType == QuestionType.closed){
       return (ClosedQuestion(question: question, registerAnswer: registerAnswer, selectedAnswer: currentAnswer));

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class MultipleChoiceQuestion extends StatefulWidget {
   final Question question;
   final Function registerAnswer;
-  const MultipleChoiceQuestion({super.key, required this.question, required this.registerAnswer});
+  String? currentAnswers;
+  MultipleChoiceQuestion({super.key, required this.question, required this.registerAnswer, required this.currentAnswers});
 
   @override
   State<MultipleChoiceQuestion> createState() => _MultipleChoiceQuestionState();
@@ -27,7 +28,11 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
 
   @override
   void initState() {
-    options = { for (var element in widget.question.options) element : false };
+    options = { for (var element in widget.question.options) element : widget.currentAnswers.toString().contains(element)};
+    var lastSelected = options.entries.toList().where((x) => x.value == true).toList();
+    for(var element in lastSelected){
+      selectedOptions.add(element.key);
+    }
   }
 
   @override
