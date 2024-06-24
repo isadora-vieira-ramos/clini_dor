@@ -19,13 +19,13 @@ class QuestionPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     if (question.questionType == QuestionType.open){
-      return OpenQuestion(question: question, registerAnswer: registerAnswer);
+      return OpenQuestion(question: question, registerAnswer: registerAnswer, currentAnswers: currentAnswer);
     }
     if(question.questionType == QuestionType.multipleChoice){
       return (MultipleChoiceQuestion(question: question, registerAnswer: registerAnswer, currentAnswers: currentAnswer));
     }
     if(question.questionType == QuestionType.closed){
-      return (ClosedQuestion(question: question, registerAnswer: registerAnswer, selectedAnswer: currentAnswer));
+      return (ClosedQuestion(question: question, registerAnswer: registerAnswer, currentAnswer: currentAnswer));
     }
     if(question.questionType == QuestionType.rating){
       return (

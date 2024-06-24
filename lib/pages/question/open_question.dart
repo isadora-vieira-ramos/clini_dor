@@ -1,11 +1,13 @@
 import 'package:clini_dor/models/question.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 class OpenQuestion extends StatefulWidget {
   Question question;
   Function registerAnswer;
-  OpenQuestion({super.key, required this.question, required this.registerAnswer});
+  String? currentAnswers;
+  OpenQuestion({super.key, required this.question, required this.registerAnswer, required this.currentAnswers});
 
   @override
   State<OpenQuestion> createState() => _OpenQuestionState();
@@ -15,6 +17,7 @@ class _OpenQuestionState extends State<OpenQuestion> {
   List<String> answers = [];
 
   void registerAnswer(String label, String answer){
+    print(widget.currentAnswers);
     if(label.isEmpty){
       if(answers.isEmpty){
         answers.add(answer);
@@ -34,6 +37,8 @@ class _OpenQuestionState extends State<OpenQuestion> {
 
   @override
   Widget build(BuildContext context) {
+    List<TextEditingController> controllers = [];
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -41,7 +46,7 @@ class _OpenQuestionState extends State<OpenQuestion> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.only(top:30, left: 30, right: 30),
             child: Text(
               widget.question.questionText,
               textAlign: TextAlign.justify,
@@ -56,22 +61,33 @@ class _OpenQuestionState extends State<OpenQuestion> {
               child: ListView.builder(
                 itemCount: widget.question.options.length,
                 itemBuilder: (context, index) {
+                  controllers.add(TextEditingController());
                   return Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: (
-                      TextField(
-                        onChanged: (value) {
-                          registerAnswer(widget.question.options[index], value);
-                        },
-                        keyboardType: TextInputType.number,
-                        inputFormatters: <TextInputFormatter>[
-                          FilteringTextInputFormatter.digitsOnly
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Visibility(
+                            visible: widget.question.options[index].isNotEmpty? true: false,
+                            child: Text(
+                              "${widget.question.options[index]}:",
+                              style: const TextStyle(
+                                fontSize: 16
+                              ),
+                            ),
+                          ),
+                          TextField(
+                            controller: controllers[index],
+                            onChanged: (value) {
+                              registerAnswer(widget.question.options[index], value);
+                            },
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder()
+                            ),
+                          ) 
                         ],
-                        decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
-                          hintText: widget.question.options[index]
-                        ),
-                      ) 
+                      )
                     ),
                   );
                 }
