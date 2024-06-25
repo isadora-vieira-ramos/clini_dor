@@ -13,6 +13,7 @@ class Patient{
   final double weight;
   final int height;
   final int medicalRecord; 
+  double? bmi;
   
   Patient({
     required this.name, 
@@ -24,7 +25,8 @@ class Patient{
     required this.education, 
     required this.weight,
     required this.height,
-    required this.medicalRecord
+    required this.medicalRecord,
+    this.bmi
   });
 
   factory Patient.fromJson(Map<String, dynamic> json){
@@ -38,7 +40,8 @@ class Patient{
       education: json["Escolaridade"],
       weight: StringToDouble(json["Peso"].toString()),
       height: json["Altura"],
-      medicalRecord: json["Prontuario"]
+      medicalRecord: json["Prontuario"],
+      bmi: json["IMC"].toString().isEmpty || json["IMC"].toString() == "null" ? 0: StringToDouble(json["IMC"].toString())
     );
   }
 
@@ -51,7 +54,8 @@ class Patient{
     'profissao': occupation,
     'escolaridade': education,
     'peso': weight,
-    'altura': height
+    'altura': height,
+    'imc': bmi!.toStringAsFixed(2)
   };
 
   static double StringToDouble(String weight){
@@ -63,6 +67,11 @@ class Patient{
     DateTime birthDate = DateTime.parse(formatedDate);
     int age = DateTime.now().difference(birthDate).inDays ~/ 365;
     return age;
+  }
+
+  void calculateBMI(){
+    var heightInMeters = height /100;
+    bmi = weight /(heightInMeters * heightInMeters);
   }
 
   static DateTime StringToDateTime(String birthDate){
@@ -87,6 +96,7 @@ class Patient{
 
   Future<bool> savePatient() async{
     var url = "${dotenv.env["API_URL"]}?type=patients";
+    this.calculateBMI();
     var patientBody = jsonEncode(this.toJson());
     final response = await http.post(Uri.parse(url), body: patientBody);
     if(response.statusCode == 302){
