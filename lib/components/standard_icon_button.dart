@@ -6,28 +6,28 @@ class StandardIconButton extends StatefulWidget {
   final String? position;
   final double? left;
   final double? right;
-  const StandardIconButton({super.key, required this.top, this.position, this.left, this.right, required this.registerAnswer});
+  int? currentValue;
+  StandardIconButton({super.key, required this.top, this.position, this.left, this.right, required this.registerAnswer, this.currentValue});
 
   @override
   State<StandardIconButton> createState() => _StandardIconButtonState();
 }
 
 class _StandardIconButtonState extends State<StandardIconButton> {
-  int value = 0;
 
   changeValue(){
-    if(value == 2){
-      value = 0;
+    if(widget.currentValue == 2){
+      widget.currentValue = 0;
     }else{
-      value++;
+      widget.currentValue = widget.currentValue! + 1;
     }
   }
 
   String getSubtitle(){
-    if(value == 0){
+    if(widget.currentValue == 0){
       return "";
     }
-    else if(value == 1){
+    else if(widget.currentValue == 1){
       return "moderate";
     }else{
       return "acute";
@@ -42,7 +42,7 @@ class _StandardIconButtonState extends State<StandardIconButton> {
         alignment: Alignment.center,
         child: IconButton(
           icon: const Icon(Icons.radio_button_checked), 
-          color: value == 0? Colors.grey.shade500: (value == 1? Colors.yellow.shade800: Colors.red),
+          color: widget.currentValue == 0? Colors.grey.shade500: (widget.currentValue == 1? Colors.yellow.shade800: Colors.red),
           onPressed: (){
             setState(()
             {

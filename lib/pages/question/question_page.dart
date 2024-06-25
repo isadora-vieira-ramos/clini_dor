@@ -35,12 +35,12 @@ class QuestionPage extends StatelessWidget {
     else{
       if(question.options[0] == "FRENTE"){
         return (
-          FrontClickMapQuestion(question: question, registerAnswer: registerAnswer)
+          FrontClickMapQuestion(question: question, registerAnswer: registerAnswer, currentAnswer: currentAnswer)
         );
       }
       else{
         return (
-          BackClickMapQuestion(question: question, registerAnswer: registerAnswer)
+          BackClickMapQuestion(question: question, registerAnswer: registerAnswer, currentAnswer: currentAnswer)
         );
       }
     }
