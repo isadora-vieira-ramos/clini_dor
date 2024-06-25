@@ -14,26 +14,6 @@ class OpenQuestion extends StatefulWidget {
 }
 
 class _OpenQuestionState extends State<OpenQuestion> {
-  List<String> answers = [];
-
-  void registerAnswer(String label, String answer){
-    print(widget.currentAnswers);
-    if(label.isEmpty){
-      if(answers.isEmpty){
-        answers.add(answer);
-      }else{
-        answers[0] = answer;
-      }
-    }else{
-      int index = answers.indexWhere((element) => element.contains(label));
-      if(index == -1){
-        answers.add("$label:$answer");
-      }else{
-        answers[index] = "$label:$answer";
-      }
-    }
-    widget.registerAnswer(widget.question.id, answers);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,26 +41,21 @@ class _OpenQuestionState extends State<OpenQuestion> {
               child: ListView.builder(
                 itemCount: widget.question.options.length,
                 itemBuilder: (context, index) {
-                  controllers.add(TextEditingController());
+                  controllers.add(TextEditingController(text: widget.currentAnswers));
                   return Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: (
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Visibility(
-                            visible: widget.question.options[index].isNotEmpty? true: false,
-                            child: Text(
-                              "${widget.question.options[index]}:",
-                              style: const TextStyle(
-                                fontSize: 16
-                              ),
-                            ),
-                          ),
                           TextField(
                             controller: controllers[index],
                             onChanged: (value) {
-                              registerAnswer(widget.question.options[index], value);
+                              setState(() {
+                                widget.currentAnswers = value;
+                              });
+                              List<String> currentValue = [value.toString()];
+                              widget.registerAnswer(widget.question.id, currentValue);
                             },
                             decoration: const InputDecoration(
                               border: OutlineInputBorder()
