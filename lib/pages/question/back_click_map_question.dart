@@ -15,6 +15,16 @@ class BackClickMapQuestion extends StatefulWidget {
 
 class _BackClickMapQuestionState extends State<BackClickMapQuestion> {
 
+  @override
+  void initState() {
+    if(widget.currentAnswer != null && widget.currentAnswer!.isNotEmpty){
+      var savedAnswers = widget.currentAnswer!.split(",");
+      for(var element in savedAnswers){
+        selectedOptions.add(element);
+      }
+    }
+  }
+
   List<String> selectedOptions = [];
 
   void registerPosition(String answer){
@@ -81,13 +91,19 @@ class _BackClickMapQuestionState extends State<BackClickMapQuestion> {
                         Row(
                           children: [
                             Icon(Icons.radio_button_checked, color: Colors.yellow.shade800),
-                            const Text("Menor intensidade")
+                            const Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text("Menor intensidade"),
+                            )
                           ],
                         ),
                         const Row(
                           children: [
                             Icon(Icons.radio_button_checked, color: Colors.red),
-                            Text("Maior intensidade")
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text("Maior intensidade"),
+                            )
                           ],
                         ),
                       ]

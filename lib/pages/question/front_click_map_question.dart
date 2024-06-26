@@ -93,13 +93,19 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
                         Row(
                           children: [
                             Icon(Icons.radio_button_checked, color: Colors.yellow.shade800),
-                            const Text("Menor intensidade")
+                            const Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text("Menor intensidade"),
+                            )
                           ],
                         ),
                         const Row(
                           children: [
                             Icon(Icons.radio_button_checked, color: Colors.red),
-                            Text("Maior intensidade")
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text("Maior intensidade"),
+                            )
                           ],
                         ),
                       ]
