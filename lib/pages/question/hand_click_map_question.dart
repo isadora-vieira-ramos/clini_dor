@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HandClickMapQuestion extends StatelessWidget {
-  HandClickMapQuestion({super.key});
+  final Function registerAnswer;
+  HandClickMapQuestion({super.key, required this.registerAnswer});
 
   @override
   Widget build(BuildContext context) {
@@ -52,20 +53,21 @@ class HandClickMapQuestion extends StatelessWidget {
                   child: Image.asset('lib/images/hand_outline.png', fit: BoxFit.fill),
                 )
               ),
-              StandardIconButton(position: "wrist", top: 250, left: 80, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "thumb", top: 170, left: 170, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "index_finger_matacarpophalangeal_joint", top: 120, left: 30, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "middle_finger_metacarpophalangeal_joint", top: 120, right: 40, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "ring_finger_metacarpophalangeal_joint", top: 135, right: 95, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "small_finger_metacarpophalangeal_joint", top: 170, right: 140, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "index_finger_proximal_interphalangeal_joint", top: 80, left: 30, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "middle_finger_proximal_interphalangeal_joint", top: 80, right: 55, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "ring_finger_proximal_interphalangeal_joint", top: 100, right: 130, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "small_finger_proximal_interphalangeal_joint", top: 155, right: 180, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "index_finger_distal_interphalangeal_joint", top: 50, left: 30, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "middle_finger_distal_interphalangeal_joint", top: 50, right: 70, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "ring_finger_distal_interphalangeal_joint", top: 75, right: 155, currentValue: 0, registerAnswer: (){}),
-              StandardIconButton(position: "small_finger_distal_interphalangeal_joint", top: 135, right: 220, currentValue: 0, registerAnswer: (){}),
+              StandardIconButton(position: "wrist", top: 250, left: 80, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "thumb_metacarpophalangeal_joint", top: 170, left: 170, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "thumb_interphalangeal_joint", top: 140, left: 200, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "index_finger_matacarpophalangeal_joint", top: 120, left: 30, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "middle_finger_metacarpophalangeal_joint", top: 125, right: 40, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "ring_finger_metacarpophalangeal_joint", top: 140, right: 90, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "small_finger_metacarpophalangeal_joint", top: 175, right: 130, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "index_finger_proximal_interphalangeal_joint", top: 80, left: 30, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "middle_finger_proximal_interphalangeal_joint", top: 80, right: 55, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "ring_finger_proximal_interphalangeal_joint", top: 100, right: 130, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "small_finger_proximal_interphalangeal_joint", top: 155, right: 180, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "index_finger_distal_interphalangeal_joint", top: 50, left: 30, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "middle_finger_distal_interphalangeal_joint", top: 50, right: 70, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "ring_finger_distal_interphalangeal_joint", top: 75, right: 155, currentValue: 0, registerAnswer: registerAnswer),
+              StandardIconButton(position: "small_finger_distal_interphalangeal_joint", top: 135, right: 220, currentValue: 0, registerAnswer: registerAnswer),
             ],
           ),
         ],

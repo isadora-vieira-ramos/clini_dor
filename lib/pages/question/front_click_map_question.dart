@@ -1,5 +1,6 @@
 import 'package:clini_dor/components/standard_icon_button.dart';
 import 'package:clini_dor/models/question.dart';
+import 'package:clini_dor/pages/question/hand_click_map_question.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
@@ -40,7 +41,25 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
       }
     }
     widget.registerAnswer(widget.question.id, selectedOptions);
+    showHandDialog();
   }
+
+  void showHandDialog(){
+    var contains = selectedOptions.where((element) => element.contains("hand"));
+    if(contains.isNotEmpty){
+      showDialog(
+        context: context, 
+        builder: (BuildContext context){
+          return HandClickMapQuestion(registerAnswer: registerHandPosition);
+        }
+      );
+    }
+  }
+
+  void registerHandPosition(String answer){
+    selectedOptions.add(answer);
+  }
+  
 
   int getCurrentAnswer(String label){
     if(widget.currentAnswer!.isNotEmpty){
@@ -87,7 +106,7 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
                   const SizedBox(height: 10),
                   Container(
                     alignment: Alignment.center,
-                    child: Row(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
