@@ -50,14 +50,25 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
       showDialog(
         context: context, 
         builder: (BuildContext context){
-          return HandClickMapQuestion(registerAnswer: registerHandPosition);
+          return HandClickMapQuestion(getCurrentAnswer: getCurrentAnswer, registerAnswer: registerHandPosition);
         }
       );
     }
   }
 
   void registerHandPosition(String answer){
-    selectedOptions.add(answer);
+    int index = selectedOptions.indexWhere((element) => element.split(":")[0] == answer.split(":")[0]);
+    if(index == -1){
+      selectedOptions.add(answer);
+    }else{
+      var paintIntensity = answer.split(":")[1];
+      if(paintIntensity.isNotEmpty){
+        selectedOptions[index] = answer;
+      }else{
+        selectedOptions.removeAt(index);
+      }
+    }
+    widget.registerAnswer(widget.question.id, selectedOptions);
   }
   
 
