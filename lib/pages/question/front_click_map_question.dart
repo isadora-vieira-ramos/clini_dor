@@ -41,12 +41,11 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
       }
     }
     widget.registerAnswer(widget.question.id, selectedOptions);
-    showHandDialog();
+    showHandDialog(answer);
   }
 
-  void showHandDialog(){
-    var contains = selectedOptions.where((element) => element.contains("hand"));
-    if(contains.isNotEmpty){
+  void showHandDialog(String painPoint){
+    if(painPoint.contains("hand")){
       showDialog(
         context: context, 
         builder: (BuildContext context){
@@ -73,9 +72,8 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
   
 
   int getCurrentAnswer(String label){
-    if(widget.currentAnswer!.isNotEmpty){
-      var answerList = widget.currentAnswer!.split(",");
-      var answer = answerList.where((element) => element.contains(label));
+    if(selectedOptions.isNotEmpty){
+      var answer = selectedOptions.where((element) => element.contains(label));
       if(answer.isNotEmpty){
         var painIntensity = answer.toList()[0].split(":")[1];
         if(painIntensity == "moderate"){
