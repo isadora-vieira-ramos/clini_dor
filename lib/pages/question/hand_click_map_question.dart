@@ -93,7 +93,7 @@ class _HandClickMapQuestionState extends State<HandClickMapQuestion> {
                         child: Image.asset('lib/images/hand_outline.png', fit: BoxFit.fill),
                       )
                     ),
-                    StandardIconButton(position: "wrist", top: 350, left: 120, currentValue: widget.getCurrentAnswer("wrist"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "wrist_joint", top: 350, left: 120, currentValue: widget.getCurrentAnswer("wrist_joint"), registerAnswer: widget.registerAnswer),
                     StandardIconButton(position: "thumb_metacarpophalangeal_joint", top: 240, left: 240, currentValue: widget.getCurrentAnswer("thumb_metacarpophalangeal_joint"), registerAnswer: widget.registerAnswer),
                     StandardIconButton(position: "thumb_interphalangeal_joint", top: 200, left: 280, currentValue: widget.getCurrentAnswer("thumb_interphalangeal_joint"), registerAnswer: widget.registerAnswer),
                     StandardIconButton(position: "index_finger_metacarpophalangeal_joint", top: 180, left: 40, currentValue: widget.getCurrentAnswer("index_finger_metacarpophalangeal_joint"), registerAnswer: widget.registerAnswer),

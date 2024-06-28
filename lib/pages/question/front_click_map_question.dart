@@ -37,6 +37,9 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
       if(paintIntensity.isNotEmpty){
         selectedOptions[index] = answer;
       }else{
+        if(answer.contains("hand")){
+          selectedOptions.removeWhere((element) => element.contains("joint"));
+        }
         selectedOptions.removeAt(index);
       }
     }
