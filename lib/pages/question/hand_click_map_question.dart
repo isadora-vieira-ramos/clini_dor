@@ -3,11 +3,17 @@ import 'package:clini_dor/models/question.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HandClickMapQuestion extends StatelessWidget {
+class HandClickMapQuestion extends StatefulWidget {
   final Function getCurrentAnswer;
   final Function registerAnswer;
   HandClickMapQuestion({super.key, required this.getCurrentAnswer, required this.registerAnswer});
 
+  @override
+  State<HandClickMapQuestion> createState() => _HandClickMapQuestionState();
+}
+
+class _HandClickMapQuestionState extends State<HandClickMapQuestion> {
+  
   @override
   Widget build(BuildContext context) {
     return Dialog.fullscreen(
@@ -20,7 +26,7 @@ class HandClickMapQuestion extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
-                "Dores na mão",
+                "Dores na mãos",
                 style: GoogleFonts.josefinSans(
                   textStyle: const TextStyle(
                     fontSize: 20    
@@ -32,6 +38,16 @@ class HandClickMapQuestion extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      "Marque os pontos onde de dor em qualquer uma das mãos",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 18
+                      )
+                    ),
+                  ),
                   Row(
                     children: [
                       Icon(Icons.radio_button_checked, color: Colors.yellow.shade800),
@@ -77,21 +93,21 @@ class HandClickMapQuestion extends StatelessWidget {
                         child: Image.asset('lib/images/hand_outline.png', fit: BoxFit.fill),
                       )
                     ),
-                    StandardIconButton(position: "wrist", top: 350, left: 120, currentValue: getCurrentAnswer("wrist"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "thumb_metacarpophalangeal_joint", top: 240, left: 240, currentValue: getCurrentAnswer("thumb_metacarpophalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "thumb_interphalangeal_joint", top: 200, left: 280, currentValue: getCurrentAnswer("thumb_interphalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "index_finger_metacarpophalangeal_joint", top: 180, left: 40, currentValue: getCurrentAnswer("index_finger_metacarpophalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "index_finger_proximal_interphalangeal_joint", top: 115, left: 40, currentValue: getCurrentAnswer("index_finger_proximal_interphalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "index_finger_distal_interphalangeal_joint", top: 70, left: 40, currentValue: getCurrentAnswer("index_finger_distal_interphalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "middle_finger_metacarpophalangeal_joint", top: 190, right: 50, currentValue: getCurrentAnswer("middle_finger_metacarpophalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "middle_finger_proximal_interphalangeal_joint", top: 120, right: 80, currentValue: getCurrentAnswer("middle_finger_proximal_interphalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "middle_finger_distal_interphalangeal_joint", top: 70, right: 100, currentValue: getCurrentAnswer("middle_finger_distal_interphalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "ring_finger_metacarpophalangeal_joint", top: 210, right: 120, currentValue: getCurrentAnswer("ring_finger_metacarpophalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "ring_finger_proximal_interphalangeal_joint", top: 150, right: 175, currentValue: getCurrentAnswer("ring_finger_proximal_interphalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "ring_finger_distal_interphalangeal_joint", top: 115, right: 210, currentValue: getCurrentAnswer("ring_finger_distal_interphalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "small_finger_metacarpophalangeal_joint", top: 255, right: 175, currentValue: getCurrentAnswer("small_finger_metacarpophalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "small_finger_proximal_interphalangeal_joint", top: 225, right: 250, currentValue: getCurrentAnswer("small_finger_proximal_interphalangeal_joint"), registerAnswer: registerAnswer),
-                    StandardIconButton(position: "small_finger_distal_interphalangeal_joint", top: 200, right: 300, currentValue: getCurrentAnswer("small_finger_distal_interphalangeal_joint"), registerAnswer: registerAnswer),
+                    StandardIconButton(position: "wrist", top: 350, left: 120, currentValue: widget.getCurrentAnswer("wrist"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "thumb_metacarpophalangeal_joint", top: 240, left: 240, currentValue: widget.getCurrentAnswer("thumb_metacarpophalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "thumb_interphalangeal_joint", top: 200, left: 280, currentValue: widget.getCurrentAnswer("thumb_interphalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "index_finger_metacarpophalangeal_joint", top: 180, left: 40, currentValue: widget.getCurrentAnswer("index_finger_metacarpophalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "index_finger_proximal_interphalangeal_joint", top: 115, left: 40, currentValue: widget.getCurrentAnswer("index_finger_proximal_interphalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "index_finger_distal_interphalangeal_joint", top: 70, left: 40, currentValue: widget.getCurrentAnswer("index_finger_distal_interphalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "middle_finger_metacarpophalangeal_joint", top: 190, right: 50, currentValue: widget.getCurrentAnswer("middle_finger_metacarpophalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "middle_finger_proximal_interphalangeal_joint", top: 120, right: 80, currentValue: widget.getCurrentAnswer("middle_finger_proximal_interphalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "middle_finger_distal_interphalangeal_joint", top: 70, right: 100, currentValue: widget.getCurrentAnswer("middle_finger_distal_interphalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "ring_finger_metacarpophalangeal_joint", top: 210, right: 120, currentValue: widget.getCurrentAnswer("ring_finger_metacarpophalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "ring_finger_proximal_interphalangeal_joint", top: 150, right: 175, currentValue: widget.getCurrentAnswer("ring_finger_proximal_interphalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "ring_finger_distal_interphalangeal_joint", top: 115, right: 210, currentValue: widget.getCurrentAnswer("ring_finger_distal_interphalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "small_finger_metacarpophalangeal_joint", top: 255, right: 175, currentValue: widget.getCurrentAnswer("small_finger_metacarpophalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "small_finger_proximal_interphalangeal_joint", top: 225, right: 250, currentValue: widget.getCurrentAnswer("small_finger_proximal_interphalangeal_joint"), registerAnswer: widget.registerAnswer),
+                    StandardIconButton(position: "small_finger_distal_interphalangeal_joint", top: 200, right: 300, currentValue: widget.getCurrentAnswer("small_finger_distal_interphalangeal_joint"), registerAnswer: widget.registerAnswer),
                   ],
                 ),
               ],
