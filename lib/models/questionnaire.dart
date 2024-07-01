@@ -1,19 +1,20 @@
 import 'dart:convert';
 import 'package:clini_dor/models/answer.dart';
+import 'package:clini_dor/models/conduct.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class Questionnaire{  
-  final int? evaluationId;
+  final int? questionnaireId;
   final int patientId;
   final DateTime date;
   String? conduct;
   List<Answer>? answers;
-  Questionnaire({required this.patientId, required this.date, this.answers, this.evaluationId});
+  Questionnaire({required this.patientId, required this.date, this.answers, this.questionnaireId});
 
   factory Questionnaire.fromJson(Map<String, dynamic> json){
     return Questionnaire(
-      evaluationId: json["Id"], 
+      questionnaireId: json["Id"], 
       patientId: json["Prontuario"], 
       date: ConvertDate(json["Data"])
     );
@@ -54,6 +55,21 @@ class Questionnaire{
     }else{
       return false;
     }
+  }
+
+  Future<int> getPatientLastQuestionnaire() async{
+    List<Questionnaire> allQuestionnaires = await Questionnaire.getQuestionnairesAsync();
+    var filteredQuestionnaires = allQuestionnaires.where((element) => element.patientId == patientId).toList();
+    filteredQuestionnaires.sort((a,b) => a.questionnaireId!.compareTo(b.questionnaireId!));
+    return filteredQuestionnaires.last.questionnaireId!;
+  }
+
+  Future<void> generateConduct() async{
+    getPatientLastQuestionnaire().then((value){
+      Conduct conduct = Conduct(patientId: patientId, questionnaireId: value);
+      conduct.saveConduct();
+    });
+    
   }
 
 }

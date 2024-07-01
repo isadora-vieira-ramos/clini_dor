@@ -121,10 +121,11 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
   }
 
   void sendAnswers(){
-    Questionnaire questionnaire =   Questionnaire(patientId: widget.patientId, date: DateTime.now(), answers: answers);
-    questionnaire.saveQuestionnaire();
+    Questionnaire questionnaire = Questionnaire(patientId: widget.patientId, date: DateTime.now(), answers: answers);
+    questionnaire.saveQuestionnaire().then((value){
+      questionnaire.generateConduct();
+    });
 
-    answers.sort((a, b) => a.id.compareTo(b.id));
     AlertDialog alert = AlertDialog(
       title: const Text("Questionário enviado!"),
       actions: <Widget>[
