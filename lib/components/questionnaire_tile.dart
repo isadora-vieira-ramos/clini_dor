@@ -6,7 +6,8 @@ import 'package:intl/intl.dart';
 
 class QuestionnaireTile extends StatelessWidget {
   final Questionnaire questionnaire;
-  const QuestionnaireTile({super.key, required this.questionnaire});
+  final int indexInList;
+  const QuestionnaireTile({super.key, required this.questionnaire, required this.indexInList});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class QuestionnaireTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Questionário ${questionnaire.evaluationId}',
+                'Questionário ${indexInList + 1}',
                 style: GoogleFonts.josefinSans(
                   textStyle: const TextStyle(
                     fontSize: 15    
@@ -39,7 +40,7 @@ class QuestionnaireTile extends StatelessWidget {
                 ),
               ),
               const Padding(
-                padding: EdgeInsets.only(top:8.0, left:8, right: 8),
+                padding: EdgeInsets.only(top:8.0),
                 child: Divider(color: Colors.black),
               )    
             ],

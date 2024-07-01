@@ -136,7 +136,7 @@ class _PatientPageState extends State<PatientPage> {
                         scrollDirection: Axis.vertical,
                         itemBuilder: (context, index) {
                           Questionnaire questionnaire = questionnaires[index];
-                          return QuestionnaireTile(questionnaire: questionnaire);
+                          return QuestionnaireTile(questionnaire: questionnaire, indexInList: index);
                         },
                       )
                     );
