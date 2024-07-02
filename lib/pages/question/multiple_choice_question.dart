@@ -28,6 +28,7 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
 
   @override
   void initState() {
+    super.initState();
     options = { for (var element in widget.question.options) element : widget.currentAnswers.toString().contains(element)};
     var lastSelected = options.entries.toList().where((x) => x.value == true).toList();
     for(var element in lastSelected){

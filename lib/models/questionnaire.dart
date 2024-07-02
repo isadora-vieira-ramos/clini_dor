@@ -16,22 +16,22 @@ class Questionnaire{
     return Questionnaire(
       questionnaireId: json["Id"], 
       patientId: json["Prontuario"], 
-      date: ConvertDate(json["Data"])
+      date: convertDate(json["Data"])
     );
   }
 
   Map toJson() => {
-    'data': DateTimeToString(date),
+    'data': dateTimeToString(date),
     'prontuario': patientId,
     'answers': jsonEncode(answers),
   };
 
-  static ConvertDate(String date){
+  static convertDate(String date){
     String formatedDate = date.substring(0, 10).replaceAll("-", "");
     return DateTime.parse(formatedDate);
   }
 
-  String DateTimeToString(DateTime date){
+  String dateTimeToString(DateTime date){
     return "${date.day}/${date.month < 10? "0${date.month}": date.month}/${date.year <10? "0${date.year}":date.year}";
   }
 

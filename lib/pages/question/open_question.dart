@@ -1,7 +1,5 @@
 import 'package:clini_dor/models/question.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 class OpenQuestion extends StatefulWidget {
   Question question;

@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ConductsPage extends StatelessWidget {
 
-  ConductsPage({super.key});
+  const ConductsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

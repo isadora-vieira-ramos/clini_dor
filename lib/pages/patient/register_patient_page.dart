@@ -1,7 +1,6 @@
 import 'package:clini_dor/components/standard_textfield.dart';
 import 'package:clini_dor/models/patient.dart';
 import 'package:clini_dor/pages/home_page.dart';
-import 'package:clini_dor/pages/patient/patient_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';

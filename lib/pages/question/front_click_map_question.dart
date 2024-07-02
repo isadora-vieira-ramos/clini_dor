@@ -2,7 +2,6 @@ import 'package:clini_dor/components/standard_icon_button.dart';
 import 'package:clini_dor/models/question.dart';
 import 'package:clini_dor/pages/question/hand_click_map_question.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
 class FrontClickMapQuestion extends StatefulWidget {
   Question question;
@@ -16,10 +15,10 @@ class FrontClickMapQuestion extends StatefulWidget {
 
 class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
   List<String> selectedOptions = [];
-
-
+  
   @override
   void initState() {
+    super.initState();
     if(widget.currentAnswer != null && widget.currentAnswer!.isNotEmpty){
       var savedAnswers = widget.currentAnswer!.split(",");
       for(var element in savedAnswers){

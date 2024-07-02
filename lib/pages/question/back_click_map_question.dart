@@ -1,7 +1,6 @@
 import 'package:clini_dor/components/standard_icon_button.dart';
 import 'package:clini_dor/models/question.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
 class BackClickMapQuestion extends StatefulWidget {
   Question question;
@@ -17,6 +16,7 @@ class _BackClickMapQuestionState extends State<BackClickMapQuestion> {
 
   @override
   void initState() {
+    super.initState();
     if(widget.currentAnswer != null && widget.currentAnswer!.isNotEmpty){
       var savedAnswers = widget.currentAnswer!.split(",");
       for(var element in savedAnswers){

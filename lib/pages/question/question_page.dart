@@ -7,7 +7,6 @@ import "package:clini_dor/pages/question/multiple_choice_question.dart";
 import "package:clini_dor/pages/question/open_question.dart";
 import "package:clini_dor/pages/question/rating_question.dart";
 import "package:flutter/material.dart";
-import "package:flutter/services.dart";
 
 class QuestionPage extends StatelessWidget {
   Question question;

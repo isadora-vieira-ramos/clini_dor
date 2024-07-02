@@ -1,12 +1,11 @@
 import 'package:clini_dor/components/standard_icon_button.dart';
-import 'package:clini_dor/models/question.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HandClickMapQuestion extends StatefulWidget {
   final Function getCurrentAnswer;
   final Function registerAnswer;
-  HandClickMapQuestion({super.key, required this.getCurrentAnswer, required this.registerAnswer});
+  const HandClickMapQuestion({super.key, required this.getCurrentAnswer, required this.registerAnswer});
 
   @override
   State<HandClickMapQuestion> createState() => _HandClickMapQuestionState();

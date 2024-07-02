@@ -137,7 +137,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
           title: const Text("Atenção"),
           content: const Text(
             "Informar que a dor não persiste por pelo menos 3 meses indica que a dor não é crônica, portanto não há necessidade de "
-            + "continuar o questionário. Para mudar a resposta, clique em Cancelar; se quer sair do questionário, clique em OK.",
+            "continuar o questionário. Para mudar a resposta, clique em Cancelar; se quer sair do questionário, clique em OK.",
             style: TextStyle(
               fontSize: 16,
             ),

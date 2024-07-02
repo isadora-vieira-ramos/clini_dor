@@ -32,23 +32,23 @@ class Patient{
   factory Patient.fromJson(Map<String, dynamic> json){
     return Patient(
       name: json["Nome"], 
-      birthDate: StringToDateTime(json["DataNascimento"]),
-      age: CalculateAge(json["DataNascimento"]), 
+      birthDate: stringToDateTime(json["DataNascimento"]),
+      age: calculateAge(json["DataNascimento"]), 
       sex: json["Sexo"],
       contactNumber: json["NumeroContato"].toString(),
       occupation: json["Profissao"],
       education: json["Escolaridade"],
-      weight: StringToDouble(json["Peso"].toString()),
+      weight: stringToDouble(json["Peso"].toString()),
       height: json["Altura"],
       medicalRecord: json["Prontuario"],
-      bmi: json["IMC"].toString().isEmpty || json["IMC"].toString() == "null" ? 0: StringToDouble(json["IMC"].toString())
+      bmi: json["IMC"].toString().isEmpty || json["IMC"].toString() == "null" ? 0: stringToDouble(json["IMC"].toString())
     );
   }
 
   Map toJson() => {
     'nome': name,
     'prontuario': medicalRecord,
-    'dataNascimento': DateTimeToString(birthDate),
+    'dataNascimento': dateTimeToString(birthDate),
     'sexo': sex,
     'numeroContato': contactNumber,
     'profissao': occupation,
@@ -58,11 +58,11 @@ class Patient{
     'imc': bmi!.toStringAsFixed(2)
   };
 
-  static double StringToDouble(String weight){
+  static double stringToDouble(String weight){
     return double.parse(weight);
   }
 
-  static int CalculateAge(String birth){
+  static int calculateAge(String birth){
     String formatedDate = birth.substring(0, 10).replaceAll("-", "");
     DateTime birthDate = DateTime.parse(formatedDate);
     int age = DateTime.now().difference(birthDate).inDays ~/ 365;
@@ -74,12 +74,12 @@ class Patient{
     bmi = weight /(heightInMeters * heightInMeters);
   }
 
-  static DateTime StringToDateTime(String birthDate){
+  static DateTime stringToDateTime(String birthDate){
     String formatedDate = birthDate.substring(0, 10).replaceAll("-", "");
     return DateTime.parse(formatedDate);
   }
 
-  String DateTimeToString(DateTime date){
+  String dateTimeToString(DateTime date){
     return "${date.day}/${date.month < 10? "0${date.month}": date.month}/${date.year <10? "0${date.year}":date.year}";
   }
 
@@ -96,8 +96,8 @@ class Patient{
 
   Future<bool> savePatient() async{
     var url = "${dotenv.env["API_URL"]}?type=patients";
-    this.calculateBMI();
-    var patientBody = jsonEncode(this.toJson());
+    calculateBMI();
+    var patientBody = jsonEncode(toJson());
     final response = await http.post(Uri.parse(url), body: patientBody);
     if(response.statusCode == 302){
       return true;
