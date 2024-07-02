@@ -107,7 +107,11 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
       if(_selectedIndex < _questions.length - 1){
         if(_questions[_selectedIndex].questionType == QuestionType.closed){
           bool questionAnswered = checkIfQuestionWasAnswered(_questions[_selectedIndex].id);
-          if(!questionAnswered){
+          if(questionAnswered){
+            if(checkIfPainLessThanThreeMonths(_questions[_selectedIndex].id)){
+              return;
+            }
+          }else{
             return;
           }
         }
@@ -125,27 +129,42 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
     }
   }
 
-  void painLessThanThreeMonths(){
-    AlertDialog alert = AlertDialog(
-      title: const Text("Atenção"),
-      content: const Text("Informar que a dor não persiste por pelo menos 3 meses indica que a dor não é crônica."),
-      actions: <Widget>[
-        TextButton(
-          child: const Text("Cancelar"),
-          onPressed: () {},
-        ),
-        TextButton(
-          child: const Text("OK"),
-          onPressed: () {},
-        )
-      ],
-    );
-    showDialog(
-      context: context, 
-      builder: (BuildContext context){
-        return alert;
+  bool checkIfPainLessThanThreeMonths(int id){
+    if(id == 1){
+      var answer = answers.where((answers) => answers.id == id).toList();
+      if(answer[0].pickedAnswers[0] == "Não"){
+        AlertDialog alert = AlertDialog(
+          title: const Text("Atenção"),
+          content: const Text(
+            "Informar que a dor não persiste por pelo menos 3 meses indica que a dor não é crônica, portanto não há necessidade de "
+            + "continuar o questionário. Para mudar a resposta, clique em Cancelar; se quer sair do questionário, clique em OK."
+            ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("Cancelar"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+        showDialog(
+          context: context, 
+          builder: (BuildContext context){
+            return alert;
+          }
+        );
+        return true;
       }
-    );
+    }
+    return false;
   }
   
   String getCurrentAnswer(){
