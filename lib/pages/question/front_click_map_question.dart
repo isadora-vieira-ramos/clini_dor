@@ -94,7 +94,6 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.currentAnswer);
 
     return Scaffold(
       backgroundColor: Colors.white,
