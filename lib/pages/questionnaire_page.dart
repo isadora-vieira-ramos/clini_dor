@@ -105,9 +105,47 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
   void nextQuestion(){
     setState(() {
       if(_selectedIndex < _questions.length - 1){
+        if(_questions[_selectedIndex].questionType == QuestionType.closed){
+          bool questionAnswered = checkIfQuestionWasAnswered(_questions[_selectedIndex].id);
+          if(!questionAnswered){
+            return;
+          }
+        }
         _selectedIndex++;
       }
     });
+  }
+
+  bool checkIfQuestionWasAnswered(int id){
+    var answer = answers.where((answers) => answers.id == id);
+    if(answer.isEmpty){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  void painLessThanThreeMonths(){
+    AlertDialog alert = AlertDialog(
+      title: const Text("Atenção"),
+      content: const Text("Informar que a dor não persiste por pelo menos 3 meses indica que a dor não é crônica."),
+      actions: <Widget>[
+        TextButton(
+          child: const Text("Cancelar"),
+          onPressed: () {},
+        ),
+        TextButton(
+          child: const Text("OK"),
+          onPressed: () {},
+        )
+      ],
+    );
+    showDialog(
+      context: context, 
+      builder: (BuildContext context){
+        return alert;
+      }
+    );
   }
   
   String getCurrentAnswer(){
@@ -127,7 +165,20 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
     });
 
     AlertDialog alert = AlertDialog(
-      title: const Text("Questionário enviado!"),
+      title: Text(
+        style: GoogleFonts.josefinSans(
+          textStyle: const TextStyle(
+            fontSize: 20,
+            color: Colors.black
+          )
+        ),
+        "Mensagem"
+      ),
+      content: const Text("As respostas foram enviadas com sucesso!", 
+        style: TextStyle(
+          fontSize: 17
+        ),
+      ),
       actions: <Widget>[
         TextButton(
           child: const Text("OK"),
