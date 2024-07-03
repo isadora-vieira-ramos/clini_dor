@@ -5,14 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-class RegisterPatientPage extends StatefulWidget {
-  const RegisterPatientPage({super.key});
+class RegisterOrEditPatientPage extends StatefulWidget {
+  Patient? patient;
+  RegisterOrEditPatientPage({super.key, this.patient});
 
   @override
-  State<RegisterPatientPage> createState() => _RegisterPatientPageState();
+  State<RegisterOrEditPatientPage> createState() => _RegisterOrEditPatientPageState();
 }
 
-class _RegisterPatientPageState extends State<RegisterPatientPage> {
+class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
+
+  bool editingPatient = false;
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
@@ -21,6 +24,21 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
   final TextEditingController _occupationController = TextEditingController();
   final TextEditingController _weightController = TextEditingController();
   final TextEditingController _heightController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    if(widget.patient != null){
+      editingPatient = true;
+      _dateController.text = DateFormat('dd/MM/yyyy').format(widget.patient!.birthDate);
+      _nameController.text = widget.patient!.name.toString();
+      _medicalRecord.text = widget.patient!.medicalRecord.toString();
+      _numberController.text = widget.patient!.contactNumber.toString();
+      _occupationController.text = widget.patient!.occupation.toString();
+      _weightController.text = widget.patient!.weight.toString();
+      _heightController.text = widget.patient!.height.toString();
+    }
+  }
   
   String dropdownValueSex = 'Masculino';
   String dropdownValueEducation = 'Fundamental incompleto';
@@ -96,6 +114,10 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
     });
   }
 
+  removePatient(){
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,7 +127,7 @@ class _RegisterPatientPageState extends State<RegisterPatientPage> {
         elevation: 0,
         foregroundColor: Colors.white,
         title: Text(
-          "Novo Paciente",
+          editingPatient? "Editar Paciente": "Novo Paciente",
           style: GoogleFonts.josefinSans(
             textStyle: const TextStyle(
               fontSize: 20,

@@ -4,7 +4,7 @@ import 'package:clini_dor/components/no_items.dart';
 import 'package:clini_dor/components/questionnaire_tile.dart';
 import 'package:clini_dor/models/questionnaire.dart';
 import 'package:clini_dor/models/patient.dart';
-import 'package:clini_dor/pages/patient/patient_edit_page.dart';
+import 'package:clini_dor/pages/patient/register_or_edit_patient_page.dart';
 import 'package:clini_dor/pages/questionnaire_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -83,7 +83,7 @@ class _PatientPageState extends State<PatientPage> {
                 ),
                 TextButton.icon(
                   icon: const Icon(Icons.edit),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PatientEditPage())),
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterOrEditPatientPage(patient: widget.patient))),
                   label: Text(
                     "Editar",
                     style: GoogleFonts.josefinSans(

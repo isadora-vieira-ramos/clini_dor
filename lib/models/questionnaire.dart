@@ -36,7 +36,7 @@ class Questionnaire{
   }
 
   static Future<List<Questionnaire>> getQuestionnairesAsync() async{
-    var url = "${dotenv.env["API_URL"]}?type=questionnaires";
+    var url = "${dotenv.env["API_URL"]}?type=getQuestionnaires";
     final response = await http.get(Uri.parse(url));
     if(response.statusCode == 200){
       List<dynamic> jsonResponse = jsonDecode(response.body);
@@ -47,7 +47,7 @@ class Questionnaire{
   }
 
   Future<bool> saveQuestionnaire() async{
-    var url = "${dotenv.env["API_URL"]}?type=questionnaires";
+    var url = "${dotenv.env["API_URL"]}?type=saveQuestionnaire";
     var patientBody = jsonEncode(toJson());
     final response = await http.post(Uri.parse(url), body: patientBody);
     if(response.statusCode == 302){

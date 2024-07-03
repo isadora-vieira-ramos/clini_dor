@@ -4,7 +4,7 @@ import 'package:clini_dor/components/no_items.dart';
 import 'package:clini_dor/components/patient_tile.dart';
 import 'package:clini_dor/models/patient.dart';
 import 'package:clini_dor/models/patients.dart';
-import 'package:clini_dor/pages/patient/register_patient_page.dart';
+import 'package:clini_dor/pages/patient/register_or_edit_patient_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -54,7 +54,7 @@ class _PatientListPageState extends State<PatientListPage> {
       child: Consumer<Patients>(
         builder: (context, value, child) =>Scaffold(
           backgroundColor: Colors.white,
-          floatingActionButton: FloatingButton(onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterPatientPage()))),
+          floatingActionButton: FloatingButton(onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterOrEditPatientPage()))),
           body: Column(
             children: [
               Padding(

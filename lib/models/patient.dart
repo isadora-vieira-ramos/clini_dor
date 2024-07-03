@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class Patient{
+  int? patientId;
   final String name;
   final DateTime birthDate;
   final int? age;
@@ -26,11 +27,13 @@ class Patient{
     required this.weight,
     required this.height,
     required this.medicalRecord,
-    this.bmi
+    this.bmi,
+    this.patientId
   });
 
   factory Patient.fromJson(Map<String, dynamic> json){
     return Patient(
+      patientId: json["Id"],
       name: json["Nome"], 
       birthDate: stringToDateTime(json["DataNascimento"]),
       age: calculateAge(json["DataNascimento"]), 
@@ -84,7 +87,7 @@ class Patient{
   }
 
   static Future<List<Patient>> getPatientsAsync() async{
-    var url = "${dotenv.env["API_URL"]}?type=patients";
+    var url = "${dotenv.env["API_URL"]}?type=getPatients";
     final response = await http.get(Uri.parse(url));
     if(response.statusCode == 200){
       List<dynamic> jsonResponse = jsonDecode(response.body);
@@ -95,7 +98,7 @@ class Patient{
   }
 
   Future<bool> savePatient() async{
-    var url = "${dotenv.env["API_URL"]}?type=patients";
+    var url = "${dotenv.env["API_URL"]}?type=savePatient";
     calculateBMI();
     var patientBody = jsonEncode(toJson());
     final response = await http.post(Uri.parse(url), body: patientBody);
