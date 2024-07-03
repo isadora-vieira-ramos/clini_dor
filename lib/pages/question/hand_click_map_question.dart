@@ -23,7 +23,7 @@ class _HandClickMapQuestionState extends State<HandClickMapQuestion> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 20.0),
+              padding: const EdgeInsets.only(top: 10.0),
               child: Text(
                 "Dores na mãos",
                 style: GoogleFonts.josefinSans(
@@ -33,51 +33,47 @@ class _HandClickMapQuestionState extends State<HandClickMapQuestion> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      "Marque os pontos onde de dor em qualquer uma das mãos",
-                      textAlign: TextAlign.justify,
-                      style: TextStyle(
-                        fontSize: 18
-                      )
-                    ),
+            Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "Marque os pontos onde de dor em qualquer uma das mãos",
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      fontSize: 18
+                    )
                   ),
-                  Row(
-                    children: [
-                      Icon(Icons.radio_button_checked, color: Colors.yellow.shade800),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: Text(
-                          "Menor intensidade",
-                          style: TextStyle(
-                            fontSize: 15
-                          ),
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.radio_button_checked, color: Colors.yellow.shade800),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        "Menor intensidade",
+                        style: TextStyle(
+                          fontSize: 15
                         ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(height: 5),
-                  const Row(
-                    children: [
-                      Icon(Icons.radio_button_checked, color: Colors.red),
-                      Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: Text(
-                          "Maior intensidade",
-                          style: TextStyle(
-                            fontSize: 15
-                          ),
+                      ),
+                    )
+                  ],
+                ),
+                const Row(
+                  children: [
+                    Icon(Icons.radio_button_checked, color: Colors.red),
+                    Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        "Maior intensidade",
+                        style: TextStyle(
+                          fontSize: 15
                         ),
-                      )
-                    ],
-                  )
-                ],
-              ),
+                      ),
+                    )
+                  ],
+                )
+              ],
             ),
             ListView(
               scrollDirection: Axis.vertical,
@@ -87,10 +83,7 @@ class _HandClickMapQuestionState extends State<HandClickMapQuestion> {
                   children: [
                     Container(
                       alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Image.asset('lib/images/hand_outline.png', fit: BoxFit.fill),
-                      )
+                      child: Image.asset('lib/images/hand_outline.png', fit: BoxFit.fill)
                     ),
                     StandardIconButton(position: "wrist_joint", top: 350, left: 120, currentValue: widget.getCurrentAnswer("wrist_joint"), registerAnswer: widget.registerAnswer),
                     StandardIconButton(position: "thumb_metacarpophalangeal_joint", top: 240, left: 240, currentValue: widget.getCurrentAnswer("thumb_metacarpophalangeal_joint"), registerAnswer: widget.registerAnswer),
@@ -111,7 +104,7 @@ class _HandClickMapQuestionState extends State<HandClickMapQuestion> {
                 ),
               ],
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 5),
             FilledButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
