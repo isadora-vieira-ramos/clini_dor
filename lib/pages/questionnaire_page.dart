@@ -112,6 +112,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
               return;
             }
           }else{
+            showSnackBar();
             return;
           }
         }
@@ -119,6 +120,17 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
       }
     });
   }
+
+  showSnackBar(){
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text(
+        "Pergunta obrigatória!",
+        style: TextStyle(
+          fontSize: 17
+        ),
+      ),
+    ));
+  } 
 
   bool checkIfQuestionWasAnswered(int id){
     var answer = answers.where((answers) => answers.id == id);
