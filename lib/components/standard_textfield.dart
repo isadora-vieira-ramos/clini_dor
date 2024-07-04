@@ -22,7 +22,7 @@ class StandardTextfield extends StatelessWidget {
         obscureText: obscureText,
         enabled: enabled,
         validator: (value) {
-          if (value == null || value.isEmpty) {
+          if ((value == null || value.isEmpty) && enabled != false) {
             return 'Campo obrigatório';
           }
           return null;

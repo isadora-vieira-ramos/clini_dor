@@ -62,8 +62,8 @@ class Patient{
     'imc': bmi!.toStringAsFixed(2)
   };
 
-  static double stringToDouble(String weight){
-    return double.parse(weight);
+  static double stringToDouble(String value){
+    return double.parse(value);
   }
 
   static int calculateAge(String birth){
@@ -112,6 +112,7 @@ class Patient{
 
   Future<bool> editPatient() async{
     var url = "${dotenv.env["API_URL"]}?type=editPatient";
+    calculateBMI();
     var patientBody = jsonEncode(toJson());
     final response = await http.post(Uri.parse(url), body: patientBody);
     if(response.statusCode == 302){

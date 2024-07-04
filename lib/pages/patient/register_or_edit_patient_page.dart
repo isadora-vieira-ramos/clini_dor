@@ -24,6 +24,7 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
   final TextEditingController _occupationController = TextEditingController();
   final TextEditingController _weightController = TextEditingController();
   final TextEditingController _heightController = TextEditingController();
+  final TextEditingController _imcController = TextEditingController();
 
   @override
   void initState() {
@@ -38,6 +39,9 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
       _occupationController.text = widget.patient!.occupation.toString();
       _weightController.text = widget.patient!.weight.toString();
       _heightController.text = widget.patient!.height.toString();
+      _imcController.text = widget.patient!.bmi.toString();
+      dropdownValueSex = widget.patient!.sex == "M"? "Masculino": "Feminino";
+      dropdownValueEducation = widget.patient!.education;
     }
   }
   
@@ -56,6 +60,68 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
     if (pickedDate == null) return;
     _dateController.text = DateFormat('dd/MM/yyyy').format(pickedDate);
     chosenDate = pickedDate;
+  }
+
+  editPatient(){
+    Patient patient = Patient(
+      patientId: widget.patient!.patientId,
+      name: _nameController.text, 
+      birthDate: chosenDate, 
+      sex: dropdownValueSex == 'Masculino'? "M": "F", 
+      contactNumber: _numberController.value.text, 
+      occupation: _occupationController.value.text, 
+      education: dropdownValueEducation, 
+      weight: double.parse(_weightController.value.text), 
+      height: int.parse(_heightController.value.text), 
+      medicalRecord: int.parse(_medicalRecord.value.text)
+    );
+
+    patient.editPatient().then((value) {
+      if(value){
+        AlertDialog alert = AlertDialog(
+          title: Text(
+            "Dados alterados com sucesso!",
+            style: GoogleFonts.josefinSans(
+              textStyle: const TextStyle(
+                fontSize: 17,
+              )
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+              },
+            )
+          ],
+        );
+        showDialog(
+          context: context, 
+          builder: (BuildContext context){
+            return alert;
+          }
+        );
+      }else{
+        AlertDialog alert = AlertDialog(
+          content: const Text("Erro ao tentar alterar os dados do paciente"),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+        showDialog(
+          context: context, 
+          builder: (BuildContext context){
+            return alert;
+          }
+        );
+      }
+    });
   }
 
   savePatient(){
@@ -113,10 +179,6 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
         );
       }
     });
-  }
-
-  removePatient(){
-    
   }
 
   @override
@@ -315,6 +377,23 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
                 hintText: 'Altura (cm)', 
                 obscureText: false,
               ),
+              Padding(
+                padding: const EdgeInsets.only(left:8.0),
+                child: Text(
+                  "IMC calculado",
+                  style: GoogleFonts.josefinSans(
+                    textStyle: const TextStyle(
+                      fontSize: 18,
+                    )
+                  ),
+                ),
+              ),
+              StandardTextfield(
+                controller: _imcController, 
+                hintText: 'IMC', 
+                obscureText: false,
+                enabled: false,
+              ),
               ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
@@ -323,7 +402,11 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
                 ),
                 onPressed: () {
                   if(_formKey.currentState!.validate()){
-                    savePatient();
+                    if(editingPatient) {
+                      editPatient();
+                    } else {
+                      savePatient();
+                    }
                   }
                 }, 
                 child: const Text(
