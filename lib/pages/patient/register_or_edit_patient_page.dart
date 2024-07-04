@@ -144,16 +144,55 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
           child: ListView(
             padding: const EdgeInsets.all(10),
             children: [
+              if(editingPatient)...[
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Text(
+                    "Nome",
+                    style: GoogleFonts.josefinSans(
+                      textStyle: const TextStyle(
+                        fontSize: 18,
+                      )
+                    ),
+                  ),
+                )
+              ], 
               StandardTextfield(
                 controller: _nameController,
                 hintText: 'Nome', 
                 obscureText: false
               ),
+              if(editingPatient)...[
+                Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "Prontuário",
+                    style: GoogleFonts.josefinSans(
+                      textStyle: const TextStyle(
+                        fontSize: 18,
+                      )
+                    ),
+                  ),
+                )
+              ],
               StandardTextfield(
                 controller: _medicalRecord, 
                 hintText: 'Prontuário', 
                 obscureText: false
               ),
+              if(editingPatient)...[
+                Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "Data de nascimento",
+                    style: GoogleFonts.josefinSans(
+                      textStyle: const TextStyle(
+                        fontSize: 18,
+                      )
+                    ),
+                  ),
+                )
+              ],
               StandardTextfield(
                 controller: _dateController, 
                 hintText: 'Data de nascimento', 
@@ -182,11 +221,37 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
                   }).toList(),
                 ),
               ),
+              if(editingPatient)...[
+                Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "Número de contato",
+                    style: GoogleFonts.josefinSans(
+                      textStyle: const TextStyle(
+                        fontSize: 18,
+                      )
+                    ),
+                  ),
+                )
+              ],
               StandardTextfield(
                 controller: _numberController, 
                 hintText: 'Número de contato', 
                 obscureText: false
               ),
+              if(editingPatient)...[
+                Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "Profissão",
+                    style: GoogleFonts.josefinSans(
+                      textStyle: const TextStyle(
+                        fontSize: 18,
+                      )
+                    ),
+                  ),
+                )
+              ],
               StandardTextfield(
                 controller: _occupationController, 
                 hintText: 'Profissão', 
@@ -214,11 +279,37 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
                   }).toList(),
                 ),
               ),
+              if(editingPatient)...[
+                Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "Peso (Kg)",
+                    style: GoogleFonts.josefinSans(
+                      textStyle: const TextStyle(
+                        fontSize: 18,
+                      )
+                    ),
+                  ),
+                )
+              ],
               StandardTextfield(
                 controller: _weightController, 
                 hintText: 'Peso (Kg)', 
                 obscureText: false
               ),
+              if(editingPatient)...[
+                Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "Altura (cm)",
+                    style: GoogleFonts.josefinSans(
+                      textStyle: const TextStyle(
+                        fontSize: 18,
+                      )
+                    ),
+                  ),
+                )
+              ],
               StandardTextfield(
                 controller: _heightController, 
                 hintText: 'Altura (cm)', 
