@@ -31,6 +31,7 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
     if(widget.patient != null){
       editingPatient = true;
       _dateController.text = DateFormat('dd/MM/yyyy').format(widget.patient!.birthDate);
+      chosenDate = widget.patient!.birthDate;
       _nameController.text = widget.patient!.name.toString();
       _medicalRecord.text = widget.patient!.medicalRecord.toString();
       _numberController.text = widget.patient!.contactNumber.toString();

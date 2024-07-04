@@ -49,6 +49,7 @@ class Patient{
   }
 
   Map toJson() => {
+    'id': patientId,
     'nome': name,
     'prontuario': medicalRecord,
     'dataNascimento': dateTimeToString(birthDate),
@@ -100,6 +101,17 @@ class Patient{
   Future<bool> savePatient() async{
     var url = "${dotenv.env["API_URL"]}?type=savePatient";
     calculateBMI();
+    var patientBody = jsonEncode(toJson());
+    final response = await http.post(Uri.parse(url), body: patientBody);
+    if(response.statusCode == 302){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  Future<bool> editPatient() async{
+    var url = "${dotenv.env["API_URL"]}?type=editPatient";
     var patientBody = jsonEncode(toJson());
     final response = await http.post(Uri.parse(url), body: patientBody);
     if(response.statusCode == 302){
