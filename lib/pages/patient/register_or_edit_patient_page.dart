@@ -42,12 +42,26 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
       _imcController.text = widget.patient!.bmi.toString();
       dropdownValueSex = widget.patient!.sex == "M"? "Masculino": "Feminino";
       dropdownValueEducation = widget.patient!.education;
+
+      _weightController.addListener(calculateIMC);
+      _heightController.addListener(calculateIMC);
     }
   }
   
   String dropdownValueSex = 'Masculino';
   String dropdownValueEducation = 'Fundamental incompleto';
   late DateTime chosenDate;
+
+  calculateIMC(){
+    if(_heightController.value.text.isNotEmpty && _weightController.value.text.isNotEmpty){
+      var heightInMeters = double.parse(_heightController.value.text) /100;
+      var weight = double.parse(_weightController.value.text);
+      var bmi = weight /(heightInMeters * heightInMeters);
+      setState(() {
+        _imcController.text = bmi.toStringAsFixed(2);
+      });
+    }
+  }
 
   showDateTextField({required BuildContext context}) async {
     DateTime? pickedDate = await showDatePicker(
@@ -357,7 +371,7 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
               StandardTextfield(
                 controller: _weightController, 
                 hintText: 'Peso (Kg)', 
-                obscureText: false
+                obscureText: false,
               ),
               if(editingPatient)...[
                 Padding(
