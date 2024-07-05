@@ -31,6 +31,7 @@ class _AuthPageState extends State<AuthPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
+                constraints: const BoxConstraints(maxWidth: 600),
                 padding: const EdgeInsets.only(bottom: 30, top: 30, left: 20, right: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
