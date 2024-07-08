@@ -1,6 +1,7 @@
 import 'package:clini_dor/pages/about_page.dart';
 import 'package:clini_dor/pages/intro_page.dart';
 import 'package:clini_dor/pages/patient/patient_list_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,6 +15,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   int _selectedIndex = 0;
+
+  void signUserOut(){
+    FirebaseAuth.instance.signOut();
+  }
+
   void navigateBar(int index){
     setState(() {
       _selectedIndex = index;
@@ -87,7 +93,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             GestureDetector(
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const IntroPage())),
+              onTap: signUserOut,
               child: const Padding(
                 padding: EdgeInsets.only(left: 25.0, bottom:25.0),
                 child: ListTile(

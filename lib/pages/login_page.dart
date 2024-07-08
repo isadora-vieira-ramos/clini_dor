@@ -1,22 +1,27 @@
 import 'package:clini_dor/components/standard_textfield.dart';
+import 'package:clini_dor/pages/auth_page.dart';
 import 'package:clini_dor/pages/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginPage extends StatelessWidget {
+  LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-
-  final TextEditingController _userController = TextEditingController();
-  final TextEditingController _passwordRecord = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+
+    void signUserIn() async{
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text, 
+        password: _passwordController.text
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -50,19 +55,19 @@ class _LoginPageState extends State<LoginPage> {
                       )
                     ),
                     StandardTextfield(
-                      controller: _userController, 
-                      hintText: 'Usuário', 
+                      controller: _emailController, 
+                      hintText: 'Email', 
                       obscureText: false
                     ),
                     StandardTextfield(
-                      controller: _passwordRecord, 
+                      controller: _passwordController, 
                       hintText: 'Senha', 
                       obscureText: true
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top:15, right: 20, left: 20),
                       child: GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage())),
+                        onTap: signUserIn,
                         child: Container(
                           decoration: BoxDecoration(
                             color: Theme.of(context).colorScheme.tertiary,

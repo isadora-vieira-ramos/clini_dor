@@ -1,4 +1,5 @@
 import 'package:clini_dor/components/standard_textfield.dart';
+import 'package:clini_dor/pages/auth_page.dart';
 import 'package:clini_dor/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -67,7 +68,7 @@ class _SignInPageState extends State<SignInPage> {
                     Padding(
                       padding: const EdgeInsets.only(top:15, right: 20, left: 20),
                       child: GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthPage())),
                         child: Container(
                           decoration: BoxDecoration(
                             color: Theme.of(context).colorScheme.tertiary,

@@ -1,3 +1,4 @@
+import 'package:clini_dor/pages/auth_page.dart';
 import 'package:clini_dor/pages/login_page.dart';
 import 'package:clini_dor/pages/signin_page.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class IntroPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   GestureDetector(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage())),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthPage())),
                     child: Container(
                       constraints: const BoxConstraints(maxWidth: 400),
                       decoration: BoxDecoration(
@@ -68,7 +69,7 @@ class IntroPage extends StatelessWidget {
                       padding: const EdgeInsets.all(25.0),
                       child: Center(
                         child: Text(
-                          'LOGIN',
+                          'ACESSAR',
                           style: GoogleFonts.josefinSans(
                             textStyle: TextStyle(
                               color: Theme.of(context).colorScheme.onSecondary,
