@@ -3,14 +3,14 @@ import 'package:clini_dor/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AuthPage extends StatefulWidget {
-  const AuthPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<AuthPage> createState() => _AuthPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _AuthPageState extends State<AuthPage> {
+class _LoginPageState extends State<LoginPage> {
 
   final TextEditingController _userController = TextEditingController();
   final TextEditingController _passwordRecord = TextEditingController();

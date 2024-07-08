@@ -1,4 +1,4 @@
-import 'package:clini_dor/pages/auth_page.dart';
+import 'package:clini_dor/pages/login_page.dart';
 import 'package:clini_dor/pages/signin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -58,7 +58,7 @@ class IntroPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   GestureDetector(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthPage())),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage())),
                     child: Container(
                       constraints: const BoxConstraints(maxWidth: 400),
                       decoration: BoxDecoration(
