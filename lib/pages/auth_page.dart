@@ -1,4 +1,5 @@
 import 'package:clini_dor/pages/home_page.dart';
+import 'package:clini_dor/pages/login_or_signin_page.dart';
 import 'package:clini_dor/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class AuthPage extends StatelessWidget {
           }
           //não logado
           else{
-            return LoginPage();
+            return LoginOrSignInPage();
           }
         }
       )
