@@ -4,6 +4,7 @@ import 'package:clini_dor/components/standard_textfield.dart';
 import 'package:clini_dor/pages/auth_page.dart';
 import 'package:clini_dor/pages/home_page.dart';
 import 'package:clini_dor/pages/signin_page.dart';
+import 'package:clini_dor/utils/ColorUtils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -61,6 +62,7 @@ class _LoginPageState extends State<LoginPage> {
           });
         }
       }catch (e){
+        Navigator.pop(context);
         setState(() {
          errorMessage = "Credenciais inválidas";
         });
@@ -147,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                                   'ENTRAR',
                                   style: GoogleFonts.josefinSans(
                                     textStyle: TextStyle(
-                                      color: Theme.of(context).colorScheme.onSecondary,
+                                      color: ColorUtils.getMaterialColor(Colors.black).shade600,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20,
                                     )

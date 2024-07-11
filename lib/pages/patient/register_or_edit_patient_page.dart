@@ -202,13 +202,13 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
-        foregroundColor: Colors.white,
+        foregroundColor: Colors.black,
         title: Text(
           editingPatient? "Editar Paciente": "Novo Paciente",
           style: GoogleFonts.josefinSans(
             textStyle: const TextStyle(
               fontSize: 20,
-              color: Colors.white
+              color: Colors.black
             )
           ),
         ),

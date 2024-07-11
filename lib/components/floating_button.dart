@@ -9,7 +9,7 @@ class FloatingButton extends StatelessWidget {
     return FloatingActionButton(
       onPressed: onTap,
       backgroundColor:  Theme.of(context).colorScheme.tertiary,
-      child: const Icon(Icons.add, color: Colors.white),
+      child: const Icon(Icons.add, color: Colors.black),
     );
   }
 }

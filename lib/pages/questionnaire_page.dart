@@ -243,7 +243,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
           style: GoogleFonts.josefinSans(
             textStyle: const TextStyle(
               fontSize: 20,
-              color: Colors.white
+              color: Colors.black
             )
           ),
         ),

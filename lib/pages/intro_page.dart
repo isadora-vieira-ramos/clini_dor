@@ -10,7 +10,7 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -73,7 +73,7 @@ class IntroPage extends StatelessWidget {
                             'ACESSAR',
                             style: GoogleFonts.josefinSans(
                               textStyle: TextStyle(
-                                color: Theme.of(context).colorScheme.onSecondary,
+                                color: Theme.of(context).colorScheme.tertiary,
                               ),
                               fontWeight: FontWeight.bold,
                               fontSize: 20,

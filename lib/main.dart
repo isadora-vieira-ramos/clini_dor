@@ -1,6 +1,7 @@
 import 'package:clini_dor/models/patients.dart';
 import 'package:clini_dor/pages/auth_page.dart';
 import 'package:clini_dor/pages/intro_page.dart';
+import 'package:clini_dor/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -36,9 +37,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: theme.copyWith(
           colorScheme: theme.colorScheme.copyWith(
-            primary: const Color(0xff2ec4b6),
-            secondary: Colors.white,
-            tertiary: const Color(0xffff9f1c)
+            primary: const Color(0xff17c3b2),
+            secondary: Color(0xff800e13),
+            tertiary: const Color(0xffff9505),
           ) 
         ),
         home: const AuthPage(),

@@ -20,7 +20,7 @@ class _LoginOrSignInPageState extends State<LoginOrSignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    if(!showLoginPage){
+    if(showLoginPage){
       return LoginPage(
         onTap: togglePages
       );
