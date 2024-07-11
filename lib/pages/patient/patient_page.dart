@@ -40,13 +40,13 @@ class _PatientPageState extends State<PatientPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
-        foregroundColor: Colors.white,
+        foregroundColor: Colors.black,
         title: Text(
           "Paciente",
           style: GoogleFonts.josefinSans(
             textStyle: const TextStyle(
               fontSize: 20,
-              color: Colors.white
+              color: Colors.black
             )
           )
         ),
@@ -103,12 +103,13 @@ class _PatientPageState extends State<PatientPage> {
                 ),
               ),
               onPressed: (){}, 
-              icon: const Icon(Icons.download), 
+              icon: const Icon(Icons.download, color: Colors.black), 
               label: Text(
                 "Exportar dados",
                 style: GoogleFonts.josefinSans(
                   textStyle: const TextStyle(
-                    fontSize: 18
+                    fontSize: 18,
+                    color: Colors.black
                   )
                 ),
               )
