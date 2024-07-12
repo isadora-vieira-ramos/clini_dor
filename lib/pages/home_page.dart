@@ -1,5 +1,4 @@
 import 'package:clini_dor/pages/about_page.dart';
-import 'package:clini_dor/pages/intro_page.dart';
 import 'package:clini_dor/pages/patient/patient_list_page.dart';
 import 'package:clini_dor/utils/ColorUtils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
