@@ -28,6 +28,82 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
 
+    String? validateEmail(String? value) {
+      const pattern = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
+          r'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-'
+          r'\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*'
+          r'[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4]'
+          r'[0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9]'
+          r'[0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\'
+          r'x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])';
+      final regex = RegExp(pattern);
+
+      return value!.isNotEmpty && !regex.hasMatch(value)
+          ? 'Enter a valid email address'
+          : null;
+    }
+
+    void forgotPassword(){
+
+      TextEditingController _emailController = TextEditingController();
+      AlertDialog alertDialog = AlertDialog(
+        title: Text(
+          "Trocar a senha",
+          style: GoogleFonts.josefinSans(
+            textStyle: const TextStyle(
+              fontSize: 20,
+            )
+          )
+        ),
+        content: TextFormField(
+          controller: _emailController,
+          decoration: const InputDecoration(
+            hintText: "email",
+          ),
+          validator: validateEmail,
+        ),
+        actions: [
+          ElevatedButton(
+            style: ButtonStyle(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                )
+              ),
+              backgroundColor: MaterialStateProperty.all(
+                Theme.of(context).colorScheme.tertiary
+              ),
+            ),
+            child: Text(
+              "Enviar",
+              style: GoogleFonts.josefinSans(
+                textStyle: const TextStyle(
+                  fontSize: 20,
+                  color: Colors.black
+                ),
+              )
+            ),
+            onPressed: () async => {
+              if(_emailController.text.isNotEmpty){
+                FirebaseAuth.instance.sendPasswordResetEmail(
+                  email: _emailController.text 
+                ).then((value) {
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Email Enviado!")));
+                })
+              }
+            },
+          )
+        ],
+      );
+      showDialog(
+        context: context, 
+        builder: (BuildContext context){
+          return alertDialog;
+        }
+      );
+    }
+
     void signUserIn() async{
 
       if(_formKey.currentState == null || !_formKey.currentState!.validate()){
@@ -118,6 +194,24 @@ class _LoginPageState extends State<LoginPage> {
                             enabled: true,
                           )
                         ),
+                        GestureDetector(
+                          onTap: forgotPassword,
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Text(
+                                'Esqueceu a senha?',
+                                style: GoogleFonts.josefinSans(
+                                  textStyle: const TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                  fontSize: 16,
+                                )
+                              ),
+                            ),
+                          ),
+                        ),
                         Visibility(
                           visible: errorMessage.isEmpty ? false : true,
                           child: Align(
@@ -168,7 +262,6 @@ class _LoginPageState extends State<LoginPage> {
                                 'Primeiro acesso? Cadastre-se',
                                 style: GoogleFonts.josefinSans(
                                   textStyle: const TextStyle(
-                                    decoration: TextDecoration.underline,
                                     color: Colors.black,
                                   ),
                                   fontWeight: FontWeight.bold,

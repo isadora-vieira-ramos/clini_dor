@@ -237,7 +237,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
-        foregroundColor: Colors.white,
+        foregroundColor: Colors.black,
         title: Text(
           "Novo Questionário",
           style: GoogleFonts.josefinSans(
