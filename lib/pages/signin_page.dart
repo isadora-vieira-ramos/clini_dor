@@ -83,6 +83,20 @@ class _SignInPageState extends State<SignInPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
+                    padding: const EdgeInsets.only(bottom: 40),
+                    child: Text(
+                      "Clinidor",
+                      style: GoogleFonts.josefinSans(
+                        textStyle: const TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white
+                        )
+                      ),
+                    ),
+                  ),
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 600),
                     padding: const EdgeInsets.only(bottom: 30, top: 30, left: 20, right: 20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
@@ -180,13 +194,12 @@ class _SignInPageState extends State<SignInPage> {
                         GestureDetector(
                           onTap: widget.onTap,
                           child: Padding(
-                            padding: const EdgeInsets.all(20.0),
+                            padding: const EdgeInsets.only(top: 20.0, left: 20, right: 20, bottom: 5),
                             child: Center(
                               child: Text(
                                 'Já tem cadastro? Faça login aqui',
                                 style: GoogleFonts.josefinSans(
                                   textStyle: const TextStyle(
-                                    decoration: TextDecoration.underline,
                                     color: Colors.black,
                                   ),
                                   fontWeight: FontWeight.bold,

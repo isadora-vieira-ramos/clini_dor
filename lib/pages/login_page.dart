@@ -154,8 +154,21 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  Container(
+                    padding: const EdgeInsets.only(bottom: 40),
+                    child: Text(
+                      "Clinidor",
+                      style: GoogleFonts.josefinSans(
+                        textStyle: const TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white
+                        )
+                      ),
+                    ),
+                  ),
                   Container(
                     constraints: const BoxConstraints(maxWidth: 600),
                     padding: const EdgeInsets.only(bottom: 30, top: 30, left: 20, right: 20),

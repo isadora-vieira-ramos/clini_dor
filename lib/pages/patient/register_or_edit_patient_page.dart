@@ -427,7 +427,7 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
                   'Salvar',
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.white
+                    color: Colors.black
                   )
                 )
               )

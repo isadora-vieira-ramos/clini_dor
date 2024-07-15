@@ -11,13 +11,13 @@ class ConductsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
-        foregroundColor: Colors.white,
+        foregroundColor: Colors.black,
         title: Text(
           "Condutas",
           style: GoogleFonts.josefinSans(
             textStyle: const TextStyle(
               fontSize: 20,
-              color: Colors.white
+              color: Colors.black
             )
           ),
         ),
