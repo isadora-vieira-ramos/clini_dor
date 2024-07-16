@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class NoItemsMessagem extends StatelessWidget {
+class NoItemsMessage extends StatelessWidget {
   String message;
-  NoItemsMessagem({super.key, required this.message});
+  NoItemsMessage({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {

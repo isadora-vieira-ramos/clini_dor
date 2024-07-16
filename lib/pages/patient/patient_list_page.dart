@@ -101,7 +101,7 @@ class _PatientListPageState extends State<PatientListPage> {
                         )
                       );
                     }else{
-                      return NoItemsMessagem(message: "Nenhum paciente cadastrado.");
+                      return NoItemsMessage(message: "Nenhum paciente cadastrado.");
                     }
                   }     
                 }
