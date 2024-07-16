@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 import 'package:clini_dor/components/floating_button.dart';
 import 'package:clini_dor/components/loading_component.dart';
 import 'package:clini_dor/components/no_items.dart';
@@ -24,6 +26,25 @@ class _PatientPageState extends State<PatientPage> {
     var allQuestionnaires = await Questionnaire.getQuestionnairesAsync();
     questionnaires = allQuestionnaires.where((item) => item.patientId == widget.patient.medicalRecord).toList();
     questionnaires.sort((a,b) => a.date.compareTo(b.date));
+  }
+
+  Future<void> getQuestionnairesCsv() async {
+    String data = await Questionnaire.saveQuestionnairesInCsv(widget.patient.medicalRecord);
+    String dir = (await getExternalStorageDirectory())!.path;
+    print("dir $dir");
+    String file = "$dir";
+
+    File f = File(file + "/paciente.csv");
+
+    f.writeAsString(data);
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text(
+        "Arquivo salvo!",
+        style: TextStyle(
+          fontSize: 17
+        ),
+      ),
+    ));
   }
   
   @override
@@ -102,7 +123,7 @@ class _PatientPageState extends State<PatientPage> {
                   Theme.of(context).colorScheme.tertiary
                 ),
               ),
-              onPressed: (){}, 
+              onPressed: getQuestionnairesCsv, 
               icon: const Icon(Icons.download, color: Colors.black), 
               label: Text(
                 "Exportar dados",
@@ -142,7 +163,7 @@ class _PatientPageState extends State<PatientPage> {
                       )
                     );
                   }
-                  return NoItemsMessagem(message: "Este paciente ainda não tem nenhum questionário.");
+                  return NoItemsMessage(message: "Este paciente ainda não tem nenhum questionário.");
                 }         
               }
             ),

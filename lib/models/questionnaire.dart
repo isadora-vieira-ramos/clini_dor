@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:clini_dor/models/answer.dart';
 import 'package:clini_dor/models/conduct.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:csv/csv.dart';
 import 'package:http/http.dart' as http;
 
 class Questionnaire{  
@@ -13,10 +14,12 @@ class Questionnaire{
   Questionnaire({required this.patientId, required this.date, this.answers, this.questionnaireId});
 
   factory Questionnaire.fromJson(Map<String, dynamic> json){
+    List<dynamic> answers = jsonDecode(json["Respostas"]);
     return Questionnaire(
       questionnaireId: json["Id"], 
       patientId: json["Prontuario"], 
-      date: convertDate(json["Data"])
+      date: convertDate(json["Data"]),
+      answers: answers.map((e) => Answer.fromJson(e)).toList()
     );
   }
 
@@ -44,6 +47,25 @@ class Questionnaire{
     }else{
       throw Exception ('Não foi possível retornar os dados');
     }
+  }
+
+  static Future<String> saveQuestionnairesInCsv(int medicalRecord) async {
+    var allQuestionnaires = await Questionnaire.getQuestionnairesAsync();
+    var patientsQuest = allQuestionnaires.where((item) => item.patientId == medicalRecord).toList();
+    patientsQuest.sort((a,b) => a.date.compareTo(b.date));
+    List<List<dynamic>> sheet = [["Id", "Prontuario", "Data", "Respostas"]];
+    sheet.addAll(patientsQuest.map((e) => getList(e)).toList());
+    return const ListToCsvConverter().convert(sheet);
+  }
+
+  static List<dynamic> getList(Questionnaire questionnaire){
+    List<dynamic> questInfos = [];
+    questInfos.add(questionnaire.questionnaireId);
+    questInfos.add(questionnaire.patientId);
+    questInfos.add(questionnaire.date);
+    questInfos.add(questionnaire.answers!.map((e) => "{${e.id}:${e.pickedAnswers.join(",")}}").join(","));
+
+    return questInfos;
   }
 
   Future<bool> saveQuestionnaire() async{
