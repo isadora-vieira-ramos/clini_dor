@@ -214,6 +214,7 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
         ),
       ),
       body: Container(
+        constraints: const BoxConstraints(maxWidth: 600),
         padding: const EdgeInsets.all(25),
         child: Form(
           key: _formKey,
