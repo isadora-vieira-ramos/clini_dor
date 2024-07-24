@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                   width: double.infinity,
                   height: 150,
                   decoration: BoxDecoration(
-                    color: ColorUtils.getMaterialColor(Theme.of(context).colorScheme.tertiary).shade700
+                    color: ColorUtils.getMaterialColor(Theme.of(context).colorScheme.tertiary).shade400
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 25.0),
                     child: ListTile(
-                      leading: Icon(Icons.groups, color: Theme.of(context).colorScheme.tertiary),
+                      leading: Icon(Icons.groups, color: ColorUtils.getMaterialColor(Theme.of(context).colorScheme.tertiary).shade700),
                       title: const Text('Pacientes', style: TextStyle(color: Colors.black, fontSize: 20),),
                     ),
                   ),
@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 25.0),
                     child: ListTile(
-                      leading: Icon(Icons.info, color:  Theme.of(context).colorScheme.tertiary),
+                      leading: Icon(Icons.info, color:  ColorUtils.getMaterialColor(Theme.of(context).colorScheme.tertiary).shade700),
                       title: const Text('Sobre', style: TextStyle(color: Colors.black, fontSize: 20),),
                     ),
                   ),
@@ -140,10 +140,10 @@ class _HomePageState extends State<HomePage> {
             GestureDetector(
               onTap: signUserOut,
               child: Padding(
-                padding: EdgeInsets.only(left: 25.0, bottom:25.0),
+                padding: const EdgeInsets.only(left: 25.0, bottom:25.0),
                 child: ListTile(
-                  leading: Icon(Icons.logout, color: Theme.of(context).colorScheme.tertiary),
-                  title: Text('Sair', style: TextStyle(color: Colors.black, fontSize: 20),),
+                  leading: Icon(Icons.logout, color: ColorUtils.getMaterialColor(Theme.of(context).colorScheme.tertiary).shade700),
+                  title: const Text('Sair', style: TextStyle(color: Colors.black, fontSize: 20),),
                 ),
               ),
             )

@@ -1,3 +1,4 @@
+import 'package:clini_dor/components/loading_component.dart';
 import 'package:clini_dor/components/standard_textfield.dart';
 import 'package:clini_dor/models/patient.dart';
 import 'package:clini_dor/pages/home_page.dart';
@@ -42,18 +43,26 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
       _imcController.text = widget.patient!.bmi.toString();
       dropdownValueSex = widget.patient!.sex == "M"? "Masculino": "Feminino";
       dropdownValueEducation = widget.patient!.education;
-
-      _weightController.addListener(calculateIMC);
-      _heightController.addListener(calculateIMC);
     }
+
+    _weightController.addListener(calculateIMC);
+    _heightController.addListener(calculateIMC);
+  }
+
+  @override 
+  void dispose() { 
+    _weightController.removeListener(calculateIMC);
+    _heightController.removeListener(calculateIMC);  
+    super.dispose() ;
   }
   
   String dropdownValueSex = 'Masculino';
   String dropdownValueEducation = 'Fundamental incompleto';
   late DateTime chosenDate;
+  bool loading = false;
 
   calculateIMC(){
-    if(_heightController.value.text.isNotEmpty && _weightController.value.text.isNotEmpty){
+    if( _heightController.value.text.isNotEmpty && _weightController.value.text.isNotEmpty){
       var heightInMeters = double.parse(_heightController.value.text) /100;
       var weight = double.parse(_weightController.value.text);
       var bmi = weight /(heightInMeters * heightInMeters);
@@ -89,8 +98,14 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
       height: int.parse(_heightController.value.text), 
       medicalRecord: int.parse(_medicalRecord.value.text)
     );
+    setState(() {
+      loading = true;
+    });
 
     patient.editPatient().then((value) {
+      setState(() {
+        loading = false;
+      });
       if(value){
         AlertDialog alert = AlertDialog(
           title: Text(
@@ -150,8 +165,15 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
       height: int.parse(_heightController.value.text), 
       medicalRecord: int.parse(_medicalRecord.value.text)
     );
+    
+    setState(() {
+      loading = true;
+    });
 
     patient.savePatient().then((value){
+      setState(() {
+        loading = false;
+      });
       String mensagem = "";
       if(value){
         mensagem = "Paciente salvo!";
@@ -424,7 +446,15 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
                     }
                   }
                 }, 
-                child: const Text(
+                child: loading? 
+                Container(
+                  margin: const EdgeInsets.all(10),
+                  child: const CircularProgressIndicator(
+                    color: Colors.black,
+                  ),
+                )
+                : 
+                const Text(
                   'Salvar',
                   style: TextStyle(
                     fontSize: 20,
