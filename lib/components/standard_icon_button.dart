@@ -42,7 +42,7 @@ class _StandardIconButtonState extends State<StandardIconButton> {
         alignment: Alignment.center,
         child: IconButton(
           icon: const Icon(Icons.radio_button_checked), 
-          color: widget.currentValue == 0? Colors.grey.shade500: (widget.currentValue == 1? Colors.yellow.shade800: Colors.red),
+          color: widget.currentValue == 0? Colors.grey.shade500: (widget.currentValue == 1? Colors.yellow.shade600: Colors.red),
           onPressed: (){
             setState(()
             {

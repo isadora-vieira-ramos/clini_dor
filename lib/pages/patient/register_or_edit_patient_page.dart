@@ -176,9 +176,15 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
       });
       String mensagem = "";
       if(value){
-        mensagem = "Paciente salvo!";
         AlertDialog alert = AlertDialog(
-          title: Text(mensagem),
+          title: Text(
+            "Paciente salvo!",
+            style: GoogleFonts.josefinSans(
+              textStyle: const TextStyle(
+                fontSize: 17,
+              )
+            ),
+          ),
           actions: <Widget>[
             TextButton(
               child: const Text("OK"),

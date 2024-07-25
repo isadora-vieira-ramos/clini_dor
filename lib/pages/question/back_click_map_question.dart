@@ -90,7 +90,7 @@ class _BackClickMapQuestionState extends State<BackClickMapQuestion> {
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.radio_button_checked, color: Colors.yellow.shade800),
+                            Icon(Icons.radio_button_checked, color: Colors.yellow.shade600),
                             const Padding(
                               padding: EdgeInsets.only(left: 10),
                               child: Text("Menor intensidade"),
