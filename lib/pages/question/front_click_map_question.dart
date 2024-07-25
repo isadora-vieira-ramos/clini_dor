@@ -176,6 +176,8 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
                       StandardIconButton(position: "front_left_knee", top: 490, left: 90, currentValue: getCurrentAnswer("front_left_knee"), registerAnswer: registerPosition),
                       StandardIconButton(position: "front_left_shin", top: 565, left: 100, currentValue: getCurrentAnswer("front_left_shin"), registerAnswer: registerPosition),
                       StandardIconButton(position: "front_right_shin", top: 565, right: 100, currentValue: getCurrentAnswer("front_right_shin"), registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_left_ankle", top: 650, left: 100, currentValue: getCurrentAnswer("front_left_ankle"), registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_right_ankle", top: 650, right: 100, currentValue: getCurrentAnswer("front_right_ankle"), registerAnswer: registerPosition),
                       StandardIconButton(position: "front_right_foot", top: 690, right: 100, currentValue: getCurrentAnswer("front_right_foot"), registerAnswer: registerPosition),
                       StandardIconButton(position: "front_left_foot", top: 690, left: 100, currentValue: getCurrentAnswer("front_left_foot"), registerAnswer: registerPosition),
                     ],

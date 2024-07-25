@@ -147,6 +147,8 @@ class _BackClickMapQuestionState extends State<BackClickMapQuestion> {
                       StandardIconButton(position: "back_left_knee", top: 490, right: 100, currentValue: getCurrentAnswer("back_left_knee"), registerAnswer: registerPosition),
                       StandardIconButton(position: "back_right_calf", top: 560, left: 100, currentValue: getCurrentAnswer("back_right_calf"), registerAnswer: registerPosition),
                       StandardIconButton(position: "back_left_calf", top: 560, right: 100, currentValue: getCurrentAnswer("back_left_calf"), registerAnswer: registerPosition),
+                      StandardIconButton(position: "back_right_ankle", top: 630, left: 105, currentValue: getCurrentAnswer("back_right_ankle"), registerAnswer: registerPosition),
+                      StandardIconButton(position: "back_left_ankle", top: 630, right: 105, currentValue: getCurrentAnswer("back_left_ankle"), registerAnswer: registerPosition),
                       StandardIconButton(position: "back_right_foot", top: 680, left: 100, currentValue: getCurrentAnswer("back_right_foot"), registerAnswer: registerPosition),
                       StandardIconButton(position: "back_left_foot",top: 680, right: 100, currentValue: getCurrentAnswer("back_left_foot"), registerAnswer: registerPosition),
                     ],
