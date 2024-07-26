@@ -34,7 +34,7 @@ class QuestionPage extends StatelessWidget {
     }
     if(question.questionType == QuestionType.medicine){
       return (
-        MedicineQuestion(question: question, currentAnswer: currentAnswer)
+        MedicineQuestion(question: question, registerAnswer: registerAnswer, currentAnswer: currentAnswer)
       );
     }
     else{

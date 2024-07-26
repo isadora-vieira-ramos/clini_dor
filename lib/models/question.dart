@@ -31,12 +31,11 @@ class Question {
     questionList.add(Question(id: questionList.length + 1, questionText: "3. Utiliza benzodiazepínico?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "4. Utiliza anticonvulsivante?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "5. Utiliza anticoagulante?", options: ["Sim", "Não"], questionType: QuestionType.closed));
-    //questionList.add(Question(id: 5, questionText: "5. Utiliza antiinflamatórios?", options: ["Ibuprofeno","Nimesulida", "Prednisona"], questionType: QuestionType.medicine));
-    // Question(id: 6, questionText: "6. Numero de dias que usou paracetamol por semana.", options: [""], questionType: QuestionType.open),
-    // Question(id: 7, questionText: "7. Numero de dias que usou dipirona por semana.", options: [""], questionType: QuestionType.open),
-    // Question(id: 8, questionText: "8. Numero de dias que usou opioides por semana.", options: [""], questionType: QuestionType.open),
-    // Question(id: 9, questionText: "9. Numero de dias que usa analgésicos por semana.", options: [""], questionType: QuestionType.open),
-    // Question(id: 10, questionText: "10. Número de dias que usou corticóides no último mês para tratamento da dor.", options: [""], questionType: QuestionType.open),
+    questionList.add(Question(id: questionList.length + 1, questionText: "6. Utiliza corticoides?", options: ["Prednisona", "Dexametasona", "Triancinolona", "Flunisolida"], questionType: QuestionType.medicine));
+    questionList.add(Question(id: questionList.length + 1, questionText: "7. Utiliza antiinflamatórios (exceto corticóides)?", options: ["Ibuprofeno","Nimesulida", "Dipirona"], questionType: QuestionType.medicine));
+    questionList.add(Question(id: questionList.length + 1, questionText: "8. Utiliza opioides?", options: ["Metadona", "Tramadol", "Codeína", "Morfina", "Oxicodona"], questionType: QuestionType.medicine));
+    questionList.add(Question(id: questionList.length + 1, questionText: "9. Uitliza antidepressivos?", options: ["Clonazepam", "Fluoxetina", "Escitalopram"], questionType: QuestionType.medicine));
+    questionList.add(Question(id: questionList.length + 1, questionText: "10. Utiliza paracetamol?", options: [], questionType: QuestionType.medicine));
     questionList.add(Question(id: questionList.length + 1, questionText: "11. Na última semana, os medicamentos utilizados diminuíram quantos % o nível da dor?", options: [""], questionType: QuestionType.open));
     questionList.add(Question(
       id: questionList.length + 1, 
@@ -63,7 +62,7 @@ class Question {
     questionList.add(Question(id: questionList.length + 1, questionText: "22. A intensidade da dor piora desproporcionalmente ao toque leve?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "23. A sua dor piora ao caminhar ou ao movimentar o corpo?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "24. A dor que sente é em forma de cólica?", options: ["Sim", "Não"], questionType: QuestionType.closed));
-    questionList.add(Question(id: questionList.length + 1, questionText: "25. De 0 a 10, informe o quanto a dor interfere no seu sono.", options: ["Nada", "Muito"], questionType: QuestionType.rating));
+    questionList.add(Question(id: questionList.length + 1, questionText: "25. De 0 a 10, informe o quanto a dor interfere no sono.", options: ["Nada", "Muito"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "26. De 0 a 10, avalie a qualidade do sono.", options: ["Ruim", "Boa"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "27. De 0 a 10, informe qual o nível de cansaço ao acordar (sono reparador).", options: ["Nenhum", "Muito"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "28. De 0 a 10, informe o quanto a dor o faz se sentir triste ou deprimido.", options: ["Nada", "Muito"], questionType: QuestionType.rating));
