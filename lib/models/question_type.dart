@@ -1,1 +1,1 @@
-enum QuestionType {closed, multipleChoice, open, clickMap, rating, antidepressants}
+enum QuestionType {closed, multipleChoice, open, clickMap, rating, medicine}

@@ -17,73 +17,8 @@ class QuestionnairePage extends StatefulWidget {
 
 class _QuestionnairePageState extends State<QuestionnairePage> {
   List<Answer> answers = [];
-
-  final List<Question> _questions = [
-    Question(id: 1, questionText: "1. Sua dor está presente há mais de três meses?", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id:2, questionText: "2. Marque abaixo as condições relativas ao seu estado atual.", options: [
-      "Alcoolismo",
-      "AVC",
-      "Tabagismo",
-      "Hipertensão",
-      "Infarto",
-      "Diabetes controlada",
-      "Diabetes descontrolada",
-      "Doenças da tireoide",
-      "Epilepsia",
-      "Asma",
-      "Doença renal",
-      "Doença neurológica",
-      "Depressão",
-      "Ansiedade",
-      "Bipolaridade",
-    ], questionType: QuestionType.multipleChoice),
-    Question(id: 3, questionText: "3. Utiliza benzodiazepínico?", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id: 4, questionText: "4. Utiliza anticonvulsivante?", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id: 5, questionText: "5. Numero de dias que usou antiinflamatórios por semana.", options: [""], questionType: QuestionType.open),
-    Question(id: 6, questionText: "6. Numero de dias que usou paracetamol por semana.", options: [""], questionType: QuestionType.open),
-    Question(id: 7, questionText: "7. Numero de dias que usou dipirona por semana.", options: [""], questionType: QuestionType.open),
-    Question(id: 8, questionText: "8. Numero de dias que usou opioides por semana.", options: [""], questionType: QuestionType.open),
-    Question(id: 9, questionText: "9. Numero de dias que usa analgésicos por semana.", options: [""], questionType: QuestionType.open),
-    Question(id: 10, questionText: "10. Número de dias que usou corticóides no último mês para tratamento da dor.", options: [""], questionType: QuestionType.open),
-    Question(id: 11, questionText: "11. Na última semana, os medicamentos utilizados diminuíram quantos % o nível da dor?", options: [""], questionType: QuestionType.open),
-    Question(
-      id: 12, 
-      questionText: "12.1 Utilizando os círculos na cor cinza distribuídos na figura abaixo, indique as áreas com dor de maior e menor intensidade", 
-      options: ["FRENTE"], 
-      questionImage: 'lib/images/human-body-full-front.png',
-      questionType: QuestionType.clickMap
-    ),
-    Question(
-      id: 13,
-      questionText: "12.2 Utilizando os círculos na cor cinza distribuídos na figura abaixo, indique as áreas com dor de maior e menor intensidade", 
-      options: ["COSTAS"], 
-      questionImage: 'lib/images/human-body-full-back.png',
-      questionType: QuestionType.clickMap
-    ),
-    Question(id: 14, questionText: "14. Esta dor é contínua, intermitente ou contínua com crises de piora?", options: ["Dor contínua", "Dor intermitente", "Dor contínua com crises de piora"], questionType: QuestionType.closed),
-    Question(id: 15, questionText: "15. A sua dor é referida? (Ocorre em um determinado local, mas reflete em outro também)", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id: 16, questionText: "16. Sua dor tem relação com algum envento como trauma medular, câncer, AVC, dor no membro fantasma?", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id: 17, questionText: "17. Tem câncer e está realizando tratamento para o mesmo?", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id: 18, questionText: "18. Sua dor teve início relacionado ao câncer?", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id: 19, questionText: "19. Possui dor articular?", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id: 20, questionText: "20. Sua dor se parece com uma sensação estranha e desagradável na pele? Agulhadas, choques elétricos, queimação, ardência e formigamento são as que melhor descrevem estas sensações?", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id: 21, questionText: "21. Na região que sentes dor ocorre mudança na cor da pele e/ou temperatura?", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id: 22, questionText: "22. A intensidade da dor piora desproporcionalmente ao toque leve?", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id: 23, questionText: "23. A sua dor piora ao caminhar ou ao movimentar o corpo?", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id: 24, questionText: "24. A dor que sente é em forma de cólica?", options: ["Sim", "Não"], questionType: QuestionType.closed),
-    Question(id: 25, questionText: "25. Na escala abaixo, informe o quanto a dor interfere no seu sono.", options: ["Nada", "Muito"], questionType: QuestionType.rating),
-    Question(id: 26, questionText: "26. Na escala abaixo, avalie a qualidade do sono.", options: ["Ruim", "Boa"], questionType: QuestionType.rating),
-    Question(id: 27, questionText: "27. Na escala abaixo, informe qual o nível de cansaço ao acordar (sono reparador).", options: ["Nenhum", "Muito"], questionType: QuestionType.rating),
-    Question(id: 28, questionText: "28. Na escala abaixo, informe o quanto a dor o faz se sentir triste ou deprimido.", options: ["Nada", "Muito"], questionType: QuestionType.rating),
-    Question(id: 29, questionText: "29. Na escala abaixo, informe o quão frequentemente pensa que a dor não vai passar ou vai piorar.", options: ["Nunca", "Sempre"], questionType: QuestionType.rating),
-    Question(id: 30, questionText: "30. Na escala abaixo, informe o quanto pensa em tirar sua vida por causa da dor.", options: ["Nunca", "Sempre"], questionType: QuestionType.rating),
-    Question(id: 31, questionText: "31. Na escala abaixo, informe o quanto a dor interfere nas atividades laborais (trabalho e vida diária).", options: ["Nada", "Muito"], questionType: QuestionType.rating),
-    Question(id: 32, questionText: "32. Na escala abaixo, informe o quanto a dor interfere nas relações pessoais e vontade de viver.", options: ["Nada", "Muito"], questionType: QuestionType.rating),
-    Question(id: 33, questionText: "33. Na escala abaixo, informe qual a expectativa de melhora com relação ao tratamento.", options: ["Nenhuma", "Muito"], questionType: QuestionType.rating),
-    Question(id: 34, questionText: "34. Na escala abaixo, informe o quanto teme que a dor piore ao realizar atividades físicas.", options: ["Nada", "Muito"], questionType: QuestionType.rating),
-    Question(id: 35, questionText: "35. Na escala abaixo, informe o quanto a dor interfere na memória ou concentração.", options: ["Nada", "Muito"], questionType: QuestionType.rating),
-    Question(id: 36, questionText: "36. Na escala abaixo, informe a intensidade da dor.", options: ["Ausência", "Máxima"], questionType: QuestionType.rating),
-  ];
+  
+  final List<Question> _questions = Question.getQuestions();
 
   int _selectedIndex = 0;
 
