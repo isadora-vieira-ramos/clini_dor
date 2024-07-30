@@ -34,7 +34,7 @@ class Question {
     questionList.add(Question(id: questionList.length + 1, questionText: "6. Utiliza corticoides?", options: ["Prednisona", "Dexametasona", "Triancinolona", "Flunisolida"], questionType: QuestionType.medicine));
     questionList.add(Question(id: questionList.length + 1, questionText: "7. Utiliza antiinflamatórios (exceto corticóides)?", options: ["Ibuprofeno","Nimesulida", "Dipirona"], questionType: QuestionType.medicine));
     questionList.add(Question(id: questionList.length + 1, questionText: "8. Utiliza opioides?", options: ["Metadona", "Tramadol", "Codeína", "Morfina", "Oxicodona"], questionType: QuestionType.medicine));
-    questionList.add(Question(id: questionList.length + 1, questionText: "9. Uitliza antidepressivos?", options: ["Clonazepam", "Fluoxetina", "Escitalopram"], questionType: QuestionType.medicine));
+    questionList.add(Question(id: questionList.length + 1, questionText: "9. Utiliza antidepressivos?", options: ["Clonazepam", "Fluoxetina", "Escitalopram"], questionType: QuestionType.medicine));
     questionList.add(Question(id: questionList.length + 1, questionText: "10. Utiliza paracetamol?", options: [], questionType: QuestionType.medicine));
     questionList.add(Question(id: questionList.length + 1, questionText: "11. Na última semana, os medicamentos utilizados diminuíram quantos % o nível da dor?", options: [""], questionType: QuestionType.open));
     questionList.add(Question(
