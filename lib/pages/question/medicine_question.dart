@@ -1,4 +1,6 @@
+import 'package:clini_dor/components/standard_textfield.dart';
 import 'package:clini_dor/models/question.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,13 +16,24 @@ class MedicineQuestion extends StatefulWidget {
 }
 
 class _MedicineQuestionState extends State<MedicineQuestion> {
-  final TextEditingController _medicineNameController = TextEditingController();
-  final TextEditingController _monthfrequencyController = TextEditingController();
-  final TextEditingController _weekfrequencyController = TextEditingController();
-  List<String> options = ["Sim", "Não"];
 
   @override
   Widget build(BuildContext context) {
+
+    List<String> opcoes = ["Sim", "Não"];
+
+    getValue(){
+      if(widget.currentAnswer == "Não"){
+        return "Não";
+      }else{
+        if(widget.currentAnswer != null && widget.currentAnswer!.isNotEmpty){
+          return "Sim";
+        }else{
+          return "";
+        } 
+      }
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
@@ -40,86 +53,72 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
                   )
                 ),
               ),
-              Column(
-                children: <Widget>[
-                  RadioListTile(
-                    value: options[0].toString(), 
-                    groupValue: widget.currentAnswer, 
-                    title: Text(options[0]),
-                    onChanged: (value){
-                      List<String> registeredAnswer = [];
-                      registeredAnswer.add(value.toString());
-                      setState(() {
-                        widget.currentAnswer = value.toString();
-                      });
-                    }
-                  ),
-                  RadioListTile(
-                    value: options[1].toString(), 
-                    groupValue: widget.currentAnswer, 
-                    title: Text(options[1]),
-                    onChanged: (value){
-                      List<String> registeredAnswer = [];
-                      registeredAnswer.add(value.toString());
-                      widget.registerAnswer(widget.question.id, registeredAnswer);
-                      setState(() {
-                        widget.currentAnswer = value.toString();
-                      });
-                    }
-                  ),
-                ]
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxHeight: 150, minHeight: 50),
+                child: ListView.builder(
+                  itemCount: opcoes.length,
+                  itemBuilder: (context, index) {
+                    return RadioListTile(
+                      value: opcoes[index].toString(), 
+                      groupValue: getValue(), 
+                      title: Text(opcoes[index]),
+                      onChanged: (value){
+                        List<String> registeredAnswer = [];
+                        registeredAnswer.add(value.toString());
+                        widget.registerAnswer(widget.question.id, registeredAnswer);
+                        setState(() {
+                          widget.currentAnswer = value.toString();
+                        });
+                      }
+                    );
+                  }
+                )
               ),
-              if(widget.currentAnswer == "Sim")...[
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(bottom:20),
-                        child: Text(
-                          "Informações sobre o medicamento",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,    
-                          )
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    if(getValue() == "Sim")...[
+                      const Text(
+                        "Informações sobre o medicamento",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold
                         ),
                       ),
-                      if(widget.question.options.isNotEmpty)...[
-                        TextField(
-                          controller: _medicineNameController,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: "Nome do medicamento"
+                      const SizedBox(height: 30),
+                      StandardTextfield(
+                        controller: new TextEditingController(), 
+                        hintText: "Nome do medicamento", 
+                        obscureText: false
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Text(
+                          "Exemplos: ${widget.question.options.join(', ')}...",
+                          style: const TextStyle(
+                            fontSize: 12
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Text("Exemplos: ${widget.question.options.join(", ")}..."),
-                        ),
-                      ],
-                      const SizedBox(height: 20),
-                      TextField(
-                        controller: _weekfrequencyController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Frequência de uso na última semana"
-                        ),
                       ),
-                      const SizedBox(height: 20),
-                      TextField(
-                        controller: _monthfrequencyController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Frequência de uso nos últimos três meses"
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ]
-            ]
+                      const SizedBox(height: 30),
+                      StandardTextfield(
+                        controller: new TextEditingController(), 
+                        hintText: "Frequência de uso na última semana", 
+                        obscureText: false
+                      ),
+                      StandardTextfield(
+                        controller: new TextEditingController(), 
+                        hintText: "Frequência de uso nos últimos três meses", 
+                        obscureText: false
+                      ),
+                    ]
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       )
