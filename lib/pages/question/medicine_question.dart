@@ -16,6 +16,16 @@ class MedicineQuestion extends StatefulWidget {
 }
 
 class _MedicineQuestionState extends State<MedicineQuestion> {
+  List<String> medicineInformation = [];
+
+  @override
+  void initState() {
+    if(widget.currentAnswer!= null && widget.currentAnswer!.isNotEmpty && widget.currentAnswer != "Não"){
+      var info = widget.currentAnswer!.split(",");
+      info.forEach((element) => medicineInformation.add(element));
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +52,6 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
     TextEditingController medicineMonthlyFrequency = TextEditingController(text: getMedicineValue("medicineMonthlyFrequency"));
 
     List<String> opcoes = ["Sim", "Não"];
-    List<String> medicineInformation = [];
 
     getRadioListValue(){
       if(widget.currentAnswer == "Não"){
@@ -144,7 +153,25 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
                             ),
                           ),
                         ),
-                      ]
+                        const SizedBox(height: 30)
+                      ],
+                      TextField(
+                        controller: medicineWeekFrequency,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: "Frequência de uso última semana"
+                        ),
+                        onChanged:(value) => saveInfo("medicineWeekFrequency:$value"),
+                      ),
+                      const SizedBox(height: 30),
+                      TextField(
+                        controller: medicineMonthlyFrequency,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: "Frequência de uso últimos 3 meses"
+                        ),
+                        onChanged:(value) => saveInfo("medicineMonthlyFrequency:$value"),
+                      ),
                     ]
                   ),
                 ),
