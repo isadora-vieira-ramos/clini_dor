@@ -19,10 +19,32 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
 
   @override
   Widget build(BuildContext context) {
+    
+    getMedicineValue(String key){
+      if(widget.currentAnswer == "Não"){
+        return "Não";
+      }else{
+        if(widget.currentAnswer != null && widget.currentAnswer!.isNotEmpty){
+          List<String> medicineInformation = widget.currentAnswer!.split(",");
+          var answer = medicineInformation.where((element) => element.contains(key));
+          if(answer.isNotEmpty){
+            var value = answer.toList()[0].split(":")[1];
+            return value;
+          }
+        }else{
+          return widget.currentAnswer;
+        }
+      }
+    }
+
+    TextEditingController medicineName = TextEditingController(text: getMedicineValue("medicineName"));
+    TextEditingController medicineWeekFrequency = TextEditingController(text: getMedicineValue("medicineWeekFrequency"));
+    TextEditingController medicineMonthlyFrequency = TextEditingController(text: getMedicineValue("medicineMonthlyFrequency"));
 
     List<String> opcoes = ["Sim", "Não"];
+    List<String> medicineInformation = [];
 
-    getValue(){
+    getRadioListValue(){
       if(widget.currentAnswer == "Não"){
         return "Não";
       }else{
@@ -32,6 +54,21 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
           return "";
         } 
       }
+    }
+
+    saveInfo(String value){
+      int index = medicineInformation.indexWhere((element) => element.split(":")[0] == value.split(":")[0]);
+      if(index == -1){
+        medicineInformation.add(value);
+      }else{
+        var paintIntensity = value.split(":")[1];
+        if(paintIntensity.isNotEmpty){
+          medicineInformation[index] = value;
+        }else{
+          medicineInformation.removeAt(index);
+        }
+      }
+      widget.registerAnswer(widget.question.id, medicineInformation);
     }
 
     return Scaffold(
@@ -60,7 +97,7 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
                   itemBuilder: (context, index) {
                     return RadioListTile(
                       value: opcoes[index].toString(), 
-                      groupValue: getValue(), 
+                      groupValue: getRadioListValue(), 
                       title: Text(opcoes[index]),
                       onChanged: (value){
                         List<String> registeredAnswer = [];
@@ -74,13 +111,13 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
                   }
                 )
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    if(getValue() == "Sim")...[
+              if(getRadioListValue() == "Sim")...[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
                       const Text(
                         "Informações sobre o medicamento",
                         style: TextStyle(
@@ -89,35 +126,29 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
                         ),
                       ),
                       const SizedBox(height: 30),
-                      StandardTextfield(
-                        controller: new TextEditingController(), 
-                        hintText: "Nome do medicamento", 
-                        obscureText: false
+                      TextField(
+                        controller: medicineName,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: "Nome do medicamento"
+                        ),
+                        onChanged:(value) => saveInfo("medicineName:$value"),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Text(
-                          "Exemplos: ${widget.question.options.join(', ')}...",
-                          style: const TextStyle(
-                            fontSize: 12
+                      if(widget.question.options.isNotEmpty)...[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            "Exemplos: ${widget.question.options.join(', ')}...",
+                            style: const TextStyle(
+                              fontSize: 12
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 30),
-                      StandardTextfield(
-                        controller: new TextEditingController(), 
-                        hintText: "Frequência de uso na última semana", 
-                        obscureText: false
-                      ),
-                      StandardTextfield(
-                        controller: new TextEditingController(), 
-                        hintText: "Frequência de uso nos últimos três meses", 
-                        obscureText: false
-                      ),
+                      ]
                     ]
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ],
           ),
         ),
