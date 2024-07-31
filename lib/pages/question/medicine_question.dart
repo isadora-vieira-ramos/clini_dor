@@ -109,9 +109,11 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
                       groupValue: getRadioListValue(), 
                       title: Text(opcoes[index]),
                       onChanged: (value){
-                        List<String> registeredAnswer = [];
-                        registeredAnswer.add(value.toString());
-                        widget.registerAnswer(widget.question.id, registeredAnswer);
+                        if(value.toString() == "Não"){
+                          List<String> registeredAnswer = [];
+                          registeredAnswer.add(value.toString());
+                          widget.registerAnswer(widget.question.id, registeredAnswer);
+                        }
                         setState(() {
                           widget.currentAnswer = value.toString();
                         });
@@ -134,16 +136,16 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
                           fontWeight: FontWeight.bold
                         ),
                       ),
-                      const SizedBox(height: 30),
-                      TextField(
-                        controller: medicineName,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Nome do medicamento"
-                        ),
-                        onChanged:(value) => saveInfo("medicineName:$value"),
-                      ),
                       if(widget.question.options.isNotEmpty)...[
+                        const SizedBox(height: 30),
+                        TextField(
+                          controller: medicineName,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: "Nome do medicamento"
+                          ),
+                          onChanged:(value) => saveInfo("medicineName:$value"),
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
                           child: Text(
@@ -153,8 +155,8 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 30)
                       ],
+                      const SizedBox(height: 30),
                       TextField(
                         controller: medicineWeekFrequency,
                         decoration: const InputDecoration(

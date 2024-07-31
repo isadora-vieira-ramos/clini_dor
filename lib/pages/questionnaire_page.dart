@@ -43,8 +43,8 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
   void nextQuestion(){
     setState(() {
       if(_selectedIndex < _questions.length - 1){
-        if(_questions[_selectedIndex].questionType == QuestionType.closed){
-          bool questionAnswered = checkIfQuestionWasAnswered(_questions[_selectedIndex].id);
+        if(_questions[_selectedIndex].questionType == QuestionType.closed || _questions[_selectedIndex].questionType == QuestionType.medicine){
+          bool questionAnswered = checkIfQuestionWasAnswered(_questions[_selectedIndex].id, _questions[_selectedIndex].questionType);
           if(questionAnswered){
             if(checkIfPainLessThanThreeMonths(_questions[_selectedIndex].id)){
               return;
@@ -70,7 +70,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
     ));
   } 
 
-  bool checkIfQuestionWasAnswered(int id){
+  bool checkIfQuestionWasAnswered(int id, QuestionType questionType){
     var answer = answers.where((answers) => answers.id == id);
     if(answer.isEmpty){
       return false;
