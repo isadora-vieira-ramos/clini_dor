@@ -99,12 +99,13 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(30),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     widget.question.questionText,
@@ -116,7 +117,7 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
                   const SizedBox(height: 10),
                   Container(
                     alignment: Alignment.center,
-                    child: Column(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
@@ -148,6 +149,15 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
                 children: [
                   Stack(
                     children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left:40.0),
+                        child: Text(
+                          widget.question.options[0],
+                          style: const TextStyle(
+                            fontSize: 18
+                          ),
+                        ),
+                      ),
                       Container(
                         alignment: Alignment.center,
                         child: Padding(

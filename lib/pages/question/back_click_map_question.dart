@@ -117,6 +117,15 @@ class _BackClickMapQuestionState extends State<BackClickMapQuestion> {
                 children: [
                   Stack(
                     children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left:40.0),
+                        child: Text(
+                          widget.question.options[0],
+                          style: const TextStyle(
+                            fontSize: 18
+                          ),
+                        ),
+                      ),
                       Container(
                         alignment: Alignment.center,
                         child: Padding(

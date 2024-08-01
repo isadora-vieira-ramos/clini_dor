@@ -38,7 +38,7 @@ class QuestionPage extends StatelessWidget {
       );
     }
     else{
-      if(question.options[0] == "FRENTE"){
+      if(question.options[0] == "ANTERIOR"){
         return (
           FrontClickMapQuestion(question: question, registerAnswer: registerAnswer, currentAnswer: currentAnswer)
         );
