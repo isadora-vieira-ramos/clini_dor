@@ -33,30 +33,67 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
   }
 
   void previousQuestion(){
-    setState(() {
-      if(_selectedIndex > 0){
-        _selectedIndex--;
+    if(_selectedIndex > 0){
+      setState(() {
+          _selectedIndex--;
+      });
+       while(_questions[_selectedIndex].dependantOnQuestions != null){
+        if(!checkIndependentQuestionHasAnswer(_selectedIndex)){
+          setState(() {
+            _selectedIndex--;
+          });
+        }else{
+          break;
+        }
       }
-    });
+    }
   }
 
   void nextQuestion(){
-    setState(() {
-      if(_selectedIndex < _questions.length - 1){
-        if(_questions[_selectedIndex].questionType == QuestionType.closed || _questions[_selectedIndex].questionType == QuestionType.medicine){
-          bool questionAnswered = checkIfQuestionWasAnswered(_questions[_selectedIndex].id, _questions[_selectedIndex].questionType);
-          if(questionAnswered){
-            if(checkIfPainLessThanThreeMonths(_questions[_selectedIndex].id)){
-              return;
-            }
-          }else{
-            showSnackBar();
+    
+    if(_selectedIndex < _questions.length - 1){
+      if(_questions[_selectedIndex].questionType == QuestionType.closed || _questions[_selectedIndex].questionType == QuestionType.medicine){
+        bool questionAnswered = checkIfQuestionWasAnswered(_questions[_selectedIndex].id, _questions[_selectedIndex].questionType);
+        if(questionAnswered){
+          if(checkIfPainLessThanThreeMonths(_questions[_selectedIndex].id)){
             return;
           }
+        }else{
+          showSnackBar();
+          return;
         }
-        _selectedIndex++;
       }
-    });
+      setState(() {
+        _selectedIndex++;
+      });
+    }
+  }
+
+  bool checkIndependentQuestionHasAnswer(int nextQuestionIndex){
+    var currentQuestion = _questions[nextQuestionIndex];
+    if(currentQuestion.dependantOnQuestions != null){
+      bool questionAnswered = false;
+      // se só tem um objeto no mapa, confere se a questão foi respondida
+      if(currentQuestion.dependantOnQuestions!.length == 1){
+        var independAnswer = answers.where((answers) => answers.id == currentQuestion.dependantOnQuestions!.keys.firstOrNull).toList();
+        if(currentQuestion.dependantOnQuestions!.values.toString().contains(independAnswer[0].pickedAnswers[0])){
+          return true;
+        }else{
+          return false;
+        }
+      }else{ 
+         //se tem mais de um valor, verifica se pelo menos uma das questões foi respondida
+        currentQuestion.dependantOnQuestions!.forEach((key, value) {
+          var independAnswer = answers.where((answers) => answers.id == key).toList();
+          if(independAnswer.isNotEmpty && independAnswer[0].pickedAnswers[0].toString().contains(value)){
+            questionAnswered = true;
+          }
+        });
+        return questionAnswered;
+      }
+    }else{
+      return true;
+    }
   }
 
   showSnackBar(){
@@ -120,6 +157,19 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
     }
     return false;
   }
+
+  Question getCurrentQuestion(){
+    while(_questions[_selectedIndex].dependantOnQuestions != null){
+      if(!checkIndependentQuestionHasAnswer(_selectedIndex)){
+        setState(() {
+          _selectedIndex++;
+        });
+      }else{
+        break;
+      }
+    }
+    return _questions[_selectedIndex];
+  }
   
   String getCurrentAnswer(){
     int currentQuestionId = _questions[_selectedIndex].id;
@@ -167,6 +217,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
         return alert;
       }
     );
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
   }
 
   @override
@@ -187,7 +238,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
         ),
       ),
       backgroundColor: Colors.white,
-      body: QuestionPage(question: _questions[_selectedIndex], currentAnswer: getCurrentAnswer(), registerAnswer: addAnswer),
+      body: QuestionPage(question: getCurrentQuestion(), currentAnswer: getCurrentAnswer(), registerAnswer: addAnswer),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(20.0),
