@@ -186,7 +186,7 @@ class Question {
       "Forte",
        "Muito forte"
     ], questionType: QuestionType.closed));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Você tem crises repentinas de dor nessa área, como choques elétricos?", options:[
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Tem crises repentinas de dor nessa área, como choques elétricos?", options:[
       "Nunca",
       "Insignificante",
       "Pouco",
@@ -202,7 +202,7 @@ class Question {
       "Forte",
        "Muito forte"
     ], questionType: QuestionType.closed));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Você sofre uma sensação de dormência nas áreas que você marcou?", options:[
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sofre uma sensação de dormência nas áreas que você marcou?", options:[
       "Nunca",
       "Insignificante",
       "Pouco",
@@ -210,7 +210,7 @@ class Question {
       "Forte",
        "Muito forte"
     ], questionType: QuestionType.closed));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Uma leve pressão nessa área cauda dor?", options:[
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Uma leve pressão nessa área causa dor?", options:[
       "Nunca",
       "Insignificante",
       "Pouco",
@@ -224,7 +224,7 @@ class Question {
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, avalie a qualidade do sono.", options: ["Ruim", "Boa"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe qual o nível de cansaço ao acordar (sono reparador).", options: ["Nenhum", "Muito"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe o quanto a dor o faz se sentir triste ou deprimido.", options: ["Nada", "Muito"], questionType: QuestionType.rating));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Avalie a seguinte afirmação: &quot;Sinto que minha dor é terrível e nunca vai melhorar.&quot;", options: ["Discordo totalmente", "Discordo parcialmente", "Concordo totalmente"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Avalie a seguinte afirmação: \"Sinto que minha dor é terrível e nunca vai melhorar\"", options: ["Discordo totalmente", "Discordo parcialmente", "Concordo totalmente"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe o quanto pensa em tirar sua vida por causa da dor.", options: ["Nunca", "Sempre"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sente limitação para participar de atividades sociais ou de lazer?", options: ["Não", "Pouca limitação", "Muita limitação"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sente limitação para sair com amigos ou familiares?", options: ["Não", "Pouca limitação", "Muita limitação"], questionType: QuestionType.closed));
@@ -233,11 +233,11 @@ class Question {
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sente limitação para ir para a escola ou alcançar seus objetivos educacionais?", options: ["Não", "Pouca limitação", "Muita limitação"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sente limitação para trabalhar fora de casa para ganhar uma renda?", options: ["Não", "Pouca limitação", "Muita limitação"], questionType: QuestionType.closed));    
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe qual a expectativa de melhora com relação ao tratamento.", options: ["Nenhuma", "Muito"], questionType: QuestionType.rating));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Avalie a seguinte afirmação: &quot;Não é realmente seguro para uma pessoa com uma condição de dor como a minha ser fisicamente ativa.&quot;", options: ["Discordo totalmente", "Discordo parcialmente", "Concordo totalmente"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Avalie a seguinte afirmação: \"Não é realmente seguro para uma pessoa com uma condição de dor como a minha ser fisicamente ativa.\"", options: ["Discordo totalmente", "Discordo parcialmente", "Concordo totalmente"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe o quanto a dor interfere na memória ou concentração.", options: ["Nada", "Muito"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, como avaliaria sua dor agora, nesse momento?", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, qual foi a intensidade da dor mais forte que sentiu nas últimas 4 semanas?", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, qul foi a intensidade média da dor nas últimas 4 semanas?", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, qual foi a intensidade média da dor nas últimas 4 semanas?", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
     return questionList;
   }
 
