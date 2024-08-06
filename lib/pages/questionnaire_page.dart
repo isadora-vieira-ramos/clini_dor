@@ -85,7 +85,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
          //se tem mais de um valor, verifica se pelo menos uma das questões foi respondida
         currentQuestion.dependantOnQuestions!.forEach((key, value) {
           var independAnswer = answers.where((answers) => answers.id == key).toList();
-          if(independAnswer.isNotEmpty && independAnswer[0].pickedAnswers[0].toString().contains(value)){
+          if(independAnswer.isNotEmpty && value.toString().contains(independAnswer[0].pickedAnswers[0].split(":")[0].toString())){
             questionAnswered = true;
           }
         });
@@ -101,7 +101,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
       content: Text(
         "Pergunta obrigatória!",
         style: TextStyle(
-          fontSize: 17
+          fontSize: 20
         ),
       ),
     ));

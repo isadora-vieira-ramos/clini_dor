@@ -41,7 +41,7 @@ class Question {
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Utiliza paracetamol?", options: [], questionType: QuestionType.medicine));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Utiliza dipirona?", options: [], questionType: QuestionType.medicine));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Utiliza relaxantes musculares?", options: ["Carisoprodol (Mioflex, Torsilax, Tandrilax)", "Ciclobenzaprina (Miosan)", "Orfenadrina (Dorflex, Dorilax)"], questionType: QuestionType.medicine));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Na última semana, os medicamentos utilizados diminuíram quantos % o nível da dor?", options: [""], questionType: QuestionType.open));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Na última semana, os medicamentos usados diminuíram quantos % o nível da dor?", options: [""], questionType: QuestionType.open));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Com que frequência você toma bebidas alcoólicas?", 
     options: [
       "Nunca", 
@@ -71,7 +71,7 @@ class Question {
       "Psicoterapia",
       "Auriculoterapia",
       "Massagem",
-      "Estimulação transcraniana",
+      "Estimulação magnética transcraniana",
       "Aplicação de calor ou frio",
       "Acupuntura",
       "Meditação"
@@ -97,7 +97,7 @@ class Question {
       "Semanalmente", 
       "Todos ou quase todos os dias"
     ], questionType: QuestionType.closed, dependantOnQuestions: {18: "front_center_forehead, front_left_jaw, front_right_jaw", 19: "back_head"}));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Percebe que vai ter dor de cabeça antes mesmo de começar (sinal prodômico)?", 
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Percebe que vai ter dor de cabeça antes mesmo de começar (sinal prodrômico)?", 
     options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {18: "front_center_forehead, front_left_jaw, front_right_jaw", 19: "back_head"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Percebe algum tipo de alteração visual (flases, pontos brancos, visão embaçada)?", 
     options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {18: "front_center_forehead, front_left_jaw, front_right_jaw", 19: "back_head"}));
@@ -144,7 +144,13 @@ class Question {
       "Frequentemente", 
       "Sempre"
     ], questionType: QuestionType.closed, dependantOnQuestions: {18: "front_center_forehead, front_left_jaw, front_right_jaw", 19: "back_head"}));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Esta dor é contínua, intermitente ou contínua com crises de piora?", options: ["Dor contínua", "Dor intermitente", "Dor contínua com crises de piora"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Escolha a opção que melhor representa a evolução da sua dor.", 
+    options: [
+      "Dor constante, com pequenas flutuações", 
+      "Dor constante, com crises de dor aguda", 
+      "Crises de dor aguda sem dor nos intervalos",
+      "Crises de dor aguda com dor nos intervalos"
+    ], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. A sua dor é referida? (Ocorre em um determinado local, mas reflete em outro também)", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sua dor tem relação com algum envento como trauma medular, câncer, AVC, dor no membro fantasma?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Tem câncer e está realizando tratamento para o mesmo?", options: ["Sim", "Não"], questionType: QuestionType.closed));
@@ -153,25 +159,85 @@ class Question {
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. A dor piora ao repouso?", options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {34: "Sim"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Há rigidez nas articulações?", options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {34: "Sim"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. As articulações apresentam edema?", options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {34: "Sim"}));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sua dor se parece com uma sensação estranha e desagradável na pele? Agulhadas, choques elétricos, queimação, ardência e formigamento são as que melhor descrevem estas sensações?", options: ["Sim", "Não"], questionType: QuestionType.closed));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Na região que sentes dor ocorre mudança na cor da pele e/ou temperatura?", options: ["Sim", "Não"], questionType: QuestionType.closed));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. A intensidade da dor piora desproporcionalmente ao toque leve, com vento ou contato com roupa?", options: ["Sim", "Não"], questionType: QuestionType.closed));
+    //questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sua dor se parece com uma sensação estranha e desagradável na pele? Agulhadas, choques elétricos, queimação, ardência e formigamento são as que melhor descrevem estas sensações?", options: ["Sim", "Não"], questionType: QuestionType.closed));
+    //questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Na região que sentes dor ocorre mudança na cor da pele e/ou temperatura?", options: ["Sim", "Não"], questionType: QuestionType.closed));
+    //questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. A intensidade da dor piora desproporcionalmente ao toque leve, com vento ou contato com roupa?", options: ["Sim", "Não"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sofre uma sensação de queimação (por ex. ardência) onde sente dor?", options:[
+      "Nunca",
+      "Insignificante",
+      "Pouco",
+      "Moderada",
+      "Forte",
+       "Muito forte"
+    ], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Tem uma sensação de formigamento ou picada na área da dor?", options:[
+      "Nunca",
+      "Insignificante",
+      "Pouco",
+      "Moderada",
+      "Forte",
+       "Muito forte"
+    ], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. O toque suave (roupa, cobertor, até vento) é doloroso nessa área?", options:[
+      "Nunca",
+      "Insignificante",
+      "Pouco",
+      "Moderada",
+      "Forte",
+       "Muito forte"
+    ], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Você tem crises repentinas de dor nessa área, como choques elétricos?", options:[
+      "Nunca",
+      "Insignificante",
+      "Pouco",
+      "Moderada",
+      "Forte",
+       "Muito forte"
+    ], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. O frio ou calor (água de banho) nesta região é eventualmente doloroso?", options:[
+      "Nunca",
+      "Insignificante",
+      "Pouco",
+      "Moderada",
+      "Forte",
+       "Muito forte"
+    ], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Você sofre uma sensação de dormência nas áreas que você marcou?", options:[
+      "Nunca",
+      "Insignificante",
+      "Pouco",
+      "Moderada",
+      "Forte",
+       "Muito forte"
+    ], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Uma leve pressão nessa área cauda dor?", options:[
+      "Nunca",
+      "Insignificante",
+      "Pouco",
+      "Moderada",
+      "Forte",
+       "Muito forte"
+    ], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. A sua dor piora ao caminhar ou ao movimentar o corpo?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. A dor que sente é em forma de cólica?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe o quanto a dor interfere no sono.", options: ["Nada", "Muito"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, avalie a qualidade do sono.", options: ["Ruim", "Boa"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe qual o nível de cansaço ao acordar (sono reparador).", options: ["Nenhum", "Muito"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe o quanto a dor o faz se sentir triste ou deprimido.", options: ["Nada", "Muito"], questionType: QuestionType.rating));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe o quão frequentemente pensa que a dor não vai passar ou vai piorar.", options: ["Nunca", "Sempre"], questionType: QuestionType.rating));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Avalie a seguinte afirmação: &quot;Sinto que minha dor é terrível e nunca vai melhorar.&quot;", options: ["Discordo totalmente", "Discordo parcialmente", "Concordo totalmente"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe o quanto pensa em tirar sua vida por causa da dor.", options: ["Nunca", "Sempre"], questionType: QuestionType.rating));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe o quanto a dor interfere nas atividades laborais (trabalho e vida diária).", options: ["Nada", "Muito"], questionType: QuestionType.rating));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe o quanto a dor interfere nas relações pessoais e vontade de viver.", options: ["Nada", "Muito"], questionType: QuestionType.rating));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sente limitação para participar de atividades sociais ou de lazer?", options: ["Não", "Pouca limitação", "Muita limitação"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sente limitação para sair com amigos ou familiares?", options: ["Não", "Pouca limitação", "Muita limitação"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sente limitação para realizar tarefas domésticas como cozinhar e limpar?", options: ["Não", "Pouca limitação", "Muita limitação"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sente limitação para usar transporte para chegar aos lugares que deseja ir?", options: ["Não", "Pouca limitação", "Muita limitação"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sente limitação para ir para a escola ou alcançar seus objetivos educacionais?", options: ["Não", "Pouca limitação", "Muita limitação"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sente limitação para trabalhar fora de casa para ganhar uma renda?", options: ["Não", "Pouca limitação", "Muita limitação"], questionType: QuestionType.closed));    
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe qual a expectativa de melhora com relação ao tratamento.", options: ["Nenhuma", "Muito"], questionType: QuestionType.rating));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe o quanto teme que a dor piore ao realizar atividades físicas.", options: ["Nada", "Muito"], questionType: QuestionType.rating));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Avalie a seguinte afirmação: &quot;Não é realmente seguro para uma pessoa com uma condição de dor como a minha ser fisicamente ativa.&quot;", options: ["Discordo totalmente", "Discordo parcialmente", "Concordo totalmente"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe o quanto a dor interfere na memória ou concentração.", options: ["Nada", "Muito"], questionType: QuestionType.rating));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe a intensidade da dor na última semana.", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe a intensidade da dor no último mês.", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe a intensidade da dor nos últimos três meses.", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, como avaliaria sua dor agora, nesse momento?", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, qual foi a intensidade da dor mais forte que sentiu nas últimas 4 semanas?", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, qul foi a intensidade média da dor nas últimas 4 semanas?", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
     return questionList;
   }
 
