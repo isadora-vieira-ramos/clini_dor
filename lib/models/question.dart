@@ -159,9 +159,6 @@ class Question {
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. A dor piora ao repouso?", options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {34: "Sim"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Há rigidez nas articulações?", options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {34: "Sim"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. As articulações apresentam edema?", options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {34: "Sim"}));
-    //questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sua dor se parece com uma sensação estranha e desagradável na pele? Agulhadas, choques elétricos, queimação, ardência e formigamento são as que melhor descrevem estas sensações?", options: ["Sim", "Não"], questionType: QuestionType.closed));
-    //questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Na região que sentes dor ocorre mudança na cor da pele e/ou temperatura?", options: ["Sim", "Não"], questionType: QuestionType.closed));
-    //questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. A intensidade da dor piora desproporcionalmente ao toque leve, com vento ou contato com roupa?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sofre uma sensação de queimação (por ex. ardência) onde sente dor?", options:[
       "Nunca",
       "Insignificante",

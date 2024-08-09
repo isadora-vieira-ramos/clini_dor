@@ -38,7 +38,7 @@ class _HandClickMapQuestionState extends State<HandClickMapQuestion> {
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    "Marque os pontos onde de dor em qualquer uma das mãos",
+                    "Marque os pontos de dor em qualquer uma das mãos",
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                       fontSize: 18
