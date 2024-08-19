@@ -3,11 +3,12 @@
 Aplicativo guia para diagnóstico e tratamento da dor crônica.
 
 <p float="left">
-  <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/5f4220d3-f0b2-4310-aa0f-700f11a2620b" width="150" />
-  <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/ba119459-7d83-42f9-814f-bee9723d7f98" width="150" />
-  <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/d1ff8fc8-bb06-4ed0-ade0-50921d0007da" width="150" />
-  <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/2812d9c7-74fc-488a-99c3-b15bce49c450" width="150" />
-  <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/e251541f-08e0-43e5-893a-ccfad15a0cc7" width="150" />
-  <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/f1dd0afe-2ff3-4212-b309-8eadd9454470" width="155" />
-  <img src="https://github.com/isadora-vieira-ramos/clini_dor/assets/36307163/29283b36-0147-41af-a183-daf8d9f172ff" width="155" />
+  <img src="https://github.com/user-attachments/assets/a5d44d27-732b-4441-8a97-51875d2b6e1e" width="300"/>
+  <img src="https://github.com/user-attachments/assets/6fea4db4-3443-4e47-b824-feb5ae2a67c7" width="300"/>
+  <img src="https://github.com/user-attachments/assets/a49600fd-7cd5-42e0-8165-658198a30e2d" width="300"/>
+  <img src="https://github.com/user-attachments/assets/f50d7d31-6f4f-4977-8923-430485546c0c" width="300"/>
+  <img src="https://github.com/user-attachments/assets/7f3e5799-ba8b-46cc-ae5b-9e185eeede84" width="300"/>
+  <img src="https://github.com/user-attachments/assets/312295ee-b0ac-4455-b854-22ad45a8ad8a" width="300"/>
+  <img src="https://github.com/user-attachments/assets/f8e639e9-cdfa-4b86-aac3-04c8bc36d386" width="300"/>
+  <img src="https://github.com/user-attachments/assets/5bb10d93-495c-4858-9aeb-94c62a75e6af" width="300"/>
 </p>
