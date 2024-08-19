@@ -147,11 +147,11 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
                           onChanged:(value) => saveInfo("medicineName:$value"),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
+                          padding: const EdgeInsets.only(left: 8.0, top: 8.0),
                           child: Text(
                             "Exemplos: ${widget.question.options.join(', ')}...",
                             style: const TextStyle(
-                              fontSize: 12
+                              fontSize: 14
                             ),
                           ),
                         ),
