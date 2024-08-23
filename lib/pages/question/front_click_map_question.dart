@@ -166,6 +166,8 @@ class _FrontClickMapQuestionState extends State<FrontClickMapQuestion> {
                         )
                       ),
                       StandardIconButton(position: "front_center_forehead", top: 10, currentValue: getCurrentAnswer("front_center_forehead"), registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_left_temple", top: 25, left: 55, currentValue: getCurrentAnswer("front_left_temple"), registerAnswer: registerPosition),
+                      StandardIconButton(position: "front_right_temple", top: 25, right: 55, currentValue: getCurrentAnswer("front_right_temple"), registerAnswer: registerPosition),
                       StandardIconButton(position: "front_left_jaw", top: 65, left: 50, currentValue: getCurrentAnswer("front_left_jaw"), registerAnswer: registerPosition),
                       StandardIconButton(position: "front_right_jaw", top: 65, right:50, currentValue: getCurrentAnswer("front_right_jaw"), registerAnswer: registerPosition),
                       StandardIconButton(position: "front_sternum", top: 130, currentValue: getCurrentAnswer("front_sternum"), registerAnswer: registerPosition),
