@@ -22,35 +22,40 @@ class MedicineTile extends StatelessWidget {
         //   ),
         // ],
       ),
-      child: Column(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
-            child: Row(
+            padding: const EdgeInsets.all(2.0),
+            child: Icon(Icons.medication, color: Theme.of(context).colorScheme.tertiary, size: 45),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right:8.0, top: 8.0, bottom:8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.medication, color: Theme.of(context).colorScheme.tertiary),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
                   child: Text(
                     medicine.name,
                     style: const TextStyle(
-                      fontSize: 18
+                      fontSize: 14
                     ),
                   ),
-                )
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
+                  child: Text("Frequência de uso semanal: ${medicine.weeklyFrequencyUse}"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
+                  child: Text("Frequência de uso mensal: ${medicine.monthlyFrequencyUse}"),
+                ),
               ],
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
-            child: Text("Frequência de uso semanal: ${medicine.weeklyFrequencyUse}"),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
-            child: Text("Frequência de uso mensal: ${medicine.monthlyFrequencyUse}"),
-          ),
+          )
         ]
       )
     );
