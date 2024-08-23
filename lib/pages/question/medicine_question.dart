@@ -70,8 +70,8 @@ class _MedicineQuestionState extends State<MedicineQuestion> {
       if(index == -1){
         medicineInformation.add(value);
       }else{
-        var paintIntensity = value.split(":")[1];
-        if(paintIntensity.isNotEmpty){
+        var nameOrDosesUsedInPeriod = value.split(":")[1];
+        if(nameOrDosesUsedInPeriod.isNotEmpty){
           medicineInformation[index] = value;
         }else{
           medicineInformation.removeAt(index);

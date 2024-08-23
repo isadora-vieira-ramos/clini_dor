@@ -264,7 +264,7 @@ class Question {
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Escala Graduada de Dor] Sente limitação para trabalhar fora de casa para ganhar uma renda?", options: ["Não", "Pouca limitação", "Muita limitação"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Escala Graduada de Dor] Avalie a seguinte afirmação: \"Não é realmente seguro para uma pessoa com uma condição de dor como a minha ser fisicamente ativa\".", options: ["Discordo totalmente", "Discordo parcialmente", "Concordo totalmente"], questionType: QuestionType.closed));    
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Escala Graduada de Dor] Avalie a seguinte afirmação: \"Sinto que minha dor é terrível e nunca vai melhorar\".", options: ["Discordo totalmente", "Discordo parcialmente", "Concordo totalmente"], questionType: QuestionType.closed));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [ACR] Nos últimos 7, dias, teve dificuldade de memória ou concentração?", options: ["Sem problemas", "Leve", "Moderado", "Severo"], questionType: QuestionType.rating));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [ACR] Nos últimos 7, dias, teve dificuldade de memória ou concentração?", options: ["Sem problemas", "Leve", "Moderado", "Severo"], questionType: QuestionType.closed));
     return questionList;
   }
 
