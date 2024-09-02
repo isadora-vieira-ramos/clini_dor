@@ -39,6 +39,7 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
     var monthFrequency = int.parse(medicineMonthlyFrequency.text);
     setState(() {
       medicineList.add(Medicine(name: medicineName.text, weeklyFrequencyUse: weekFrequency, monthlyFrequencyUse: monthFrequency));
+      showTextFields = !showTextFields;
     });
     medicineName.text = "";
     medicineWeekFrequency.text = "";
@@ -82,6 +83,13 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
           return "";
         } 
       }
+    }
+
+    void deleteMedicine(int index){
+      setState(() {
+        medicineList.removeAt(index);
+      });
+      print("teste");
     }
 
     return Scaffold(
@@ -152,7 +160,7 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
                         weeklyFrequencyUse: medicineList[index].weeklyFrequencyUse, 
                         monthlyFrequencyUse: medicineList[index].monthlyFrequencyUse
                       );
-                      return MedicineTile(medicine:medicine);
+                      return MedicineTile(medicine:medicine, deleteItem: () => deleteMedicine(index));
                     }
                   ),
                 ),

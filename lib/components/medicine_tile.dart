@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 class MedicineTile extends StatelessWidget {
   Medicine medicine;
-  MedicineTile({super.key, required this.medicine});
+  final void Function()? deleteItem;
+  MedicineTile({super.key, required this.medicine, required this.deleteItem});
 
   @override
   Widget build(BuildContext context) {
@@ -14,48 +15,51 @@ class MedicineTile extends StatelessWidget {
         color: Colors.white,
         border: Border.all(color: Colors.black, width: 2),
         borderRadius: BorderRadius.circular(5),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.grey[200]!,
-        //     blurRadius: 4,
-        //     offset: const Offset(4, 8), // Shadow position
-        //   ),
-        // ],
       ),
+      padding: const EdgeInsets.all(8.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Icon(Icons.medication, color: Theme.of(context).colorScheme.tertiary, size: 45),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right:8.0, top: 8.0, bottom:8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
-                  child: Text(
-                    medicine.name,
-                    style: const TextStyle(
-                      fontSize: 14
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Icon(Icons.medication, color: Theme.of(context).colorScheme.tertiary, size: 45),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right:8.0, top: 8.0, bottom:8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
+                      child: Text(
+                        medicine.name,
+                        style: const TextStyle(
+                          fontSize: 14
+                        ),
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
+                      child: Text("Frequência de uso semanal: ${medicine.weeklyFrequencyUse}"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
+                      child: Text("Frequência de uso mensal: ${medicine.monthlyFrequencyUse}"),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
-                  child: Text("Frequência de uso semanal: ${medicine.weeklyFrequencyUse}"),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
-                  child: Text("Frequência de uso mensal: ${medicine.monthlyFrequencyUse}"),
-                ),
-              ],
-            ),
-          )
+              ),
+            ],
+          ),
+          IconButton(
+            icon: Icon(Icons.delete, color: Colors.redAccent.shade100, size: 35),
+            onPressed: deleteItem,
+          ) 
         ]
       )
     );
