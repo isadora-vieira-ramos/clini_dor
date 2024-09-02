@@ -99,6 +99,56 @@ class Question {
       "Semanalmente",
       "Todos ou quase todos os dias"
     ], questionType: QuestionType.closed, dependantOnQuestions: {26: "Mensalmente ou menos, 2 a 4 vezes por mês, 2 a 4 vezes por semana, 4 ou mais vezes por semana"}));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Drug Abuse Screening Tes] Já usou drogas que não as necessárias por razões médicas?", 
+    options: [
+      "Sim", 
+      "Não"
+    ], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Drug Abuse Screening Test] Consome mais do que uma droga cada vez?", 
+    options: [
+      "Sim",
+      "Não"
+    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "Sim"}));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Drug Abuse Screening Test] Consegue parar de usar sempre quando quer?", 
+    options: [
+      "Sim",
+      "Não"
+    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "Sim"}));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Drug Abuse Screening Test] Já teve \"blackouts\" ou \"flashbacks\" como resultado do uso de drogas?", 
+    options: [
+      "Sim",
+      "Não"
+    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "Sim"}));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Drug Abuse Screening Test] Alguma vez se sentiu mal/culpado(a) acerca do seu abuso de drogas?", 
+    options: [
+      "Sim",
+      "Não"
+    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "Sim"}));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Drug Abuse Screening Test] O seu cônjuge (ou família) alguma vez se queixou pelo seu envolvimento com drogas?", 
+    options: [
+      "Sim",
+      "Não"
+    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "Sim"}));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Drug Abuse Screening Test] Alguma vez negligenciou a sua família ou faltou ao trabalho por causa do seu uso de drogas?", 
+    options: [
+      "Sim",
+      "Não"
+    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "Sim"}));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Drug Abuse Screening Test] Esteve realcionado com atividades ilegais para obter drogas?", 
+    options: [
+      "Sim",
+      "Não"
+    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "Sim"}));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Drug Abuse Screening Test] Alguma vez sentiu sintomas de abstinência quando parou de usar?", 
+    options: [
+      "Sim",
+      "Não"
+    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "Sim"}));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Drug Abuse Screening Test] Teve problemas de saúde como resultado do seu consumo de drogas (perda de memória, hepatite, convulsões, hemorragias, etc)?", 
+    options: [
+      "Sim",
+      "Não"
+    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "Sim"}));
     questionList.add(Question(
       id: questionList.length + 1, 
       questionText: "${questionList.length + 1}.1 Utilizando os círculos na cor cinza distribuídos na figura abaixo, indique as áreas com dor de maior e menor intensidade", 
@@ -120,14 +170,14 @@ class Question {
       "Menos de uma vez por semana", 
       "Semanalmente", 
       "Todos ou quase todos os dias"
-    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "front_center_forehead, front_left_jaw, front_right_jaw", 30: "back_head"}));
+    ], questionType: QuestionType.closed, dependantOnQuestions: {39: "front_center_forehead, front_left_jaw, front_right_jaw", 40: "back_head"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Percebe que vai ter dor de cabeça antes mesmo de começar (sinal prodrômico)?", 
-    options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {29: "front_center_forehead, front_left_jaw, front_right_jaw", 30: "back_head"}));
+    options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {39: "front_center_forehead, front_left_jaw, front_right_jaw", 40: "back_head"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Percebe algum tipo de alteração visual (flases, pontos brancos, visão embaçada)?", 
-    options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {29: "front_center_forehead, front_left_jaw, front_right_jaw", 30: "back_head"}));
+    options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {39: "front_center_forehead, front_left_jaw, front_right_jaw", 40: "back_head"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [HIT6] Quando tem dor de cabeça, com que frequência a dor é forte?", 
     options: ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"], 
-    questionType: QuestionType.closed, dependantOnQuestions: {29: "front_center_forehead, front_left_jaw, front_right_jaw", 30: "back_head"}));
+    questionType: QuestionType.closed, dependantOnQuestions: {39: "front_center_forehead, front_left_jaw, front_right_jaw", 40: "back_head"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [HIT6] Com que frequência as dores de cabeça limitam a capacidade de realizar suas atividades diárias habituais, incluindo cuidar da casa, trabalho, estudos ou atividades sociais?",
     options: [
       "Nunca", 
@@ -135,7 +185,7 @@ class Question {
       "Às vezes", 
       "Frequentemente", 
       "Sempre"
-    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "front_center_forehead, front_left_jaw, front_right_jaw", 30: "back_head"}));
+    ], questionType: QuestionType.closed, dependantOnQuestions: {39: "front_center_forehead, front_left_jaw, front_right_jaw", 40: "back_head"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [HIT6] Quando tem dor de cabeça, com que frequência gostaria de poder se deitar para descansar?",
     options: [
       "Nunca", 
@@ -143,7 +193,7 @@ class Question {
       "Às vezes", 
       "Frequentemente", 
       "Sempre"
-    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "front_center_forehead, front_left_jaw, front_right_jaw", 30: "back_head"}));
+    ], questionType: QuestionType.closed, dependantOnQuestions: {39: "front_center_forehead, front_left_jaw, front_right_jaw", 40: "back_head"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [HIT6] Durante as últimas quatro semanas, com que frequência se sentiu cansado (a) demais para trabalhar ou para realizar suas atividades diárias por causa de suas dores de cabeça?",
     options: [
       "Nunca", 
@@ -151,7 +201,7 @@ class Question {
       "Às vezes", 
       "Frequentemente", 
       "Sempre"
-    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "front_center_forehead, front_left_jaw, front_right_jaw", 30: "back_head"}));
+    ], questionType: QuestionType.closed, dependantOnQuestions: {39: "front_center_forehead, front_left_jaw, front_right_jaw", 40: "back_head"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [HIT6] Durante as últimas quatro semanas, com que frequência sentiu que não estava mais aguentando ou se sentiu irritado (a) por causa de suas dores de cabeça?",
     options: [
       "Nunca", 
@@ -159,7 +209,7 @@ class Question {
       "Às vezes", 
       "Frequentemente", 
       "Sempre"
-    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "front_center_forehead, front_left_jaw, front_right_jaw", 30: "back_head"}));
+    ], questionType: QuestionType.closed, dependantOnQuestions: {39: "front_center_forehead, front_left_jaw, front_right_jaw", 40: "back_head"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [HIT6] Durante as últimas quatro semanas, com que frequência as dores de cabeça limitaram sua capacidade de se concentrar em seu trabalho ou em suas atividades diárias?",
     options: [
       "Nunca", 
@@ -167,7 +217,7 @@ class Question {
       "Às vezes", 
       "Frequentemente", 
       "Sempre"
-    ], questionType: QuestionType.closed, dependantOnQuestions: {29: "front_center_forehead, front_left_jaw, front_right_jaw", 30: "back_head"}));
+    ], questionType: QuestionType.closed, dependantOnQuestions: {39: "front_center_forehead, front_left_jaw, front_right_jaw", 40: "back_head"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [painDETECT] Como avaliaria sua dor agora, nesse momento?", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [painDETECT] Qual foi a intensidade da dor mais forte que sentiu nas últimas 4 semanas?", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [painDETECT] Qual foi a intensidade média da dor nas últimas 4 semanas?", options: ["Ausência", "Máxima"], questionType: QuestionType.rating));
@@ -239,9 +289,9 @@ class Question {
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Tem câncer e está realizando tratamento para o mesmo?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Sua dor teve início relacionado ao câncer?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Possui dor articular?", options: ["Sim", "Não"], questionType: QuestionType.closed));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. A dor piora ao repouso?", options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {55: "Sim"}));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Há rigidez nas articulações?", options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {55: "Sim"}));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. As articulações apresentam edema?", options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {55: "Sim"}));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. A dor piora ao repouso?", options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {65: "Sim"}));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. Há rigidez nas articulações?", options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {65: "Sim"}));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. As articulações apresentam edema?", options: ["Sim", "Não"], questionType: QuestionType.closed, dependantOnQuestions: {65: "Sim"}));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. A sua dor piora ao caminhar ou ao movimentar o corpo?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. A dor que sente é em forma de cólica?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. De 0 a 10, informe o quanto a dor interfere no sono.", options: ["Nada", "Muito"], questionType: QuestionType.rating));
@@ -264,6 +314,14 @@ class Question {
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Escala Graduada de Dor] Sente limitação para trabalhar fora de casa para ganhar uma renda?", options: ["Não", "Pouca limitação", "Muita limitação"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Escala Graduada de Dor] Avalie a seguinte afirmação: \"Não é realmente seguro para uma pessoa com uma condição de dor como a minha ser fisicamente ativa\".", options: ["Discordo totalmente", "Discordo parcialmente", "Concordo totalmente"], questionType: QuestionType.closed));    
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Escala Graduada de Dor] Avalie a seguinte afirmação: \"Sinto que minha dor é terrível e nunca vai melhorar\".", options: ["Discordo totalmente", "Discordo parcialmente", "Concordo totalmente"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [STOP-Bang] Ronca alto o suficiente que pode ser ouvido através de portas fechadas ou o companheiro o cutuca à noite para parar de roncar?", options: ["Sim", "Não"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [STOP-Bang] Frequentemente se sente cansado, exausto ou sonolento durante o dia (como, por exemplo, adormecer enquanto dirige)?", options: ["Sim", "Não"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [STOP-Bang] Alguém observou que para de respirar ou engasga/fica ofegante durante o seu sono?", options: ["Sim", "Não"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [STOP-Bang] Tem ou está sendo tratado para pressão sanguínea alta?", options: ["Sim", "Não"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [STOP-Bang] Índice de massa corporal maior que 35 kg/m2?", options: ["Sim", "Não"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [STOP-Bang] Idade acima de 50 anos?", options: ["Sim", "Não"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [STOP-Bang] (Medida em volta do pomo de Adão) Para homens, o colarinho da camisa é de 43 cm ou mais? Para mulheres, o colarinho da camisa é de 41 cm ou mais?", options: ["Sim", "Não"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [STOP-Bang] Do sexo masculino?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [ACR] Nos últimos 7, dias, teve dificuldade de memória ou concentração?", options: ["Sem problemas", "Leve", "Moderado", "Severo"], questionType: QuestionType.closed));
     return questionList;
   }
