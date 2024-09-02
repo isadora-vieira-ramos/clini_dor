@@ -3,6 +3,7 @@ import "package:clini_dor/models/question_type.dart";
 import "package:clini_dor/pages/question/closed_question.dart";
 import "package:clini_dor/pages/question/front_click_map_question.dart";
 import "package:clini_dor/pages/question/back_click_map_question.dart";
+import "package:clini_dor/pages/question/medicine_list_question.dart";
 import "package:clini_dor/pages/question/medicine_question.dart";
 import "package:clini_dor/pages/question/multiple_choice_question.dart";
 import "package:clini_dor/pages/question/open_question.dart";
@@ -34,7 +35,7 @@ class QuestionPage extends StatelessWidget {
     }
     if(question.questionType == QuestionType.medicine){
       return (
-        MedicineQuestion(question: question, registerAnswer: registerAnswer, currentAnswer: currentAnswer)
+        MedicineListQuestion(question: question, registerAnswer: registerAnswer, currentAnswer: currentAnswer)
       );
     }
     else{
