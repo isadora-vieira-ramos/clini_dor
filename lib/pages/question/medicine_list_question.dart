@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:clini_dor/components/floating_button.dart';
 import 'package:clini_dor/components/medicine_tile.dart';
 import 'package:clini_dor/components/standard_textfield.dart';
 import 'package:clini_dor/models/medicine.dart';
 import 'package:clini_dor/models/question.dart';
+import 'package:clini_dor/pages/question/add_medicine.dart';
 import 'package:clini_dor/utils/ColorUtils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,31 +23,6 @@ class MedicineListQuestion extends StatefulWidget {
 }
 
 class _MedicineQuestionState extends State<MedicineListQuestion> {
-  bool showTextFields = false;
-  TextEditingController medicineName = TextEditingController();
-  TextEditingController medicineWeekFrequency = TextEditingController();
-  TextEditingController medicineMonthlyFrequency = TextEditingController();
-  
-  List<Medicine> medicineList = [
-  ];
-
-  void changeTextFieldValue(){
-    setState(() {
-      showTextFields = !showTextFields;
-    });
-  }
-
-  void addMedicine(){
-    var weekFrequency = int.parse(medicineWeekFrequency.text);
-    var monthFrequency = int.parse(medicineMonthlyFrequency.text);
-    setState(() {
-      medicineList.add(Medicine(name: medicineName.text, weeklyFrequencyUse: weekFrequency, monthlyFrequencyUse: monthFrequency));
-      showTextFields = !showTextFields;
-    });
-    medicineName.text = "";
-    medicineWeekFrequency.text = "";
-    medicineMonthlyFrequency.text = "";
-  }
 
   @override
   void initState() {
@@ -53,6 +31,42 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
 
   @override
   Widget build(BuildContext context) {
+    
+    final _formKey = GlobalKey<FormState>();
+    bool showTextFields = false;
+    TextEditingController medicineName = TextEditingController();
+    TextEditingController medicineWeekFrequency = TextEditingController();
+    TextEditingController medicineMonthlyFrequency = TextEditingController();
+    
+    List<Medicine> medicineList = [
+    ];
+
+    void changeTextFieldValue(){
+      setState(() {
+        showTextFields = !showTextFields;
+      });
+    }
+
+    void addMedicine(){
+      if(_formKey.currentState == null || !_formKey.currentState!.validate()){
+        return;
+      }
+      var weekFrequency = int.parse(medicineWeekFrequency.text);
+      var monthFrequency = int.parse(medicineMonthlyFrequency.text);
+      setState(() {
+        medicineList.add(Medicine(name: medicineName.text, weeklyFrequencyUse: weekFrequency, monthlyFrequencyUse: monthFrequency));
+        showTextFields = !showTextFields;
+      });
+      List<String> jsonMedicineList = [];
+      for (var item in medicineList){
+        jsonMedicineList.add(item.toJson().toString());
+      }
+      widget.registerAnswer(widget.question.id, jsonMedicineList);
+
+      medicineName.text = "";
+      medicineWeekFrequency.text = "";
+      medicineMonthlyFrequency.text = "";
+    }
 
     getMedicineValue(String key){
       if(widget.currentAnswer == "Não"){
@@ -89,7 +103,6 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
       setState(() {
         medicineList.removeAt(index);
       });
-      print("teste");
     }
 
     return Scaffold(
@@ -165,54 +178,35 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
                   ),
                 ),
                 if(showTextFields)...[
-                  ListView(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                          controller: medicineName,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: "Nome do medicamento"
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                          controller: medicineWeekFrequency,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: "Frequência de uso última semana"
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                          controller: medicineMonthlyFrequency,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: "Frequência de uso últimos 3 meses"
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  Form(
+                    key: _formKey,
+                    child: AddMedicine(
+                      medicineName: medicineName, 
+                      medicineWeekFrequency: medicineWeekFrequency,
+                      medicineMonthlyFrequency: medicineMonthlyFrequency,
+                    )
+                  )
                 ],
                 Align(
                   alignment: Alignment.topLeft,
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: ElevatedButton(
+                    child: FilledButton.icon(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: ColorUtils.getMaterialColor(Theme.of(context).colorScheme.tertiary),
                         foregroundColor: Colors.black
                       ),
                       onPressed: showTextFields == true? addMedicine: changeTextFieldValue, 
-                      child: showTextFields == true? const Icon(Icons.save): const Icon(Icons.add)
+                      icon: showTextFields == true? const Icon(Icons.save_outlined): const Icon(Icons.add),
+                      label: Text(
+                        showTextFields == true? "Salvar": "Incluir",
+                        style: GoogleFonts.josefinSans(
+                          textStyle: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.black
+                          )
+                        ),
+                      ),
                     ),
                   ),
                 )
