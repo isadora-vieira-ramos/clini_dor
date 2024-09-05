@@ -322,7 +322,9 @@ class Question {
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [STOP-Bang] Idade acima de 50 anos?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [STOP-Bang] (Medida em volta do pomo de Adão) Para homens, o colarinho da camisa é de 43 cm ou mais? Para mulheres, o colarinho da camisa é de 41 cm ou mais?", options: ["Sim", "Não"], questionType: QuestionType.closed));
     questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [STOP-Bang] Do sexo masculino?", options: ["Sim", "Não"], questionType: QuestionType.closed));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [ACR] Nos últimos 7, dias, teve dificuldade de memória ou concentração?", options: ["Sem problemas", "Leve", "Moderado", "Severo"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [ACR] Nos últimos 7 dias, teve sentiu cansaço ao executar suas atividades?", options: ["Sem problemas", "Leve", "Moderado", "Severo"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [ACR] Nos últimos 7 dias, teve dificuldade de memória ou concentração?", options: ["Sem problemas", "Leve", "Moderado", "Severo"], questionType: QuestionType.closed));
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [ACR] Nos últimos 7 dias, teve dor abdominal dor de cabeça, dor muscular, dor nas pernas?", options: ["Sem problemas", "Leve", "Moderado", "Severo"], questionType: QuestionType.closed));
     return questionList;
   }
 
