@@ -210,7 +210,8 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
                       ),
                     ),
                   ),
-                )
+                ),
+                const SizedBox(height: 100)
               ]
             ]
           ),
