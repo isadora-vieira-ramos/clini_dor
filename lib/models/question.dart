@@ -99,7 +99,7 @@ class Question {
       "Semanalmente",
       "Todos ou quase todos os dias"
     ], questionType: QuestionType.closed, dependantOnQuestions: {26: "Mensalmente ou menos, 2 a 4 vezes por mês, 2 a 4 vezes por semana, 4 ou mais vezes por semana"}));
-    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Drug Abuse Screening Tes] Já usou drogas que não as necessárias por razões médicas?", 
+    questionList.add(Question(id: questionList.length + 1, questionText: "${questionList.length + 1}. [Drug Abuse Screening Test] Já usou drogas que não as necessárias por razões médicas?", 
     options: [
       "Sim", 
       "Não"

@@ -4,7 +4,8 @@ class AddMedicine extends StatelessWidget {
   final TextEditingController medicineName;
   final TextEditingController medicineWeekFrequency;
   final TextEditingController medicineMonthlyFrequency;
-  const AddMedicine({super.key, required this.medicineName, required this.medicineWeekFrequency, required this.medicineMonthlyFrequency});
+  final List<String> options;
+  const AddMedicine({super.key, required this.medicineName, required this.medicineWeekFrequency, required this.medicineMonthlyFrequency, required this.options});
 
   @override
   Widget build(BuildContext context) {
@@ -12,22 +13,42 @@ class AddMedicine extends StatelessWidget {
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextFormField(
-            controller: medicineName,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: "Nome do medicamento"
-            ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Campo obrigatório';
-              }
-              return null;
-            },
+        if(options.isNotEmpty)...[
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              "Novo Medicamento",
+              style: TextStyle(
+                fontSize: 15
+              ),
+            )
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              controller: medicineName,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Nome do medicamento"
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Campo obrigatório';
+                }
+                return null;
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Text(
+              "Exemplos: ${options.join(', ')}...",
+              style: const TextStyle(
+                fontSize: 14
+              ),
+            ),
+          ),
+        ],
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextFormField(

@@ -23,25 +23,19 @@ class MedicineListQuestion extends StatefulWidget {
 }
 
 class _MedicineQuestionState extends State<MedicineListQuestion> {
+  final _formKey = GlobalKey<FormState>();
+  bool showTextFields = false;
+  TextEditingController medicineName = TextEditingController();
+  TextEditingController medicineWeekFrequency = TextEditingController();
+  TextEditingController medicineMonthlyFrequency = TextEditingController(); 
+  List<Medicine> medicineList = [];
 
   @override
   void initState() {
     super.initState();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    
-    final _formKey = GlobalKey<FormState>();
-    bool showTextFields = false;
-    TextEditingController medicineName = TextEditingController();
-    TextEditingController medicineWeekFrequency = TextEditingController();
-    TextEditingController medicineMonthlyFrequency = TextEditingController();
-    
-    List<Medicine> medicineList = [
-    ];
-
-    void changeTextFieldValue(){
+  void changeTextFieldValue(){
       setState(() {
         showTextFields = !showTextFields;
       });
@@ -105,6 +99,9 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
       });
     }
 
+  @override
+  Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -161,20 +158,23 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(showTextFields == true? 8: 0),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: medicineList.length,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) {
-                      Medicine medicine = Medicine(
-                        name: medicineList[index].name, 
-                        weeklyFrequencyUse: medicineList[index].weeklyFrequencyUse, 
-                        monthlyFrequencyUse: medicineList[index].monthlyFrequencyUse
-                      );
-                      return MedicineTile(medicine:medicine, deleteItem: () => deleteMedicine(index));
-                    }
+                Visibility(
+                  visible: medicineList.isNotEmpty? true : false,
+                  child:Padding(
+                    padding: EdgeInsets.all(showTextFields == true? 8: 0),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: medicineList.length,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        Medicine medicine = Medicine(
+                          name: medicineList[index].name, 
+                          weeklyFrequencyUse: medicineList[index].weeklyFrequencyUse, 
+                          monthlyFrequencyUse: medicineList[index].monthlyFrequencyUse
+                        );
+                        return MedicineTile(medicine:medicine, deleteItem: () => deleteMedicine(index));
+                      }
+                    ),
                   ),
                 ),
                 if(showTextFields)...[
@@ -184,6 +184,7 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
                       medicineName: medicineName, 
                       medicineWeekFrequency: medicineWeekFrequency,
                       medicineMonthlyFrequency: medicineMonthlyFrequency,
+                      options: widget.question.options,
                     )
                   )
                 ],
