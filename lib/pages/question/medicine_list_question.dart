@@ -30,6 +30,15 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
   @override
   void initState() {
     super.initState();
+    loadMedicineList();
+  }
+
+  @override
+  void didUpdateWidget(MedicineListQuestion oldWidget){
+    loadMedicineList();
+  }
+
+  void loadMedicineList(){
     if(widget.currentAnswer!.isNotEmpty){
       List<String> answers = widget.currentAnswer!.split("},");
       answers.forEach((element) {
