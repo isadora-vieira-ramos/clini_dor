@@ -1,8 +1,5 @@
 import 'dart:convert';
-
-import 'package:clini_dor/components/floating_button.dart';
 import 'package:clini_dor/components/medicine_tile.dart';
-import 'package:clini_dor/components/standard_textfield.dart';
 import 'package:clini_dor/models/medicine.dart';
 import 'package:clini_dor/models/question.dart';
 import 'package:clini_dor/pages/question/add_medicine.dart';
@@ -29,13 +26,71 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
   TextEditingController medicineWeekFrequency = TextEditingController();
   TextEditingController medicineMonthlyFrequency = TextEditingController(); 
   List<Medicine> medicineList = [];
-
+  
   @override
   void initState() {
     super.initState();
+    if(widget.currentAnswer!.isNotEmpty){
+      List<String> answers = widget.currentAnswer!.split("},");
+      answers.forEach((element) {
+        element.replaceAll("{", "");
+        element.replaceAll("}", "");
+        var values = element.split(",");
+        String name = values[0].split(":")[1];
+        int weekUse = int.tryParse(values[1].split(":")[1])?? 0;
+        int monthlyUse = int.tryParse(values[2].split(":")[1]) ?? 0;
+        setState(() {
+          medicineList.add(Medicine(name: name, weeklyFrequencyUse: weekUse, monthlyFrequencyUse: monthlyUse));
+        });
+      },);
+    }else{
+      setState(() {
+        medicineList = [];
+      });
+    }
   }
 
-  void changeTextFieldValue(){
+  getMedicineValue(String key){
+    if(widget.currentAnswer == "Não"){
+      return "Não";
+    }else{
+      if(widget.currentAnswer != null && widget.currentAnswer!.isNotEmpty){
+        List<String> medicineInformation = widget.currentAnswer!.split(",");
+        var answer = medicineInformation.where((element) => element.contains(key));
+        if(answer.isNotEmpty){
+          var value = answer.toList()[0].split(":")[1];
+          return value;
+        }
+      }else{
+        return widget.currentAnswer;
+      }
+    }
+  }
+
+  List<String> opcoes = ["Sim", "Não"];
+
+  getRadioListValue(){
+    if(widget.currentAnswer == "Não"){
+      return "Não";
+    }else{
+      if(widget.currentAnswer != null && widget.currentAnswer!.isNotEmpty){
+        return "Sim";
+      }else{
+        return "";
+      } 
+    }
+  } 
+
+  @override
+  Widget build(BuildContext context) {
+
+    void deleteMedicine(int index){
+      setState(() {
+        medicineList.removeAt(index);
+      });
+    }
+
+    void changeTextFieldValue(){
       setState(() {
         showTextFields = !showTextFields;
       });
@@ -61,46 +116,6 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
       medicineWeekFrequency.text = "";
       medicineMonthlyFrequency.text = "";
     }
-
-    getMedicineValue(String key){
-      if(widget.currentAnswer == "Não"){
-        return "Não";
-      }else{
-        if(widget.currentAnswer != null && widget.currentAnswer!.isNotEmpty){
-          List<String> medicineInformation = widget.currentAnswer!.split(",");
-          var answer = medicineInformation.where((element) => element.contains(key));
-          if(answer.isNotEmpty){
-            var value = answer.toList()[0].split(":")[1];
-            return value;
-          }
-        }else{
-          return widget.currentAnswer;
-        }
-      }
-    }
-
-    List<String> opcoes = ["Sim", "Não"];
-
-    getRadioListValue(){
-      if(widget.currentAnswer == "Não"){
-        return "Não";
-      }else{
-        if(widget.currentAnswer != null && widget.currentAnswer!.isNotEmpty){
-          return "Sim";
-        }else{
-          return "";
-        } 
-      }
-    }
-
-    void deleteMedicine(int index){
-      setState(() {
-        medicineList.removeAt(index);
-      });
-    }
-
-  @override
-  Widget build(BuildContext context) {
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -159,7 +174,7 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
                   ),
                 ),
                 Visibility(
-                  visible: medicineList.isNotEmpty? true : false,
+                  visible: medicineList.isNotEmpty? true: false,
                   child:Padding(
                     padding: EdgeInsets.all(showTextFields == true? 8: 0),
                     child: ListView.builder(

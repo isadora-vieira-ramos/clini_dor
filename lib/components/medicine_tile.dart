@@ -1,5 +1,4 @@
 import 'package:clini_dor/models/medicine.dart';
-import 'package:clini_dor/utils/ColorUtils.dart';
 import 'package:flutter/material.dart';
 
 class MedicineTile extends StatelessWidget {
