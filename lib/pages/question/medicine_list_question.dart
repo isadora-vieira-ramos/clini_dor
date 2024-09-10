@@ -156,9 +156,11 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
                       groupValue: getRadioListValue(), 
                       title: Text(opcoes[index]),
                       onChanged: (value){
+                        List<String> registeredAnswer = [];
                         if(value.toString() == "Não"){
-                          List<String> registeredAnswer = [];
                           registeredAnswer.add(value.toString());
+                          widget.registerAnswer(widget.question.id, registeredAnswer);
+                        }else{
                           widget.registerAnswer(widget.question.id, registeredAnswer);
                         }
                         setState(() {

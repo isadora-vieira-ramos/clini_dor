@@ -108,11 +108,11 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
   } 
 
   bool checkIfQuestionWasAnswered(int id, QuestionType questionType){
-    var answer = answers.where((answers) => answers.id == id);
-    if(answer.isEmpty){
-      return false;
-    }else{
+    Answer? answer = answers.where((x) => x.id == id).firstOrNull;
+    if(answer != null && answer.pickedAnswers.isNotEmpty){
       return true;
+    }else{
+      return false;
     }
   }
 
