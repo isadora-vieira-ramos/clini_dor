@@ -39,7 +39,8 @@ class _MedicineQuestionState extends State<MedicineListQuestion> {
   }
 
   void loadMedicineList(){
-    if(widget.currentAnswer!.isNotEmpty){
+    if(widget.currentAnswer!.isNotEmpty && widget.currentAnswer! != "Não"){
+      medicineList = [];
       List<String> answers = widget.currentAnswer!.split("},");
       answers.forEach((element) {
         element.replaceAll("{", "");
