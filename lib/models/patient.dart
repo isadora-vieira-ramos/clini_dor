@@ -10,6 +10,7 @@ class Patient{
   final String sex;
   final String contactNumber;
   final String occupation;
+  final String workStudy;
   final String education;
   final double weight;
   final int height;
@@ -22,7 +23,8 @@ class Patient{
     this.age, 
     required this.sex, 
     required this.contactNumber, 
-    required this.occupation, 
+    required this.occupation,
+    required this.workStudy,
     required this.education, 
     required this.weight,
     required this.height,
@@ -40,6 +42,7 @@ class Patient{
       sex: json["Sexo"],
       contactNumber: json["NumeroContato"].toString(),
       occupation: json["Profissao"],
+      workStudy: json["TrabalhoEstudo"],
       education: json["Escolaridade"],
       weight: stringToDouble(json["Peso"].toString()),
       height: json["Altura"],
@@ -56,6 +59,7 @@ class Patient{
     'sexo': sex,
     'numeroContato': contactNumber,
     'profissao': occupation,
+    'trabalhoEstudo': workStudy,
     'escolaridade': education,
     'peso': weight,
     'altura': height,
