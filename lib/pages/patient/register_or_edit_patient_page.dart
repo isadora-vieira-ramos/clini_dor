@@ -42,6 +42,7 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
       _heightController.text = widget.patient!.height.toString();
       _imcController.text = widget.patient!.bmi.toString();
       dropdownValueSex = widget.patient!.sex == "M"? "Masculino": "Feminino";
+      dropdownWorkStudy = widget.patient!.workStudy;
       dropdownValueEducation = widget.patient!.education;
     }
 
@@ -58,6 +59,7 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
   
   String dropdownValueSex = 'Masculino';
   String dropdownValueEducation = 'Fundamental incompleto';
+  String dropdownWorkStudy = 'Não trabalho nem estudo';
   late DateTime chosenDate;
   bool loading = false;
 
@@ -93,6 +95,7 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
       sex: dropdownValueSex == 'Masculino'? "M": "F", 
       contactNumber: _numberController.value.text, 
       occupation: _occupationController.value.text, 
+      workStudy: dropdownWorkStudy,
       education: dropdownValueEducation, 
       weight: double.parse(_weightController.value.text), 
       height: int.parse(_heightController.value.text), 
@@ -160,6 +163,7 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
       sex: dropdownValueSex == 'Masculino'? "M": "F", 
       contactNumber: _numberController.value.text, 
       occupation: _occupationController.value.text, 
+      workStudy: dropdownWorkStudy,
       education: dropdownValueEducation, 
       weight: double.parse(_weightController.value.text), 
       height: int.parse(_heightController.value.text), 
@@ -361,6 +365,28 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
                 controller: _occupationController, 
                 hintText: 'Profissão', 
                 obscureText: false
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20.0),
+                child: DropdownButtonFormField<String>(
+                  decoration: const InputDecoration(
+                    border:OutlineInputBorder(),
+                    labelText: 'Trabalho/Estudo'
+                  ),
+                  value: dropdownWorkStudy,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      dropdownWorkStudy = newValue!;
+                    });
+                  },
+                  items: <String>['Trabalho e Estudo', 'Trabalho', 'Estudo', 'Não trabalho nem estudo']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20.0),
