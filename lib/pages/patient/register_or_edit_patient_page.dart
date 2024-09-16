@@ -1,4 +1,4 @@
-import 'package:clini_dor/components/loading_component.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:clini_dor/components/standard_textfield.dart';
 import 'package:clini_dor/models/patient.dart';
 import 'package:clini_dor/pages/home_page.dart';
@@ -62,6 +62,12 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
   String dropdownWorkStudy = 'Não trabalho nem estudo';
   late DateTime chosenDate;
   bool loading = false;
+
+  var maskFormatter = new MaskTextInputFormatter(
+    mask: '+55 (###) #####-####', 
+    filter: { "#": RegExp(r'[0-9]') },
+    type: MaskAutoCompletionType.lazy
+  );
 
   calculateIMC(){
     if( _heightController.value.text.isNotEmpty && _weightController.value.text.isNotEmpty){
@@ -344,9 +350,10 @@ class _RegisterOrEditPatientPageState extends State<RegisterOrEditPatientPage> {
                 )
               ],
               StandardTextfield(
+                formatter: maskFormatter,
                 controller: _numberController, 
                 hintText: 'Número de contato', 
-                obscureText: false
+                obscureText: false,
               ),
               if(editingPatient)...[
                 Padding(
