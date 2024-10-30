@@ -12,7 +12,7 @@ class QuestionnaireTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ConductsPage())),
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ConductsPage(questionnaire: questionnaire))),
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.transparent)
