@@ -1,14 +1,8 @@
 import 'dart:async';
-
 import 'package:clini_dor/components/standard_textfield.dart';
-import 'package:clini_dor/pages/auth_page.dart';
-import 'package:clini_dor/pages/home_page.dart';
-import 'package:clini_dor/pages/signin_page.dart';
 import 'package:clini_dor/utils/ColorUtils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
@@ -45,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
 
     void forgotPassword(){
 
-      TextEditingController _emailController = TextEditingController();
+      TextEditingController emailController = TextEditingController();
       AlertDialog alertDialog = AlertDialog(
         title: Text(
           "Trocar a senha",
@@ -56,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
           )
         ),
         content: TextFormField(
-          controller: _emailController,
+          controller: emailController,
           decoration: const InputDecoration(
             hintText: "email",
           ),
@@ -84,9 +78,9 @@ class _LoginPageState extends State<LoginPage> {
               )
             ),
             onPressed: () async => {
-              if(_emailController.text.isNotEmpty){
+              if(emailController.text.isNotEmpty){
                 FirebaseAuth.instance.sendPasswordResetEmail(
-                  email: _emailController.text 
+                  email: emailController.text 
                 ).then((value) {
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Email Enviado!")));

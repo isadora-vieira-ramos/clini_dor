@@ -1,6 +1,4 @@
 import 'package:clini_dor/components/standard_textfield.dart';
-import 'package:clini_dor/pages/auth_page.dart';
-import 'package:clini_dor/pages/home_page.dart';
 import 'package:clini_dor/utils/ColorUtils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

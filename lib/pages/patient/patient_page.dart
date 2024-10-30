@@ -31,10 +31,9 @@ class _PatientPageState extends State<PatientPage> {
   Future<void> getQuestionnairesCsv() async {
     String data = await Questionnaire.saveQuestionnairesInCsv(widget.patient.medicalRecord);
     String dir = (await getExternalStorageDirectory())!.path;
-    print("dir $dir");
-    String file = "$dir";
+    String file = dir;
 
-    File f = File(file + "/paciente.csv");
+    File f = File("$file/paciente.csv");
 
     f.writeAsString(data);
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
