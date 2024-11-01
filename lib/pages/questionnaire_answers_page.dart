@@ -1,11 +1,13 @@
 import 'package:clini_dor/models/question.dart';
+import 'package:clini_dor/models/question_type.dart';
 import 'package:clini_dor/models/questionnaire.dart';
+import 'package:clini_dor/pages/patient/conducts_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ConductsPage extends StatelessWidget {
+class QuestionnaireAnswersPage extends StatelessWidget {
   final Questionnaire questionnaire;
-  const ConductsPage({super.key, required this.questionnaire});
+  const QuestionnaireAnswersPage({super.key, required this.questionnaire});
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +38,27 @@ class ConductsPage extends StatelessWidget {
               itemCount: questionnaire.answers!.length,
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
-                String question = questions.where((element) => element.id == questionnaire.answers![index].id).first.questionText;
+                Question question = questions.where((element) => element.id == questionnaire.answers![index].id).first;
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(question, style: const TextStyle(fontSize: 18)),
-                      Text('Resposta: ${questionnaire.answers![index].pickedAnswers[0]}', textAlign: TextAlign.left, style: const TextStyle(fontSize: 15)),
+                      Text(question.questionText, style: const TextStyle(fontSize: 18)),
+                      if(question.questionType == QuestionType.closed || question.questionType == QuestionType.open || question.questionType == QuestionType.rating)...{
+                        Text('Resposta: ${questionnaire.answers![index].pickedAnswers[0]}', textAlign: TextAlign.left, style: const TextStyle(fontSize: 15)),
+                      }else if(question.questionType == QuestionType.clickMap)...{
+                        const Text("Resposta: Clickmap")
+                      }else if(question.questionType == QuestionType.multipleChoice)...{
+                        Column(crossAxisAlignment: CrossAxisAlignment.start, children: questionnaire.answers![index].pickedAnswers.map((e) => Text(e)).toList())
+                      }else...{
+                        const Text("Resposta: Medicine")
+                      },
                       const Padding(
                         padding: EdgeInsets.only(top:4.0, left:4, right: 4),
                         child: Divider(color: Colors.black),
-                      ),
+                      )
                     ],
                   ),
                 );
@@ -63,7 +73,7 @@ class ConductsPage extends StatelessWidget {
             Theme.of(context).colorScheme.tertiary
           ),
         ),
-        onPressed: (){}, 
+        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ConductsPage())), 
         icon: const Icon(Icons.fact_check_outlined, color: Colors.black), 
         label: Text(
           "Condutas",
