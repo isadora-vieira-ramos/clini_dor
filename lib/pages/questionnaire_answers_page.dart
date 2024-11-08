@@ -14,6 +14,15 @@ class QuestionnaireAnswersPage extends StatelessWidget {
 
     var questions = Question.getQuestions();
 
+    Text formatMedicineInfo(String text){
+      if(text.isNotEmpty){
+        List<String> medicine = text.split(" ");
+        return  Text("Nome: ${medicine[1]}, frequência de uso semanal: ${medicine[3]}, frequência de uso nos últimos 3 meses: ${medicine[5]}");
+      }else{
+        return const Text("");
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -51,9 +60,25 @@ class QuestionnaireAnswersPage extends StatelessWidget {
                       }else if(question.questionType == QuestionType.clickMap)...{
                         const Text("Resposta: Clickmap")
                       }else if(question.questionType == QuestionType.multipleChoice)...{
-                        Column(crossAxisAlignment: CrossAxisAlignment.start, children: questionnaire.answers![index].pickedAnswers.map((e) => Text(e)).toList())
+                        const Text("Respostas: "),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start, 
+                          children: questionnaire.answers![index].pickedAnswers.map((e) => Text(e)).toList()
+                        )
                       }else...{
-                        const Text("Resposta: Medicine")
+                        if(questionnaire.answers![index].pickedAnswers[0] == "Não")...{
+                          const Text("Resposta: Não")
+                        }else...{
+                          const Text("Respostas: "),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start, 
+                            children: questionnaire.answers![index].pickedAnswers
+                              .join("")
+                              .split("}")
+                              .map((e) => formatMedicineInfo(e)).toList()
+                          )
+                        }
+
                       },
                       const Padding(
                         padding: EdgeInsets.only(top:4.0, left:4, right: 4),
