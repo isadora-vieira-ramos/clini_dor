@@ -2,12 +2,24 @@ import 'package:clini_dor/models/question.dart';
 import 'package:clini_dor/models/question_type.dart';
 import 'package:clini_dor/models/questionnaire.dart';
 import 'package:clini_dor/pages/patient/conducts_page.dart';
+import 'package:clini_dor/pages/question/back_click_map_question.dart';
+import 'package:clini_dor/pages/question/front_click_map_question.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class QuestionnaireAnswersPage extends StatelessWidget {
+class QuestionnaireAnswersPage extends StatefulWidget {
   final Questionnaire questionnaire;
   const QuestionnaireAnswersPage({super.key, required this.questionnaire});
+
+  @override
+  State<QuestionnaireAnswersPage> createState() => _QuestionnaireAnswersPageState();
+}
+
+class _QuestionnaireAnswersPageState extends State<QuestionnaireAnswersPage> {
+
+  bool showClickMapAnteriorAnswer = false;
+  bool showClickMapPosteriorAnswer = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +33,12 @@ class QuestionnaireAnswersPage extends StatelessWidget {
       }else{
         return const Text("");
       }
+    }
+
+    Question getQuestionWithoutText(Question question){
+      var currentQuestion = question;
+      currentQuestion.questionText = "";
+      return currentQuestion;
     }
 
     return Scaffold(
@@ -44,10 +62,10 @@ class QuestionnaireAnswersPage extends StatelessWidget {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: questionnaire.answers!.length,
+              itemCount: widget.questionnaire.answers!.length,
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
-                Question question = questions.where((element) => element.id == questionnaire.answers![index].id).first;
+                Question question = questions.where((element) => element.id == widget.questionnaire.answers![index].id).first;
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -56,23 +74,69 @@ class QuestionnaireAnswersPage extends StatelessWidget {
                     children: [
                       Text(question.questionText, style: const TextStyle(fontSize: 18)),
                       if(question.questionType == QuestionType.closed || question.questionType == QuestionType.open || question.questionType == QuestionType.rating)...{
-                        Text('Resposta: ${questionnaire.answers![index].pickedAnswers[0]}', textAlign: TextAlign.left, style: const TextStyle(fontSize: 15)),
+                        Text('Resposta: ${widget.questionnaire.answers![index].pickedAnswers[0]}', textAlign: TextAlign.left, style: const TextStyle(fontSize: 15)),
                       }else if(question.questionType == QuestionType.clickMap)...{
-                        const Text("Resposta: Clickmap")
+                        const SizedBox(height: 10),
+                        if(question == questions.where((element) => element.questionType == QuestionType.clickMap).first)...{
+                          FilledButton.icon(
+                            icon:  Icon(!showClickMapAnteriorAnswer? Icons.keyboard_arrow_down: Icons.keyboard_arrow_up, color: Colors.black),
+                            label: Text(!showClickMapAnteriorAnswer? "Visão anterior": "Esconder Resposta", style: TextStyle(color: Colors.black)),
+                            onPressed: (){
+                              setState(() {
+                                showClickMapAnteriorAnswer = !showClickMapAnteriorAnswer;
+                              });
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                Theme.of(context).colorScheme.tertiary
+                              ),
+                            ), 
+                          ),
+                          if(showClickMapAnteriorAnswer)...[
+                            SizedBox(
+                              width: 500,
+                              height: 500,
+                              child: FrontClickMapQuestion(question: getQuestionWithoutText(question), registerAnswer: (){}, currentAnswer: widget.questionnaire.answers![index].pickedAnswers[0])
+                            )
+                          ]  
+                        }
+                        else...{
+                          FilledButton.icon(
+                            icon:  Icon(!showClickMapPosteriorAnswer? Icons.keyboard_arrow_down: Icons.keyboard_arrow_up, color: Colors.black),
+                            label: Text(!showClickMapPosteriorAnswer? "Visão posterior": "Esconder Resposta", style: TextStyle(color: Colors.black)),
+                            onPressed: (){
+                              setState(() {
+                                showClickMapPosteriorAnswer = !showClickMapPosteriorAnswer;
+                              });
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                Theme.of(context).colorScheme.tertiary
+                              ),
+                            ), 
+                          ),
+                          if(showClickMapPosteriorAnswer)...[
+                            SizedBox(
+                              width: 500,
+                              height: 500,
+                              child: BackClickMapQuestion(question: getQuestionWithoutText(question), registerAnswer: (){}, currentAnswer: widget.questionnaire.answers![index].pickedAnswers[0])
+                            )
+                          ]  
+                        }
                       }else if(question.questionType == QuestionType.multipleChoice)...{
                         const Text("Respostas: "),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start, 
-                          children: questionnaire.answers![index].pickedAnswers.map((e) => Text(e)).toList()
+                          children: widget.questionnaire.answers![index].pickedAnswers.map((e) => Text(e)).toList()
                         )
                       }else...{
-                        if(questionnaire.answers![index].pickedAnswers[0] == "Não")...{
+                        if(widget.questionnaire.answers![index].pickedAnswers[0] == "Não")...{
                           const Text("Resposta: Não")
                         }else...{
                           const Text("Respostas: "),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start, 
-                            children: questionnaire.answers![index].pickedAnswers
+                            children: widget.questionnaire.answers![index].pickedAnswers
                               .join("")
                               .split("}")
                               .map((e) => formatMedicineInfo(e)).toList()
